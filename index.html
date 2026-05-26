@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malwene Exports | China to Africa Logistics</title>
+    <style>
+        /* Base Styles & Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            background-color: #1a252f;
+            color: #fff;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 37, 47, 0.85), rgba(26, 37, 47, 0.85)), url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: #fff;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #2ecc71;
+            color: #fff;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        /* Destinations Section */
+        .destinations {
+            padding: 60px 5%;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 40px;
+            position: relative;
+            color: #2c3e50;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #3498db;
+            margin: 10px auto 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+
+        /* Products/Services */
+        .services {
+            padding: 60px 5%;
+            background-color: #f1f2f6;
+        }
+
+        .service-item {
+            background: #fff;
+            padding: 25px;
+            border-left: 5px solid #3498db;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 60px 5%;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fdfdfd;
+            border: 1px solid #e1e8ed;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .phone-num {
+            font-size: 24px;
+            color: #2c3e50;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .whatsapp-btn {
+            background-color: #25d366;
+        }
+        .whatsapp-btn:hover {
+            background-color: #128c7e;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a252f;
+            color: #7f8c8d;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Malwene<span>Exports</span></div>
+        <nav>
+            <a href=" ">About</a >
+            <a href="#destinations">Destinations</a >
+            <a href="#services">Services</a >
+            <a href="#contact">Contact</a >
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Your Gateway from China to Africa</h1>
+        <p>Sourcing, logistics, and secure export of electronics, accessories, and commercial goods directly to your doorstep.</p >
+        <a href="#contact" class="btn">Get a Quote Today</a >
+    </section>
+
+    <section id="destinations" class="destinations">
+        <h2 class="section-title">Core Shipping Routes</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Zimbabwe</h3>
+                <p>Reliable freight forward, clearance services, and secure delivery network across major towns and cities.</p >
+            </div>
+            <div class="card">
+                <h3>Zambia</h3>
+                <p>Efficient cargo handling and transport lanes directly from manufacturing hubs in China to Zambia.</p >
+            </div>
+            <div class="card">
+                <h3>South Africa</h3>
+                <p>Streamlined logistics, customs support, and bulk regional distribution networks.</p >
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <h2 class="section-title" style="text-align: center;">What We Do</h2>
+            
+            <div class="service-item">
+                <h3>Electronics & Accessories Procurement</h3>
+                <p>Direct sourcing of smartphones, premium tech items, and high-demand consumer electronics straight from top Chinese suppliers at competitive wholesale prices.</p >
+            </div>
+
+            <div class="service-item">
+                <h3>Bulk Sourcing & Quality Inspection</h3>
+                <p>We ensure your goods match exact technical specifications and quality standards before packaging and transit.</p >
+            </div>
+
+            <div class="service-item">
+                <h3>Secure Consolidation & Freight</h3>
+                <p>Combining orders, optimizing packing sizes, and handling customs clearance to minimize your shipping overhead costs.</p >
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Ready to Start Exporting?</h2>
+        <div class="contact-box">
+            <p>Connect with our administration and logistics team directly via phone or WhatsApp for current pricing, catalogs, and shipping schedules.</p >
+            <div class="phone-num">Direct Line: +86 18717323027</div>
+            <a href="https://wa.me/8618717323027" target="_blank" class="btn whatsapp-btn">Chat on WhatsApp</a >
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Malwene Exports. All Rights Reserved. Connecting China to Southern Africa.</p >
+    </footer>
+
+</body>
+</html>
