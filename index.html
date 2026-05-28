@@ -29,7 +29,6 @@
             color: var(--text-dark);
         }
 
-        /* Header Navigation Grid Layout */
         header {
             background-color: #111c24;
             color: #fff;
@@ -66,7 +65,6 @@
             color: #fff;
         }
 
-        /* Application Layout */
         .app-container {
             max-width: 1400px;
             margin: 30px auto;
@@ -76,7 +74,6 @@
             gap: 30px;
         }
 
-        /* Filters Sidebar Styling */
         .sidebar {
             background: var(--bg-card);
             border-radius: 12px;
@@ -158,7 +155,6 @@
             margin-top: 5px;
         }
 
-        /* Products Section Showcase Grid */
         .main-content {
             display: flex;
             flex-direction: column;
@@ -167,7 +163,7 @@
 
         .stretchy-banner {
             width: 100%;
-            height: 180px;
+            height: 220px;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border-color);
@@ -176,7 +172,7 @@
         .stretchy-banner img {
             width: 100%;
             height: 100%;
-            object-fit: fill; /* Stretches crisp horizontally across container spacing layout options */
+            object-fit: fill;
         }
 
         .product-grid {
@@ -185,7 +181,6 @@
             gap: 20px;
         }
 
-        /* Interactive Modern Dynamic Card */
         .product-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -226,6 +221,7 @@
 
         .storage-selector {
             display: flex;
+            flex-wrap: wrap;
             gap: 8px;
             margin-bottom: 20px;
         }
@@ -326,7 +322,6 @@
             background: var(--accent-green-light);
         }
 
-        /* Order Review Overlay Component Panel */
         .cart-summary-panel {
             background: #111c24;
             color: white;
@@ -343,27 +338,63 @@
             letter-spacing: 0.5px;
         }
 
+        .cart-items-wrapper {
+            max-height: 180px;
+            overflow-y: auto;
+            margin-bottom: 12px;
+            font-size: 12px;
+            color: #cbd5e1;
+            line-height: 1.5;
+            border-bottom: 1px dashed #334155;
+            padding-bottom: 10px;
+        }
+
+        .clear-btn {
+            background: #3a1111;
+            color: #ff4444;
+            border: 1px solid #ff4444;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .clear-btn:hover {
+            background: #551a1a;
+        }
+
         .checkout-btn {
             display: block;
             width: 100%;
             text-align: center;
-            background: var(--primary);
-            color: #000;
+            color: #fff;
             padding: 12px;
             border-radius: 6px;
             font-weight: 600;
             font-size: 13px;
             text-decoration: none;
-            margin-top: 15px;
+            margin-top: 10px;
             text-transform: uppercase;
-            transition: background 0.2s;
+            transition: opacity 0.2s;
+        }
+
+        .checkout-btn.whatsapp {
+            background: #25D366;
+        }
+
+        .checkout-btn.email {
+            background: #ea4335;
         }
 
         .checkout-btn:hover {
-            background: var(--primary-dark);
+            opacity: 0.9;
         }
 
-        /* Global Footer Links Area */
         footer {
             background: #0b0f13;
             color: #64748b;
@@ -397,13 +428,13 @@
     <aside class="sidebar">
         <div class="buyer-flow-box">
             <h3>★ Buyer Flow</h3>
-            <p>Pick storage configs, review live item quotes, and instantly submit requests straight to logisitics.</p>
+            <p>Pick storage configs, review live item quotes, and instantly submit requests straight to logistics channels.</p>
         </div>
 
         <div class="sidebar-widget">
             <h2>Find a Device</h2>
-            <button class="brand-btn active" onclick="filterBrand('Apple')">Apple</button>
-            <button class="brand-btn" onclick="filterBrand('Google')">Google Pixel</button>
+            <button class="brand-btn active" id="btn-apple" onclick="filterBrand('Apple')">Apple iPhones</button>
+            <button class="brand-btn" id="btn-google" onclick="filterBrand('Google')">Google Pixel</button>
         </div>
 
         <div class="sidebar-widget">
@@ -421,18 +452,30 @@
         </div>
 
         <div class="cart-summary-panel" id="cart-panel" style="display: none;">
-            <h3>Selected Order</h3>
-            <div id="cart-item-desc" style="font-size:13px; margin-bottom:8px; color:#cbd5e1;">None</div>
-            <div style="display:flex; justify-content:space-between; font-size:12px; color:#94a3b8; margin-top:8px;">
-                <span>Est. Total (Inc. Shipping):</span>
-                <span id="cart-total-val" style="color:var(--primary); font-weight:bold;">$0</span>
+            <h3>Your Invoice Receipt</h3>
+            <div class="cart-items-wrapper" id="cart-items-list"></div>
+            
+            <button class="clear-btn" onclick="removeLastItem()">❌ Clear Last Item</button>
+
+            <div style="display:flex; justify-content:space-between; font-size:12px; color:#94a3b8; margin-top:4px;">
+                <span>Subtotal:</span>
+                <span id="receipt-subtotal" style="color:#fff;">$0</span>
             </div>
-            <a href="#" id="submit-whatsapp" target="_blank" class="checkout-btn">Submit Request Via WhatsApp</a>
+            <div style="display:flex; justify-content:space-between; font-size:12px; color:#94a3b8; margin-top:4px;">
+                <span>Shipping Surcharge:</span>
+                <span id="receipt-shipping" style="color:#fff;">+$0</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:13px; margin-top:8px; border-top:1px solid #334155; padding-top:8px;">
+                <span style="font-weight: bold; color: #fff;">Final Total Cost:</span>
+                <span id="cart-total-val" style="color:var(--primary); font-weight:bold; font-size:16px;">$0</span>
+            </div>
+            
+            <a href="#" id="submit-whatsapp" target="_blank" class="checkout-btn whatsapp">💬 Pay via WhatsApp</a>
+            <a href="#" id="submit-email" class="checkout-btn email">✉️ Pay via Email</a>
         </div>
     </aside>
 
     <main class="main-content">
-        
         <div class="stretchy-banner">
             <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=1200&auto=format&fit=crop&q=80" alt="iPhone Multi-Models Lineup Showcase Banner">
         </div>
@@ -447,7 +490,7 @@
 </footer>
 
 <script>
-    // System Data Array Structure representing the device inventory list models
+    // System Master Data Array Structure
     const deviceInventory = [
         { brand: "Apple", model: "iPhone 16 Pro Max", subtitle: "Apple flagship premium powerhouse", options: [{storage: "256GB", price: 885}] },
         { brand: "Apple", model: "iPhone 16 Pro", subtitle: "Advanced pro mobile capabilities", options: [{storage: "128GB", price: 695}] },
@@ -470,48 +513,49 @@
         { brand: "Apple", model: "iPhone XR", subtitle: "Long battery liquid crystal configuration", options: [{storage: "64GB", price: 125}, {storage: "128GB", price: 139}] },
         { brand: "Apple", model: "iPhone XS", subtitle: "Super AMOLED high resolution design profile", options: [{storage: "256GB", price: 138}] },
         { brand: "Apple", model: "iPhone 8 Plus", subtitle: "Classic design featuring Touch ID capabilities", options: [{storage: "64GB", price: 90}] },
-        { brand: "Apple", model: "iPhone 7 Plus", subtitle: " dual-lens retro entry level device setup", options: [{storage: "128GB", price: 70}] },
+        { brand: "Apple", model: "iPhone 7 Plus", subtitle: "Dual-lens retro entry level device setup", options: [{storage: "128GB", price: 70}] },
         
-        // Google Pixel Configurations Data
-        { brand: "Google", model: "Google Pixel 9 Pro", subtitle: "Advanced Google Gemini AI model phone", options: [{storage: "256GB", price: 702}] },
-        { brand: "Google", model: "Google Pixel 9", subtitle: "Latest high standard stock Android layout", options: [{storage: "128GB", price: 506}] },
-        { brand: "Google", model: "Google Pixel 8 Pro", subtitle: "Pure computation triple camera flagship array", options: [{storage: "128GB", price: 435}, {storage: "256GB", price: 487}, {storage: "512GB", price: 568}] },
-        { brand: "Google", model: "Google Pixel 8", subtitle: "Incredible smart companion computational engine", options: [{storage: "128GB", price: 405}, {storage: "256GB", price: 450}] },
-        { brand: "Google", model: "Google Pixel 8A", subtitle: "Incredible value premium medium tier configuration", options: [{storage: "128GB", price: 351}] },
-        { brand: "Google", model: "Google Pixel 7 Pro", subtitle: "Macro focus modern horizontal camera visor", options: [{storage: "128GB", price: 294}, {storage: "256GB", price: 324}] },
-        { brand: "Google", model: "Google Pixel 7", subtitle: "Matte aluminum compact build design standard", options: [{storage: "128GB", price: 280}, {storage: "256GB", price: 309}] },
-        { brand: "Google", model: "Google Pixel 7A", subtitle: "Snappy high refresh display price performance", options: [{storage: "128GB", price: 287}] },
-        { brand: "Google", model: "Google Pixel 6 Pro", subtitle: "Curved edge display power platform system", options: [{storage: "128GB", price: 228}, {storage: "256GB", price: 243}, {storage: "512GB", price: 346}] },
-        { brand: "Google", model: "Google Pixel 6", subtitle: "Google custom Tensor architecture entrance", options: [{storage: "128GB", price: 250}, {storage: "256GB", price: 274}] },
-        { brand: "Google", model: "Google Pixel 6A", subtitle: "Pocket friendly solid build daily performer", options: [{storage: "128GB", price: 225}] },
-        { brand: "Google", model: "Google Pixel 5 / 5A", subtitle: "Biometric rear scanner classic layouts", options: [{storage: "128GB (5)", price: 220}, {storage: "128GB (5A)", price: 217}] },
-        { brand: "Google", model: "Google Pixel 4 / 4XL", subtitle: "Legacy premium high-end capture systems", options: [{storage: "64GB (4)", price: 183}, {storage: "128GB (4)", price: 200}, {storage: "64GB (4XL)", price: 203}, {storage: "128GB (4XL)", price: 217}] },
-        { brand: "Google", model: "Google Pixel 4A Series", subtitle: "Dependable standard headphone jack entries", options: [{storage: "128GB (5G)", price: 188}, {storage: "128GB (4G)", price: 183}] },
-        { brand: "Google", model: "Google Pixel 3 Series", subtitle: "Vintage baseline stock functional configurations", options: [{storage: "64GB (3)", price: 160}, {storage: "128GB (3)", price: 167}, {storage: "64GB (3XL)", price: 163}, {storage: "128GB (3XL)", price: 173}, {storage: "64GB (3A)", price: 148}, {storage: "64GB (3aXL)", price: 158}] }
+        // Google Pixel Configurations (Prices rounded up/down accurately into clean dollar format from spreadsheet)
+        { brand: "Google", model: "Google Pixel 3", subtitle: "Compact classic Google experience", options: [{storage: "64GB", price: 160}, {storage: "128GB", price: 167}] },
+        { brand: "Google", model: "Google Pixel 3XL", subtitle: "Expanded visual landscape setup", options: [{storage: "64GB", price: 163}, {storage: "128GB", price: 173}] },
+        { brand: "Google", model: "Google Pixel 3A Series", subtitle: "Incredible value legacy performers", options: [{storage: "64GB (3A)", price: 148}, {storage: "64GB (3a XL)", price: 158}] },
+        { brand: "Google", model: "Google Pixel 4", subtitle: "Pure Android computational power", options: [{storage: "64GB", price: 184}, {storage: "128GB", price: 200}] },
+        { brand: "Google", model: "Google Pixel 4XL", subtitle: "Sleek matte design high res layout", options: [{storage: "64GB", price: 203}, {storage: "128GB", price: 218}] },
+        { brand: "Google", model: "Google Pixel 4A Layouts", subtitle: "Compact pocket sized day-to-day workhorses", options: [{storage: "128GB (5G)", price: 188}, {storage: "128GB (4G)", price: 184}] },
+        { brand: "Google", model: "Google Pixel 5 / 5A", subtitle: "Biometric secure processing legacy nodes", options: [{storage: "128GB (Pixel 5)", price: 221}, {storage: "128GB (5A)", price: 218}] },
+        { brand: "Google", model: "Google Pixel 6", subtitle: "Custom dual-tone geometric aesthetics", options: [{storage: "128GB", price: 250}, {storage: "256GB", price: 274}] },
+        { brand: "Google", model: "Google Pixel 6 Pro", subtitle: "Advanced computational zoom powerhouse", options: [{storage: "128GB", price: 228}, {storage: "256GB", price: 243}, {storage: "512GB", price: 347}] },
+        { brand: "Google", model: "Google Pixel 6A", subtitle: "Highly efficient all day companion", options: [{storage: "128GB", price: 225}] },
+        { brand: "Google", model: "Google Pixel 7 Pro", subtitle: "Polished aluminum look visual flagship", options: [{storage: "128GB", price: 295}, {storage: "256GB", price: 325}] },
+        { brand: "Google", model: "Google Pixel 7", subtitle: "Refined visor layout solid performance", options: [{storage: "128GB", price: 280}, {storage: "256GB", price: 310}] },
+        { brand: "Google", model: "Google Pixel 7A", subtitle: "High frame value capture layout engine", options: [{storage: "128GB", price: 287}] },
+        { brand: "Google", model: "Google Pixel 8 Pro", subtitle: "Super actuua bright display AI integration", options: [{storage: "128GB", price: 436}, {storage: "256GB", price: 487}, {storage: "512GB", price: 569}] },
+        { brand: "Google", model: "Google Pixel 8", subtitle: "Satin glass compute flagship baseline", options: [{storage: "128GB", price: 406}, {storage: "256GB", price: 450}] },
+        { brand: "Google", model: "Google Pixel 8A", subtitle: "Modern rounded profile performance layout", options: [{storage: "128GB", price: 351}] },
+        { brand: "Google", model: "Google Pixel 9 Series", subtitle: "Cutting edge next-gen camera modules", options: [{storage: "128GB (Pixel 9)", price: 507}, {storage: "256GB (9 Pro)", price: 702}] }
     ];
 
     let activeBrand = 'Apple';
-    let selectionsState = {}; // Keeps track of currently selected storage configurations per device layout matrix
+    let selectionsState = {}; // Stores storage indexes selected per visible item card
+    let cartItems = [];      // Stores actual item objects added to checkout request flow
 
     function filterBrand(brandName) {
         activeBrand = brandName;
-        document.querySelectorAll('.brand-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.textContent.includes(brandName));
-        });
+        document.getElementById('btn-apple').classList.toggle('active', brandName === 'Apple');
+        document.getElementById('btn-google').classList.toggle('active', brandName === 'Google');
+        
+        // Reset selections map to avoid cross brand indexing mismatch
+        selectionsState = {};
         renderCatalogGrid();
     }
 
-    function selectStorage(deviceIndex, optionIndex, basePrice) {
-        selectionsState[deviceIndex] = optionIndex;
-        
-        // Update price display inside the card instance explicitly
-        const priceValueEl = document.getElementById(`price-${deviceIndex}`);
+    function selectStorage(cardIndex, optionIndex, basePrice) {
+        selectionsState[cardIndex] = optionIndex;
+        const priceValueEl = document.getElementById(`price-${cardIndex}`);
         if (priceValueEl) {
             priceValueEl.innerText = `$${basePrice}`;
         }
-        
-        // Toggle selected state visual indicators on active pills
-        document.querySelectorAll(`.pill-d-${deviceIndex}`).forEach((pill, idx) => {
+        document.querySelectorAll(`.pill-c-${cardIndex}`).forEach((pill, idx) => {
             pill.classList.toggle('active', idx === optionIndex);
         });
     }
@@ -523,8 +567,7 @@
         const filtered = deviceInventory.filter(d => d.brand === activeBrand);
 
         filtered.forEach((device, idx) => {
-            // Assign default selected storage if not modified by customer workflow interactions yet
-            if (selectionsState[idx] === undefined || !device.options[selectionsState[idx]]) {
+            if (selectionsState[idx] === undefined) {
                 selectionsState[idx] = 0;
             }
 
@@ -535,7 +578,7 @@
             device.options.forEach((opt, oIdx) => {
                 const isActive = oIdx === currentOptionIdx ? 'active' : '';
                 storagePillsHTML += `
-                    <div class="storage-pill pill-d-${idx} ${isActive}" onclick="selectStorage(${idx}, ${oIdx}, ${opt.price})">
+                    <div class="storage-pill pill-c-${idx} ${isActive}" onclick="selectStorage(${idx}, ${oIdx}, ${opt.price})">
                         ${opt.storage}
                     </div>
                 `;
@@ -548,13 +591,13 @@
                         <div class="card-title">${device.model}</div>
                         <div class="card-subtitle">${device.subtitle} - Like New</div>
                         
-                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">Storage Configuration:</div>
+                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">Storage Variant:</div>
                         <div class="storage-selector">
                             ${storagePillsHTML}
                         </div>
 
                         <div class="quote-notice">
-                            <span style="color:#10b981;">✓</span> Exact unit quality and final quote verified before execution.
+                            <span style="color:#10b981;">✓</span> Exact unit condition confirmed prior to escrow.
                         </div>
                     </div>
 
@@ -564,9 +607,9 @@
                             <span class="price-value" id="price-${idx}">$${currentOption.price}</span>
                         </div>
                         <div class="card-actions">
-                            <button class="btn-secondary" onclick="viewDetails('${device.model}')">Details</button>
-                            <button class="btn-primary" onclick="addRequestToQueue(${idx})">
-                                🛒 Add Request
+                            <button class="btn-secondary" onclick="alert('For batch processing imagery or physical grading metric sheets, connect with our administration staff directly.')">Details</button>
+                            <button class="btn-primary" onclick="addItemToInvoice(${idx})">
+                                🛒 Add To Cart
                             </button>
                         </div>
                     </div>
@@ -576,68 +619,101 @@
         });
     }
 
-    function addRequestToQueue(deviceIndex) {
-        const device = deviceInventory[deviceIndex];
-        const selectedOptIdx = selectionsState[deviceIndex];
+    function addItemToInvoice(index) {
+        const filtered = deviceInventory.filter(d => d.brand === activeBrand);
+        const device = filtered[index];
+        const selectedOptIdx = selectionsState[index];
         const option = device.options[selectedOptIdx];
-        
         const qty = parseInt(document.getElementById('global-qty').value) || 1;
-        const shippingSelect = document.getElementById('global-shipping');
-        const shippingFee = parseFloat(shippingSelect.value) || 0;
-        const destinationCountry = shippingSelect.options[shippingSelect.selectedIndex].getAttribute('data-name');
-        
-        const deviceSubtotal = option.price * qty;
-        const totalEstimate = deviceSubtotal + shippingFee;
 
-        // Populate left sidebar review panel values
-        document.getElementById('cart-item-desc').innerHTML = `
-            <strong>${device.model}</strong> (${option.storage})<br>
-            Quantity: ${qty} unit(s)<br>
-            Shipping to: ${destinationCountry}
-        `;
-        document.getElementById('cart-total-val').innerText = `$${totalEstimate}`;
-        document.getElementById('cart-panel').style.display = 'block';
+        cartItems.push({
+            model: device.model,
+            storage: option.storage,
+            price: option.price,
+            qty: qty
+        });
 
-        // Construct standard logistics manifest text format to pass over communication API hooks
-        const textPayload = 
-`MALWENE EXPORTS REQUEST MANIFEST
-=============================
-Device: ${device.model} (${option.storage})
-Quantity: ${qty} Unit(s)
-Base Unit Cost: $${option.price}
-Subtotal: $${deviceSubtotal}
------------------------------
-Shipping Destination: ${destinationCountry}
-Shipping/Freight Surcharge: +$${shippingFee}
-=============================
-ESTIMATED TOTAL EXPECTED: $${totalEstimate}
-=============================
-Please contact administration to confirm local warehouse batch availability coordinates.`;
-
-        document.getElementById('submit-whatsapp').href = `https://wa.me/8618717323027?text=${encodeURIComponent(textPayload)}`;
+        calculateReceipt();
     }
 
-    function recalculateAll() {
-        // Automatically updates current active manifest logic calculation matrices if numbers or targets change mid-session
-        const visibleCards = document.getElementById('catalog-products-root').children;
-        if(visibleCards.length > 0 && document.getElementById('cart-panel').style.display === 'block') {
-            // Find current active index item to retrigger calculations cleanly
-            for(let key in selectionsState) {
-                addRequestToQueue(Number(key));
-                break;
-            }
+    function removeLastItem() {
+        if(cartItems.length > 0) {
+            cartItems.pop();
+            calculateReceipt();
         }
     }
 
-    function viewDetails(modelName) {
-        alert(`Requesting technical specification profiles for ${modelName}. For detailed internal batch processing pictures or batch condition reports, please connect directly with our logistics core team at +86 18717323027.`);
+    function calculateReceipt() {
+        const panel = document.getElementById('cart-panel');
+        const listElement = document.getElementById('cart-items-list');
+        
+        if (cartItems.length === 0) {
+            panel.style.display = 'none';
+            return;
+        }
+
+        panel.style.display = 'block';
+        listElement.innerHTML = '';
+        
+        let subtotal = 0;
+        let shortSummaryParts = [];
+
+        cartItems.forEach((item) => {
+            const rowCost = item.price * item.qty;
+            subtotal += rowCost;
+            listElement.innerHTML += `• ${item.model} (${item.storage}) x${item.qty} — $${rowCost}<br>`;
+            shortSummaryParts.push(`${item.model} x${item.qty}`);
+        });
+
+        const shippingSelect = document.getElementById('global-shipping');
+        const shippingFee = parseFloat(shippingSelect.value) || 0;
+        const destinationCountry = shippingSelect.options[shippingSelect.selectedIndex].getAttribute('data-name');
+        const finalTotal = subtotal + shippingFee;
+
+        document.getElementById('receipt-subtotal').innerText = `$${subtotal}`;
+        document.getElementById('receipt-shipping').innerText = `+$${shippingFee}`;
+        document.getElementById('cart-total-val').innerText = `$${finalTotal}`;
+
+        // Build string body payload parameters
+        let dispatchText = 
+`MALWENE EXPORTS ORDER RECEIPT
+=============================
+Items Added:\n`;
+
+        cartItems.forEach(item => {
+            dispatchText += `- ${item.model} (${item.storage}) [x${item.qty}]: $${item.price * item.qty}\n`;
+        });
+
+        dispatchText += 
+`-----------------------------
+Subtotal: $${subtotal}
+Shipping Destination: ${destinationCountry}
+Shipping/Freight Fee: $${shippingFee}
+=============================
+TOTAL INVOICE COST: $${finalTotal}
+=============================
+Please verify delivery profile parameters below:
+- Client Name:
+- Address Matrix:
+- Contact Cell:`;
+
+        // Configure direct links mapping actions objects targets
+        const encodedOverview = encodeURIComponent("New Malwene Order: " + shortSummaryParts.join(", "));
+        const encodedBody = encodeURIComponent(dispatchText);
+
+        document.getElementById('submit-whatsapp').href = `https://wa.me/8618717323027?text=${encodedBody}`;
+        document.getElementById('submit-email').href = `mailto:malweneexports@gmail.com?subject=${encodedOverview}&body=${encodedBody}`;
     }
 
-    // Run dynamic catalog compiler engine on system initialization step 
+    function recalculateAll() {
+        if (cartItems.length > 0) {
+            calculateReceipt();
+        }
+    }
+
     window.onload = function() {
         renderCatalogGrid();
     };
 </script>
-
 </body>
 </html>
