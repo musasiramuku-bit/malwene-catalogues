@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CRITICAL FOR ANDROID -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Malwene Exports — Official Device Catalog</title>
     <style>
         :root {
@@ -21,31 +22,34 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             background-color: var(--bg-main);
             color: var(--text-dark);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 15px;
+            line-height: 1.5;
         }
 
         header {
             background-color: #111c24;
             color: #fff;
-            padding: 15px 40px;
+            padding: 12px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
         header .logo {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.3px;
         }
 
         header .logo span {
@@ -55,68 +59,63 @@
         nav a {
             color: #cbd5e1;
             text-decoration: none;
-            margin-left: 25px;
-            font-size: 14px;
+            margin-left: 12px;
+            font-size: 13px;
             font-weight: 500;
-            transition: color 0.2s;
         }
 
-        nav a:hover {
-            color: #fff;
-        }
-
+        /* MOBILE LAYOUT - SINGLE COLUMN */
         .app-container {
-            max-width: 1400px;
-            margin: 30px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 30px;
+            width: 100%;
+            max-width: 100%;
+            margin: 12px auto;
+            padding: 0 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .sidebar {
             background: var(--bg-card);
-            border-radius: 12px;
-            padding: 24px;
+            border-radius: 10px;
+            padding: 16px;
             border: 1px solid var(--border-color);
-            align-self: start;
-            position: sticky;
-            top: 100px;
+            order: 1; /* SIDEBAR ON TOP ON MOBILE */
         }
 
         .sidebar h2 {
-            font-size: 11px;
+            font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             color: var(--text-muted);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .sidebar-widget {
-            margin-bottom: 25px;
-            padding-bottom: 20px;
+            margin-bottom: 16px;
+            padding-bottom: 14px;
             border-bottom: 1px solid var(--border-color);
         }
 
         .buyer-flow-box {
             background: #111c24;
             color: white;
-            padding: 16px;
+            padding: 12px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .buyer-flow-box h3 {
             font-size: 11px;
             color: var(--primary);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .buyer-flow-box p {
             font-size: 12px;
-            line-height: 1.5;
+            line-height: 1.4;
             color: #94a3b8;
         }
 
@@ -128,12 +127,11 @@
             border: 1px solid var(--border-color);
             border-radius: 6px;
             text-align: left;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
             color: var(--text-dark);
             cursor: pointer;
             margin-bottom: 8px;
-            transition: all 0.2s;
         }
 
         .brand-btn:hover, .brand-btn.active {
@@ -147,44 +145,58 @@
 
         .form-select, .form-input {
             width: 100%;
-            padding: 10px;
+            padding: 10px 12px;
             background: #f8fafc;
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            font-size: 13px;
+            font-size: 15px;
             color: var(--text-dark);
             outline: none;
-            margin-top: 5px;
+            margin-top: 4px;
+            height: 44px; /* EASY TOUCH */
         }
 
         .cart-box {
             background: #f8fafc;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 15px;
-            margin-top: 15px;
+            padding: 14px;
+            margin-top: 12px;
         }
         .cart-box h3 {
-            font-size: 14px;
+            font-size: 15px;
             margin-bottom: 10px;
             color: var(--accent-green);
+            display: flex;
+            justify-content: space-between;
         }
         .cart-item {
-            font-size: 12px;
-            padding: 4px 0;
+            font-size: 13px;
+            padding: 6px 0;
             border-bottom: 1px dashed #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-item button {
+            color: #dc2626;
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            padding: 4px 8px;
         }
 
         .main-content {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 16px;
+            order: 2; /* PRODUCTS BELOW */
         }
 
         .stretchy-banner {
             width: 100%;
-            height: 220px;
-            border-radius: 12px;
+            height: 140px;
+            border-radius: 8px;
             overflow: hidden;
             border: 1px solid var(--border-color);
         }
@@ -197,64 +209,54 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr; /* SINGLE COLUMN ON ANDROID */
+            gap: 12px;
         }
 
         .product-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            padding: 16px;
+            transition: transform 0.2s;
         }
 
         .card-tag {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
             color: var(--text-muted);
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .card-title {
-            font-size: 18px;
-            font-weight: 600;
+            font-size: 17px;
+            font-weight: 700;
             color: var(--text-dark);
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .card-subtitle {
             font-size: 12px;
             color: var(--text-muted);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .storage-selector {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
+            gap: 6px;
+            margin-bottom: 14px;
         }
 
         .storage-pill {
-            padding: 6px 14px;
+            padding: 6px 12px;
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 500;
             cursor: pointer;
             background: #fff;
-            transition: all 0.2s;
         }
 
         .storage-pill.active {
@@ -267,27 +269,21 @@
             background: #f8fafc;
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            padding: 10px;
+            padding: 8px 10px;
             font-size: 11px;
             color: var(--text-muted);
             display: flex;
             align-items: center;
-            gap: 6px;
-            margin-bottom: 20px;
+            gap: 4px;
+            margin-bottom: 14px;
         }
 
         .card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: auto;
-            padding-top: 15px;
+            padding-top: 12px;
             border-top: 1px solid #f1f5f9;
-        }
-
-        .price-box {
-            display: flex;
-            flex-direction: column;
         }
 
         .price-label {
@@ -297,7 +293,7 @@
         }
 
         .price-value {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--text-dark);
         }
@@ -308,103 +304,98 @@
         }
 
         .btn-secondary {
-            padding: 10px 14px;
+            padding: 8px 12px;
             background: #fff;
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
             color: var(--text-dark);
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .btn-secondary:hover {
-            background: #f1f5f9;
         }
 
         .btn-primary {
-            padding: 10px 16px;
+            padding: 8px 14px;
             background: var(--accent-green);
-            border: none;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 500;
             color: #fff;
-            cursor: pointer;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
             display: flex;
             align-items: center;
-            gap: 6px;
-            transition: background 0.2s;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-green-light);
+            gap: 4px;
         }
 
         .btn-order {
             width: 100%;
-            margin-top:15px;
+            margin-top:12px;
             padding: 12px;
             background: #ff6600;
             color:white;
             border:none;
             border-radius:6px;
             font-weight:bold;
+            font-size:15px;
             cursor:pointer;
+            height:46px;
         }
 
-        /* MODAL STYLES */
+        /* MODAL - FULL WIDTH MOBILE */
         .modal {
             display: none;
             position: fixed;
-            z-index: 9999;
+            z-index: 99999;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.6);
+            background-color: rgba(0,0,0,0.7);
+            padding: 10px;
+            overflow-y: auto;
         }
         .modal-content {
             background-color: #fff;
             margin: 5% auto;
-            padding: 30px;
-            border-radius:12px;
-            width: 90%;
-            max-width:500px;
+            padding: 20px;
+            border-radius:10px;
+            width: 100%;
+            max-width: 420px;
             position:relative;
         }
         .close-modal {
             position:absolute;
-            right:20px;
-            top:15px;
+            right:14px;
+            top:10px;
             font-size:24px;
             cursor:pointer;
+            color:#666;
         }
         .receipt-item {
             display:flex;
             justify-content:space-between;
-            padding:6px 0;
+            padding:8px 0;
             border-bottom:1px solid #eee;
+            font-size:14px;
         }
         .receipt-total {
-            margin-top:15px;
+            margin-top:12px;
             padding-top:10px;
             font-weight:bold;
-            font-size:18px;
+            font-size:17px;
             display:flex;
             justify-content:space-between;
         }
         .payment-option {
             display:block;
             width:100%;
-            padding:12px;
-            margin:8px 0;
+            padding:14px;
+            margin:10px 0 4px 0;
             border-radius:6px;
             text-align:center;
             color:white;
             font-weight:bold;
             text-decoration:none;
+            font-size:15px;
         }
         .whatsapp-pay { background:#25D366; }
 
@@ -412,16 +403,22 @@
             background: #0b0f13;
             color: #64748b;
             text-align: center;
-            padding: 30px;
+            padding: 20px;
             font-size: 12px;
-            margin-top: 60px;
-            border-top: 1px solid #1e293b;
+            margin-top: 30px;
         }
 
-        @media (max-width: 900px) {
+        /* TABLET/DESKTOP ONLY */
+        @media (min-width: 768px) {
             .app-container {
-                grid-template-columns: 1fr;
+                max-width: 1200px;
+                display: grid;
+                grid-template-columns: 280px 1fr;
             }
+            .sidebar { order: 1; position: sticky; top: 80px; }
+            .main-content { order: 2; }
+            .product-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+            .stretchy-banner { height: 200px; }
         }
     </style>
 </head>
@@ -432,7 +429,6 @@
     <nav>
         <a href="#catalog">About</a>
         <a href="#catalog">Destinations</a>
-        <a href="#catalog">Services</a>
     </nav>
 </header>
 
@@ -441,18 +437,18 @@
     <aside class="sidebar">
         <div class="buyer-flow-box">
             <h3>★ Buyer Flow</h3>
-            <p>Pick storage configs, review live item quotes, and instantly submit requests straight to logistics channels.</p>
+            <p>Pick storage, get quotes, submit directly to logistics.</p>
         </div>
 
         <div class="sidebar-widget">
-            <h2>Find a Device</h2>
-            <button class="brand-btn active" id="btn-apple" onclick="filterBrand('Apple')">Apple iPhones</button>
-            <button class="brand-btn" id="btn-google" onclick="filterBrand('Google')">Google Pixel</button>
+            <h2>Find Device</h2>
+            <button class="brand-btn active" id="btn-apple" onclick="filterBrand('Apple')">🍎 Apple iPhones</button>
+            <button class="brand-btn" id="btn-google" onclick="filterBrand('Google')">📱 Google Pixel</button>
         </div>
 
         <div class="sidebar-widget">
-            <h2>Shipping Parameters</h2>
-            <label style="font-size: 12px; color: var(--text-muted);">Destination Matrix:</label>
+            <h2>Shipping</h2>
+            <label style="font-size: 12px; color: var(--text-muted);">Destination:</label>
             <select class="form-select" id="global-shipping" onchange="updateCartDisplay()">
                 <option value="29" data-name="Zimbabwe">Zimbabwe (+$29)</option>
                 <option value="19" data-name="Zambia">Zambia (+$19)</option>
@@ -460,13 +456,13 @@
                 <option value="3" data-name="China">China (+$3)</option>
             </select>
             
-            <label style="font-size: 12px; color: var(--text-muted); display:block; margin-top:12px;">Order Quantity:</label>
+            <label style="font-size: 12px; color: var(--text-muted); display:block; margin-top:10px;">Quantity:</label>
             <input class="form-input" id="global-qty" type="number" min="1" value="1">
         </div>
 
-        <!-- CART SUMMARY -->
+        <!-- CART -->
         <div class="cart-box">
-            <h3>🛒 Your Cart (<span id="cart-count">0</span>)</h3>
+            <h3>🛒 Cart <span id="cart-count">0</span></h3>
             <div id="cart-items-list"></div>
             <button class="btn-order" onclick="openOrderModal()">📦 Place Order</button>
         </div>
@@ -475,95 +471,91 @@
 
     <main class="main-content">
         <div class="stretchy-banner">
-            <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=1200&auto=format&fit=crop&q=80" alt="iPhone Multi-Models Lineup Showcase Banner">
+            <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=1200&auto=format&fit=crop&q=80" alt="Smartphones">
         </div>
 
-        <div class="product-grid" id="catalog-products-root">
-            <!-- PRODUCTS LOAD HERE -->
-        </div>
+        <div class="product-grid" id="catalog-products-root"></div>
     </main>
 </div>
 
-<!-- ORDER RECEIPT MODAL -->
+<!-- ORDER MODAL -->
 <div id="orderModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeOrderModal()">&times;</span>
-        <h2 style="text-align:center; margin-bottom:20px;">🧾 Order Receipt</h2>
+        <h2 style="text-align:center; margin-bottom:20px; font-size:19px;">🧾 Order Receipt</h2>
         <div id="receipt-items"></div>
         <div class="receipt-total">
             <span>Subtotal:</span>
             <span id="receipt-subtotal">$0</span>
         </div>
-        <div class="receipt-total" style="color:#666; font-weight:normal;">
-            <span>Shipping Fee:</span>
+        <div class="receipt-total" style="color:#666; font-weight:normal; font-size:15px;">
+            <span>Shipping:</span>
             <span id="receipt-shipping">$0</span>
         </div>
-        <div class="receipt-total" style="font-size:20px; color:var(--accent-green); border-top:1px solid #ccc; padding-top:10px;">
+        <div class="receipt-total" style="font-size:20px; color:var(--accent-green); border-top:1px solid #ccc; padding-top:12px; margin-top:8px;">
             <span>TOTAL:</span>
             <span id="receipt-grandtotal">$0</span>
         </div>
         <div style="margin-top:25px;">
-            <h3>💳 Choose Payment Method</h3>
+            <h3 style="font-size:16px; margin-bottom:10px;">💳 Payment</h3>
             <a id="pay-whatsapp" href="" target="_blank" class="payment-option whatsapp-pay">
-                💬 Pay via WhatsApp (+86 18717323027)
+                💬 Pay via WhatsApp<br><small>+86 18717323027</small>
             </a>
         </div>
     </div>
 </div>
 
 <footer>
-    &copy; 2026 Malwene Exports. All Rights Reserved. Connecting China to Southern and Eastern Africa logistics centers.
+    &copy; 2026 Malwene Exports. All Rights Reserved.
 </footer>
 
 <script>
-    // System Master Data Array Structure
     const deviceInventory = [
-        { brand: "Apple", model: "iPhone 16 Pro Max", subtitle: "Apple flagship premium powerhouse", options: [{storage: "256GB", price: 885}] },
-        { brand: "Apple", model: "iPhone 16 Pro", subtitle: "Advanced pro mobile capabilities", options: [{storage: "128GB", price: 695}] },
-        { brand: "Apple", model: "iPhone 15 Pro Max", subtitle: "Titanium build legacy flagship series", options: [{storage: "256GB", price: 670}, {storage: "512GB", price: 690}] },
-        { brand: "Apple", model: "iPhone 15 Pro", subtitle: "Compact Pro series flagship speed standard", options: [{storage: "128GB", price: 560}, {storage: "256GB", price: 590}] },
-        { brand: "Apple", model: "iPhone 16", subtitle: "Base generation layout system engine", options: [{storage: "128GB", price: 525}] },
-        { brand: "Apple", model: "iPhone 15", subtitle: "Incredible daily dynamic island display", options: [{storage: "128GB", price: 420}, {storage: "256GB", price: 460}] },
-        { brand: "Apple", model: "iPhone 14 Pro Max", subtitle: "Large screen pro legacy king", options: [{storage: "128GB", price: 480}, {storage: "256GB", price: 530}] },
-        { brand: "Apple", model: "iPhone 14 Pro", subtitle: "High frame dynamic rate premium design", options: [{storage: "128GB", price: 430}, {storage: "256GB", price: 470}] },
-        { brand: "Apple", model: "iPhone 14", subtitle: "Reliable super retina device baseline", options: [{storage: "128GB", price: 300}, {storage: "256GB", price: 360}] },
-        { brand: "Apple", model: "iPhone 13 Pro Max", subtitle: "ProMotion cinematic capture standard", options: [{storage: "128GB", price: 365}, {storage: "256GB", price: 420}] },
-        { brand: "Apple", model: "iPhone 13 Pro", subtitle: "Pro features triple lens architecture options", options: [{storage: "128GB", price: 348}, {storage: "256GB", price: 390}] },
-        { brand: "Apple", model: "iPhone 13", subtitle: "Extended longevity A15 chipset performance", options: [{storage: "128GB", price: 275}, {storage: "256GB", price: 330}] },
-        { brand: "Apple", model: "iPhone 12 Pro Max", subtitle: "First pro max setup running 5G networking", options: [{storage: "128GB", price: 290}, {storage: "256GB", price: 320}] },
-        { brand: "Apple", model: "iPhone 12 Pro", subtitle: "Sleek flat edge stainless steel mainframe", options: [{storage: "128GB", price: 260}, {storage: "256GB", price: 270}] },
-        { brand: "Apple", model: "iPhone 12", subtitle: "Sharp OLED beautiful mobile system footprint", options: [{storage: "64GB", price: 170}, {storage: "128GB", price: 230}] },
-        { brand: "Apple", model: "iPhone 11 Pro Max", subtitle: "Legendary textured matte back array display", options: [{storage: "64GB", price: 220}, {storage: "256GB", price: 250}] },
-        { brand: "Apple", model: "iPhone 11 Pro", subtitle: "Comfortable ergonomic screen premium configuration", options: [{storage: "64GB", price: 200}, {storage: "256GB", price: 230}] },
-        { brand: "Apple", model: "iPhone 11", subtitle: "The liquid retina color generation standard", options: [{storage: "64GB", price: 180}, {storage: "128GB", price: 200}] },
-        { brand: "Apple", model: "iPhone XR", subtitle: "Long battery liquid crystal configuration", options: [{storage: "64GB", price: 125}, {storage: "128GB", price: 139}] },
-        { brand: "Apple", model: "iPhone XS", subtitle: "Super AMOLED high resolution design profile", options: [{storage: "256GB", price: 138}] },
-        { brand: "Apple", model: "iPhone 8 Plus", subtitle: "Classic design featuring Touch ID capabilities", options: [{storage: "64GB", price: 90}] },
-        { brand: "Apple", model: "iPhone 7 Plus", subtitle: "Dual-lens retro entry level device setup", options: [{storage: "128GB", price: 70}] },
+        { brand: "Apple", model: "iPhone 16 Pro Max", subtitle: "Flagship premium", options: [{storage: "256GB", price: 885}] },
+        { brand: "Apple", model: "iPhone 16 Pro", subtitle: "Advanced pro", options: [{storage: "128GB", price: 695}] },
+        { brand: "Apple", model: "iPhone 15 Pro Max", subtitle: "Titanium legacy", options: [{storage: "256GB", price: 670}, {storage: "512GB", price: 690}] },
+        { brand: "Apple", model: "iPhone 15 Pro", subtitle: "Compact flagship", options: [{storage: "128GB", price: 560}, {storage: "256GB", price: 590}] },
+        { brand: "Apple", model: "iPhone 16", subtitle: "Base generation", options: [{storage: "128GB", price: 525}] },
+        { brand: "Apple", model: "iPhone 15", subtitle: "Dynamic Island", options: [{storage: "128GB", price: 420}, {storage: "256GB", price: 460}] },
+        { brand: "Apple", model: "iPhone 14 Pro Max", subtitle: "Large screen pro", options: [{storage: "128GB", price: 480}, {storage: "256GB", price: 530}] },
+        { brand: "Apple", model: "iPhone 14 Pro", subtitle: "Premium design", options: [{storage: "128GB", price: 430}, {storage: "256GB", price: 470}] },
+        { brand: "Apple", model: "iPhone 14", subtitle: "Super Retina", options: [{storage: "128GB", price: 300}, {storage: "256GB", price: 360}] },
+        { brand: "Apple", model: "iPhone 13 Pro Max", subtitle: "ProMotion", options: [{storage: "128GB", price: 365}, {storage: "256GB", price: 420}] },
+        { brand: "Apple", model: "iPhone 13 Pro", subtitle: "Triple lens", options: [{storage: "128GB", price: 348}, {storage: "256GB", price: 390}] },
+        { brand: "Apple", model: "iPhone 13", subtitle: "A15 Bionic", options: [{storage: "128GB", price: 275}, {storage: "256GB", price: 330}] },
+        { brand: "Apple", model: "iPhone 12 Pro Max", subtitle: "5G flagship", options: [{storage: "128GB", price: 290}, {storage: "256GB", price: 320}] },
+        { brand: "Apple", model: "iPhone 12 Pro", subtitle: "Stainless steel", options: [{storage: "128GB", price: 260}, {storage: "256GB", price: 270}] },
+        { brand: "Apple", model: "iPhone 12", subtitle: "OLED display", options: [{storage: "64GB", price: 170}, {storage: "128GB", price: 230}] },
+        { brand: "Apple", model: "iPhone 11 Pro Max", subtitle: "Matte finish", options: [{storage: "64GB", price: 220}, {storage: "256GB", price: 250}] },
+        { brand: "Apple", model: "iPhone 11 Pro", subtitle: "Ergonomic", options: [{storage: "64GB", price: 200}, {storage: "256GB", price: 230}] },
+        { brand: "Apple", model: "iPhone 11", subtitle: "Liquid Retina", options: [{storage: "64GB", price: 180}, {storage: "128GB", price: 200}] },
+        { brand: "Apple", model: "iPhone XR", subtitle: "Long battery", options: [{storage: "64GB", price: 125}, {storage: "128GB", price: 139}] },
+        { brand: "Apple", model: "iPhone XS", subtitle: "Super AMOLED", options: [{storage: "256GB", price: 138}] },
+        { brand: "Apple", model: "iPhone 8 Plus", subtitle: "Touch ID", options: [{storage: "64GB", price: 90}] },
+        { brand: "Apple", model: "iPhone 7 Plus", subtitle: "Dual-lens", options: [{storage: "128GB", price: 70}] },
         
-        // Google Pixel Configurations
-        { brand: "Google", model: "Google Pixel 3", subtitle: "Compact classic Google experience", options: [{storage: "64GB", price: 160}, {storage: "128GB", price: 167}] },
-        { brand: "Google", model: "Google Pixel 3XL", subtitle: "Expanded visual landscape setup", options: [{storage: "64GB", price: 163}, {storage: "128GB", price: 173}] },
-        { brand: "Google", model: "Google Pixel 3A Series", subtitle: "Incredible value legacy performers", options: [{storage: "64GB (3A)", price: 148}, {storage: "64GB (3a XL)", price: 158}] },
-        { brand: "Google", model: "Google Pixel 4", subtitle: "Pure Android computational power", options: [{storage: "64GB", price: 184}, {storage: "128GB", price: 200}] },
-        { brand: "Google", model: "Google Pixel 4XL", subtitle: "Sleek matte design high res layout", options: [{storage: "64GB", price: 203}, {storage: "128GB", price: 218}] },
-        { brand: "Google", model: "Google Pixel 4A Layouts", subtitle: "Compact pocket sized day-to-day workhorses", options: [{storage: "128GB (5G)", price: 188}, {storage: "128GB (4G)", price: 184}] },
-        { brand: "Google", model: "Google Pixel 5 / 5A", subtitle: "Biometric secure processing legacy nodes", options: [{storage: "128GB (Pixel 5)", price: 221}, {storage: "128GB (5A)", price: 218}] },
-        { brand: "Google", model: "Google Pixel 6", subtitle: "Custom dual-tone geometric aesthetics", options: [{storage: "128GB", price: 250}, {storage: "256GB", price: 274}] },
-        { brand: "Google", model: "Google Pixel 6 Pro", subtitle: "Advanced computational zoom powerhouse", options: [{storage: "128GB", price: 228}, {storage: "256GB", price: 243}, {storage: "512GB", price: 347}] },
-        { brand: "Google", model: "Google Pixel 6A", subtitle: "Highly efficient all day companion", options: [{storage: "128GB", price: 225}] },
-        { brand: "Google", model: "Google Pixel 7 Pro", subtitle: "Polished aluminum look visual flagship", options: [{storage: "128GB", price: 295}, {storage: "256GB", price: 325}] },
-        { brand: "Google", model: "Google Pixel 7", subtitle: "Refined visor layout solid performance", options: [{storage: "128GB", price: 280}, {storage: "256GB", price: 310}] },
-        { brand: "Google", model: "Google Pixel 7A", subtitle: "High frame value capture layout engine", options: [{storage: "128GB", price: 287}] },
-        { brand: "Google", model: "Google Pixel 8 Pro", subtitle: "Super actuua bright display AI integration", options: [{storage: "128GB", price: 436}, {storage: "256GB", price: 487}, {storage: "512GB", price: 569}] },
-        { brand: "Google", model: "Google Pixel 8", subtitle: "Satin glass compute flagship baseline", options: [{storage: "128GB", price: 406}, {storage: "256GB", price: 450}] },
-        { brand: "Google", model: "Google Pixel 8A", subtitle: "Modern rounded profile performance layout", options: [{storage: "128GB", price: 351}] },
-        { brand: "Google", model: "Google Pixel 9 Series", subtitle: "Cutting edge next-gen camera modules", options: [{storage: "128GB (Pixel 9)", price: 507}, {storage: "256GB (9 Pro)", price: 702}] }
+        { brand: "Google", model: "Pixel 3", subtitle: "Compact classic", options: [{storage: "64GB", price: 160}, {storage: "128GB", price: 167}] },
+        { brand: "Google", model: "Pixel 3XL", subtitle: "Large display", options: [{storage: "64GB", price: 163}, {storage: "128GB", price: 173}] },
+        { brand: "Google", model: "Pixel 3A", subtitle: "Great value", options: [{storage: "64GB", price: 148}, {storage: "64GB XL", price: 158}] },
+        { brand: "Google", model: "Pixel 4", subtitle: "Pure Android", options: [{storage: "64GB", price: 184}, {storage: "128GB", price: 200}] },
+        { brand: "Google", model: "Pixel 4XL", subtitle: "Matte design", options: [{storage: "64GB", price: 203}, {storage: "128GB", price: 218}] },
+        { brand: "Google", model: "Pixel 4A", subtitle: "Budget 5G/4G", options: [{storage: "128GB 5G", price: 188}, {storage: "128GB 4G", price: 184}] },
+        { brand: "Google", model: "Pixel 5/5A", subtitle: "Secure & fast", options: [{storage: "128GB P5", price: 221}, {storage: "128GB 5A", price: 218}] },
+        { brand: "Google", model: "Pixel 6", subtitle: "Dual-tone", options: [{storage: "128GB", price: 250}, {storage: "256GB", price: 274}] },
+        { brand: "Google", model: "Pixel 6 Pro", subtitle: "Zoom powerhouse", options: [{storage: "128GB", price: 228}, {storage: "256GB", price: 243}, {storage: "512GB", price: 347}] },
+        { brand: "Google", model: "Pixel 6A", subtitle: "All-day battery", options: [{storage: "128GB", price: 225}] },
+        { brand: "Google", model: "Pixel 7 Pro", subtitle: "Premium look", options: [{storage: "128GB", price: 295}, {storage: "256GB", price: 325}] },
+        { brand: "Google", model: "Pixel 7", subtitle: "Solid performer", options: [{storage: "128GB", price: 280}, {storage: "256GB", price: 310}] },
+        { brand: "Google", model: "Pixel 7A", subtitle: "Fast refresh", options: [{storage: "128GB", price: 287}] },
+        { brand: "Google", model: "Pixel 8 Pro", subtitle: "Bright display AI", options: [{storage: "128GB", price: 436}, {storage: "256GB", price: 487}, {storage: "512GB", price: 569}] },
+        { brand: "Google", model: "Pixel 8", subtitle: "Satin glass", options: [{storage: "128GB", price: 406}, {storage: "256GB", price: 450}] },
+        { brand: "Google", model: "Pixel 8A", subtitle: "Modern design", options: [{storage: "128GB", price: 351}] },
+        { brand: "Google", model: "Pixel 9", subtitle: "Next-gen camera", options: [{storage: "128GB P9", price: 507}, {storage: "256GB 9Pro", price: 702}] }
     ];
 
     let activeBrand = 'Apple';
     let selectionsState = {};
-    let cartItems = []; // Stores all items in cart
+    let cartItems = [];
 
     function filterBrand(brandName) {
         activeBrand = brandName;
@@ -575,122 +567,111 @@
 
     function selectStorage(cardIndex, optionIndex, basePrice) {
         selectionsState[cardIndex] = optionIndex;
-        const priceValueEl = document.getElementById(`price-${cardIndex}`);
-        if (priceValueEl) priceValueEl.innerText = `$${basePrice}`;
+        const priceEl = document.getElementById(`price-${cardIndex}`);
+        if (priceEl) priceEl.innerText = `$${basePrice}`;
         document.querySelectorAll(`.pill-c-${cardIndex}`).forEach((pill, idx) => {
             pill.classList.toggle('active', idx === optionIndex);
         });
     }
 
     function renderCatalogGrid() {
-        const gridRoot = document.getElementById('catalog-products-root');
-        gridRoot.innerHTML = '';
+        const grid = document.getElementById('catalog-products-root');
+        grid.innerHTML = '';
         const filtered = deviceInventory.filter(d => d.brand === activeBrand);
 
         filtered.forEach((device, idx) => {
             if (selectionsState[idx] === undefined) selectionsState[idx] = 0;
-            const currentOptionIdx = selectionsState[idx];
-            const currentOption = device.options[currentOptionIdx];
+            const optIdx = selectionsState[idx];
+            const opt = device.options[optIdx];
 
-            let storagePillsHTML = '';
-            device.options.forEach((opt, oIdx) => {
-                const isActive = oIdx === currentOptionIdx ? 'active' : '';
-                storagePillsHTML += `<div class="storage-pill pill-c-${idx} ${isActive}" onclick="selectStorage(${idx}, ${oIdx}, ${opt.price})">${opt.storage}</div>`;
+            let storageHTML = '';
+            device.options.forEach((o, i) => {
+                const active = i === optIdx ? 'active' : '';
+                storageHTML += `<div class="storage-pill pill-c-${idx} ${active}" onclick="selectStorage(${idx}, ${i}, ${o.price})">${o.storage}</div>`;
             });
 
-            const cardHTML = `
-                <div class="product-card">
+            const card = `
+            <div class="product-card">
+                <div>
+                    <div class="card-tag">SMARTPHONE</div>
+                    <div class="card-title">${device.model}</div>
+                    <div class="card-subtitle">${device.subtitle}</div>
+                    <div style="font-size: 12px; margin-bottom:6px;">Storage:</div>
+                    <div class="storage-selector">${storageHTML}</div>
+                    <div class="quote-notice"><span style="color:#10b981;">✓</span> Verified condition</div>
+                </div>
+                <div class="card-footer">
                     <div>
-                        <div class="card-tag">SMARTPHONES</div>
-                        <div class="card-title">${device.model}</div>
-                        <div class="card-subtitle">${device.subtitle} - Like New</div>
-                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">Storage Variant:</div>
-                        <div class="storage-selector">${storagePillsHTML}</div>
-                        <div class="quote-notice"><span style="color:#10b981;">✓</span> Exact unit condition confirmed prior to escrow.</div>
+                        <div class="price-label">Price</div>
+                        <div class="price-value" id="price-${idx}">$${opt.price}</div>
                     </div>
-                    <div class="card-footer">
-                        <div class="price-box">
-                            <span class="price-label">Device estimate</span>
-                            <span class="price-value" id="price-${idx}">$${currentOption.price}</span>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn-secondary" onclick="alert('Full specs & condition reports available on request.')">Details</button>
-                            <button class="btn-primary" onclick="addItemToCart(${idx})">🛒 Add To Cart</button>
-                        </div>
+                    <div class="card-actions">
+                        <button class="btn-secondary" onclick="alert('Full specs available')">Info</button>
+                        <button class="btn-primary" onclick="addItemToCart(${idx})">🛒 Add</button>
                     </div>
-                </div>`;
-            gridRoot.innerHTML += cardHTML;
+                </div>
+            </div>`;
+            grid.innerHTML += card;
         });
     }
 
-    // ADD ITEM TO CART
     function addItemToCart(index) {
         const filtered = deviceInventory.filter(d => d.brand === activeBrand);
-        const device = filtered[index];
-        const selectedOptIdx = selectionsState[index];
-        const option = device.options[selectedOptIdx];
+        const dev = filtered[index];
+        const opt = dev.options[selectionsState[index]];
         const qty = parseInt(document.getElementById('global-qty').value) || 1;
 
         cartItems.push({
-            model: device.model,
-            storage: option.storage,
-            price: option.price,
+            model: dev.model,
+            storage: opt.storage,
+            price: opt.price,
             qty: qty,
-            lineTotal: option.price * qty
+            total: opt.price * qty
         });
-
         updateCartDisplay();
     }
 
-    // UPDATE CART DISPLAY
     function updateCartDisplay() {
-        const listEl = document.getElementById('cart-items-list');
-        const countEl = document.getElementById('cart-count');
-        listEl.innerHTML = '';
-
+        const list = document.getElementById('cart-items-list');
+        const count = document.getElementById('cart-count');
+        list.innerHTML = '';
         cartItems.forEach((item, i) => {
-            listEl.innerHTML += `<div class="cart-item">${item.model} (${item.storage}) x${item.qty} — $${item.lineTotal} <button onclick="removeItem(${i})" style="color:red; border:none; background:none; cursor:pointer; font-size:10px;">❌</button></div>`;
+            list.innerHTML += `<div class="cart-item">
+                <span>${item.model} (${item.storage}) ×${item.qty}</span>
+                <span>$${item.total} <button onclick="removeItem(${i})">❌</button></span>
+            </div>`;
         });
-
-        countEl.innerText = cartItems.length;
+        count.innerText = cartItems.length;
     }
 
-    // REMOVE ITEM
     function removeItem(index) {
         cartItems.splice(index, 1);
         updateCartDisplay();
     }
 
-    // OPEN ORDER MODAL & CALCULATE
     function openOrderModal() {
-        if(cartItems.length === 0) return alert("Your cart is empty!");
-
-        const shippingSelect = document.getElementById('global-shipping');
-        const shippingFee = parseFloat(shippingSelect.value);
-        const destination = shippingSelect.selectedOptions[0].dataset.name;
+        if(cartItems.length === 0) return alert("Cart empty!");
+        const shipSel = document.getElementById('global-shipping');
+        const shipFee = parseInt(shipSel.value);
+        const dest = shipSel.selectedOptions[0].dataset.name;
 
         let subtotal = 0;
         let itemsHTML = '';
-        cartItems.forEach(item => {
-            subtotal += item.lineTotal;
-            itemsHTML += `<div class="receipt-item"><span>${item.model} (${item.storage}) x${item.qty}</span><span>$${item.lineTotal}</span></div>`;
+        let msg = `*MALWENE EXPORTS ORDER*\n------------------------\n`;
+        cartItems.forEach(itm => {
+            subtotal += itm.total;
+            itemsHTML += `<div class="receipt-item"><span>${itm.model} (${itm.storage}) ×${itm.qty}</span><span>$${itm.total}</span></div>`;
+            msg += `• ${itm.model} | ${itm.storage} | Qty:${itm.qty} | $${itm.total}\n`;
         });
-        const grandTotal = subtotal + shippingFee;
+        const grandTotal = subtotal + shipFee;
+        msg += `------------------------\n*Subtotal:* $${subtotal}\n*Shipping to ${dest}:* $${shipFee}\n*TOTAL:* $${grandTotal}\n------------------------\nPlease confirm & pay.`;
 
-        // Fill receipt
         document.getElementById('receipt-items').innerHTML = itemsHTML;
         document.getElementById('receipt-subtotal').innerText = `$${subtotal}`;
-        document.getElementById('receipt-shipping').innerText = `$${shippingFee} (${destination})`;
+        document.getElementById('receipt-shipping').innerText = `$${shipFee} (${dest})`;
         document.getElementById('receipt-grandtotal').innerText = `$${grandTotal}`;
+        document.getElementById('pay-whatsapp').href = `https://wa.me/8618717323027?text=${encodeURIComponent(msg)}`;
 
-        // WhatsApp message
-        let msg = `*MALWENE EXPORTS - NEW ORDER*%0A------------------------%0A`;
-        cartItems.forEach(i => msg += `• ${i.model} | ${i.storage} | Qty:${i.qty} | $${i.lineTotal}%0A`);
-        msg += `------------------------%0A*Subtotal:* $${subtotal}%0A*Shipping to ${destination}:* $${shippingFee}%0A*TOTAL:* $${grandTotal}%0A------------------------%0APlease confirm & arrange payment.`;
-
-        document.getElementById('pay-whatsapp').href = `https://wa.me/8618717323027?text=${msg}`;
-
-        // Show modal
         document.getElementById('orderModal').style.display = "block";
     }
 
@@ -698,15 +679,12 @@
         document.getElementById('orderModal').style.display = "none";
     }
 
-    // Close modal clicking outside
-    window.onclick = function(event) {
-        const modal = document.getElementById('orderModal');
-        if (event.target == modal) modal.style.display = "none";
-    }
-
-    window.onload = function() {
-        renderCatalogGrid();
+    window.onclick = e => {
+        const m = document.getElementById('orderModal');
+        if (e.target === m) m.style.display = "none";
     };
+
+    window.onload = renderCatalogGrid;
 </script>
 
 </body>
