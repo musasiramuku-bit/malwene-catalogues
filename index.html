@@ -265,12 +265,14 @@
                 <p>Combining orders, optimizing packing sizes, and handling customs clearance to minimize your shipping overhead costs.</p >
             </div>
         </div>
+<!-- START OF INDIVIDUAL PHONE CATALOGS & ORDERING SYSTEM -->
 <section style="font-family: sans-serif; background: #111; color: #fff; padding: 40px 20px; text-align: center;">
     <div style="max-width: 650px; margin: 0 auto; background: #1a1a1a; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
         
         <h2 style="color: #ffcc00; margin-bottom: 5px;">Malwene Exports</h2>
         <p style="color: #aaa; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 30px;">Official Catalog & Order System</p>
 
+        <!-- ==================== IPHONE MODEL CATALOGS ==================== -->
         <h3 style="color: #ffcc00; font-size: 12px; letter-spacing: 1px; text-align: left; margin-bottom: 12px; border-bottom: 1px solid #333; padding-bottom: 5px;">IPHONE MODELS</h3>
         
         <div style="max-height: 300px; overflow-y: auto; padding-right: 5px; margin-bottom: 30px;">
@@ -322,6 +324,7 @@
             <div class="phone-card"><span>iPhone 16 Pro Max <span class="storage">256GB</span></span><span class="price">$885</span></div>
         </div>
 
+        <!-- ==================== GOOGLE PIXEL MODEL CATALOGS ==================== -->
         <h3 style="color: #ffcc00; font-size: 12px; letter-spacing: 1px; text-align: left; margin-bottom: 12px; border-bottom: 1px solid #333; padding-bottom: 5px;">GOOGLE PIXEL MODELS</h3>
         
         <div style="max-height: 300px; overflow-y: auto; padding-right: 5px; margin-bottom: 30px;">
@@ -360,13 +363,15 @@
             <div class="phone-card pixel-card"><span>Google Pixel 9 Pro <span class="storage">256GB</span></span><span class="price">$702</span></div>
         </div>
 
+        <!-- ==================== INTERACTIVE SHOPPING CART SELECTION ==================== -->
         <div style="text-align: left; margin-bottom: 20px;">
             <label style="color: #aaa; font-size: 13px; display: block; margin-bottom: 8px;">Choose Device Model:</label>
             <style>
                 select.order-dropdown, input.order-qty { width: 100%; padding: 12px; background: #222; color: #fff; border: 1px solid #444; border-radius: 6px; font-size: 14px; box-sizing: border-box; }
                 select.order-dropdown optgroup { background: #222; color: #ffcc00; }
+                .action-btn { display: inline-block; width: 100%; box-sizing: border-box; font-size: 14px; font-weight: bold; text-decoration: none; padding: 12px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; border: none; cursor: pointer; text-align: center; }
             </style>
-            <select class="order-dropdown" id="device-model" onchange="updateCartTotal()">
+            <select class="order-dropdown" id="device-model">
                 <optgroup label="iPhones">
                     <option value="70" data-name="iPhone 7 Plus 128GB">iPhone 7 Plus (128GB) — $70</option>
                     <option value="90" data-name="iPhone 8 Plus 64GB">iPhone 8 Plus (64GB) — $90</option>
@@ -445,36 +450,70 @@
             </select>
         </div>
 
-        <div style="display: flex; gap: 15px; margin-bottom: 25px;">
+        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
             <div style="flex: 1; text-align: left;">
                 <label style="color: #aaa; font-size: 13px; display: block; margin-bottom: 8px;">Quantity:</label>
-                <input class="order-qty" id="device-qty" type="number" min="1" value="1" oninput="updateCartTotal()">
+                <input class="order-qty" id="device-qty" type="number" min="1" value="1">
             </div>
             <div style="flex: 1; text-align: left;">
                 <label style="color: #aaa; font-size: 13px; display: block; margin-bottom: 8px;">Shipping Destination:</label>
-                <select class="order-dropdown" id="shipping-destination" onchange="updateCartTotal()">
-                    <option value="Zimbabwe" data-shipping="29">Zimbabwe (+$29 Shipping)</option>
-                    <option value="Zambia" data-shipping="19">Zambia (+$19 Shipping)</option>
-                    <option value="China" data-shipping="3">China (+$3 Shipping)</option>
+                <select class="order-dropdown" id="shipping-destination">
+                    <option value="Zimbabwe" data-shipping="29">Zimbabwe ($29)</option>
+                    <option value="Zambia" data-shipping="19">Zambia ($19)</option>
+                    <option value="China" data-shipping="3">China ($3)</option>
                 </select>
             </div>
         </div>
 
-        <div style="background: #222; padding: 15px; border-radius: 8px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; border: 1px dashed #444;">
-            <span style="font-weight: bold; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #aaa;">Total Price (inc. shipping):</span>
-            <span style="color: #ffcc00; font-weight: 900; font-size: 22px;" id="total-price-display">$99</span>
+        <!-- BUTTON STEP 1: ADD TO CART -->
+        <div style="margin-bottom: 25px;">
+            <button onclick="addToCart()" class="action-btn" style="background-color: #333; color: #ffcc00; border: 1px solid #ffcc00;">
+                🛒 Add Item to Cart
+            </button>
         </div>
 
-        <div>
-            <a id="email-submit-btn" href="#" 
-               style="display: inline-block; width: 100%; box-sizing: border-box; background-color: #ffcc00; color: #000000; font-size: 15px; font-weight: bold; text-decoration: none; padding: 14px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
-               Add to Cart & Order via Email →
-            </a>
+        <!-- VISUAL SHOPPING CART DISPLAY LIST -->
+        <div id="cart-container" style="display: none; background: #222; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: left; border: 1px solid #333;">
+            <h4 style="margin: 0 0 10px 0; color: #ffcc00; font-size: 13px; letter-spacing: 0.5px; text-transform: uppercase;">Current Items in Cart:</h4>
+            <div id="cart-items-list" style="font-size: 13px; color: #ddd; line-height: 1.6; font-family: monospace;"></div>
+            <button onclick="generateInvoice()" class="action-btn" style="background-color: #ffcc00; color: #000; margin-top: 15px; font-size: 13px; padding: 8px 12px;">
+                📄 Generate Order Invoice
+            </button>
+        </div>
+
+        <!-- BUTTON STEP 2: DYNAMIC INVOICE RECEIPT BREAKDOWN (HIDDEN UNTIL GENERATED) -->
+        <div id="invoice-box" style="display: none; background: #151515; padding: 20px; border-radius: 8px; margin-bottom: 25px; border: 2px dashed #ffcc00; font-family: monospace; text-align: left;">
+            <h3 style="color: #ffcc00; font-family: sans-serif; margin-top: 0; font-size: 16px; border-bottom: 1px solid #333; padding-bottom: 8px;">MALWENE EXPORTS INVOICE</h3>
+            <div id="invoice-items-breakdown" style="color: #bbb; font-size: 13px; margin-bottom: 12px; border-bottom: 1px dashed #333; padding-bottom: 8px;"></div>
+            <div style="display: flex; justify-content: space-between; color: #aaa; margin-bottom: 6px; font-size: 13px;">
+                <span>Phones Subtotal:</span>
+                <span id="invoice-subtotal">$0</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; color: #aaa; margin-bottom: 12px; border-bottom: 1px solid #333; padding-bottom: 8px; font-size: 13px;">
+                <span>Shipping Fee (<span id="invoice-country">Zimbabwe</span>):</span>
+                <span id="invoice-shipping">+$0</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                <span style="font-weight: bold; font-size: 14px; text-transform: uppercase; color: #fff; font-family: sans-serif;">Total Price (Final):</span>
+                <span style="color: #ffcc00; font-weight: 900; font-size: 24px; font-family: sans-serif;" id="invoice-total">$0</span>
+            </div>
+
+            <!-- DUAL DISPATCH ORDER CHANNELS -->
+            <p style="font-family: sans-serif; color: #aaa; font-size: 11px; margin-bottom: 10px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">Choose your layout checkout route:</p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <a id="checkout-email-btn" href="#" class="action-btn" style="background-color: #ffcc00; color: #000;">
+                    ✉️ Complete Order via Email
+                </a>
+                <a id="checkout-whatsapp-btn" href="#" target="_blank" class="action-btn" style="background-color: #25D366; color: #fff;">
+                    💬 Complete Order via WhatsApp
+                </a>
+            </div>
         </div>
 
     </div>
 </section>
 
+<!-- CONTACT BOX SECTION -->
 <section><div style="font-family:sans-serif; background:#0b0b0b; color:#fff; padding:40px 20px; display:flex; flex-direction:column; align-items:center;">
     <div style="text-align: center; max-width: 600px;">
         <p style="color: #ccc; font-size: 14px; line-height: 1.5; margin-bottom: 20px;">Connect with our administration and logistics team directly via phone, WhatsApp, or email for current pricing, catalogs, or orders.</p>
@@ -484,6 +523,7 @@
     </div>
 </div></section>
 
+<!-- MAIN WHATSAPP GROUP INVITE LINK AT THE BOTTOM -->
 <div style="background: #000; text-align: center; padding: 35px 20px 20px 20px; border-top: 1px solid #222;">
     <a href="https://chat.whatsapp.com/HIxzcztIvXBLr149EpTOXD?mode=gi_t" 
        target="_blank" 
@@ -495,53 +535,113 @@
     </p>
 </div>
 
+<!-- FOOTER SECTION -->
 <footer style="background: #000; text-align: center; padding: 15px 20px 35px 20px; border-top: 1px solid #111;">
     <p style="color: #444; font-family: sans-serif; font-size: 11px; margin: 0;">&copy; 2026 Malwene Exports. All Rights Reserved. Connecting China to Southern Africa.</p>
 </footer>
 
+<!-- SYSTEM DATA HANDLING SCRIPT -->
 <script>
-    function updateCartTotal() {
+    // Global Cart Store Object Array
+    var cartItems = [];
+
+    function addToCart() {
         var modelSelect = document.getElementById('device-model');
         var qtyInput = document.getElementById('device-qty');
+        
+        var name = modelSelect.options[modelSelect.selectedIndex].getAttribute('data-name');
+        var price = parseFloat(modelSelect.value) || 0;
+        var qty = parseInt(qtyInput.value) || 1;
+        if(qty < 1) { qty = 1; qtyInput.value = 1; }
+
+        // Append item directly to array memory
+        cartItems.push({ name: name, price: price, qty: qty });
+        
+        // Refresh display listing container layout visual
+        renderCartList();
+    }
+
+    function renderCartList() {
+        var container = document.getElementById('cart-container');
+        var listElement = document.getElementById('cart-items-list');
+        
+        if(cartItems.length === 0) {
+            container.style.display = 'none';
+            return;
+        }
+        
+        container.style.display = 'block';
+        var htmlContent = "";
+        for(var i = 0; i < cartItems.length; i++) {
+            var totalItemCost = cartItems[i].price * cartItems[i].qty;
+            htmlContent += "• " + cartItems[i].name + " (x" + cartItems[i].qty + ") — $" + totalItemCost + "<br>";
+        }
+        listElement.innerHTML = htmlContent;
+    }
+
+    function generateInvoice() {
         var destSelect = document.getElementById('shipping-destination');
+        var invoiceBox = document.getElementById('invoice-box');
         
-        // Calculate subtotal
-        var unitPrice = parseFloat(modelSelect.value) || 0;
-        var quantity = parseInt(qtyInput.value) || 1;
-        if(quantity < 1) { quantity = 1; qtyInput.value = 1; }
-        var subtotal = unitPrice * quantity;
-        
-        // Get shipping cost based on selection attribute
+        var destination = destSelect.value;
         var shippingFee = parseFloat(destSelect.options[destSelect.selectedIndex].getAttribute('data-shipping')) || 0;
         
-        // Final running total calculation
-        var totalPrice = subtotal + shippingFee;
-        document.getElementById('total-price-display').innerText = '$' + totalPrice;
+        // Sum total metrics out of data arrays
+        var subtotal = 0;
+        var itemsText = "";
+        var shortSummaryList = [];
         
-        var selectedName = modelSelect.options[modelSelect.selectedIndex].getAttribute('data-name');
-        var destination = destSelect.value;
+        for(var i = 0; i < cartItems.length; i++) {
+            var itemCost = cartItems[i].price * cartItems[i].qty;
+            subtotal += itemCost;
+            itemsText += "-> " + cartItems[i].name + " [Qty: " + cartItems[i].qty + "] — $" + itemCost + "<br>";
+            shortSummaryList.push(cartItems[i].name + " (x" + cartItems[i].qty + ")");
+        }
         
-        var emailSubject = encodeURIComponent("New Order: " + selectedName);
-        var emailBody = encodeURIComponent(
-            "Please fill out the following details to complete your order:\n\n" +
-            "- Full Name:\n" +
-            "- Phone (WhatsApp/Direct Line):\n" +
-            "- Delivery Country: " + destination + "\n" +
-            "- Street Address:\n" +
-            "- City:\n\n" +
-            "--- Order Summary ---\n" +
-            "- Device Model: " + selectedName + "\n" +
-            "- Quantity: " + quantity + "\n" +
-            "- Phone Price Subtotal: $" + subtotal + "\n" +
-            "- Shipping Cost to " + destination + ": $" + shippingFee + "\n\n" +
+        var totalCost = subtotal + shippingFee;
+        
+        // Write details into live Invoice panel labels
+        document.getElementById('invoice-items-breakdown').innerHTML = itemsText;
+        document.getElementById('invoice-subtotal').innerText = '$' + subtotal;
+        document.getElementById('invoice-country').innerText = destination;
+        document.getElementById('invoice-shipping').innerText = '+$' + shippingFee;
+        document.getElementById('invoice-total').innerText = '$' + totalCost;
+        
+        // Make Invoice Box container visible to target user
+        invoiceBox.style.display = 'block';
+        
+        // ==================== GENERATING METRICS FOR OUTBOUND DISPATCHES ====================
+        var orderOverview = shortSummaryList.join(", ");
+        var messageString = 
+            "MALWENE EXPORTS ORDER INVOICE\n" +
             "-----------------------------\n" +
-            "- Total Estimated Amount: $" + totalPrice
-        );
+            "Items Ordered:\n";
+            
+        for(var j = 0; j < cartItems.length; j++) {
+            messageString += "- " + cartItems[j].name + " (x" + cartItems[j].qty + "): $" + (cartItems[j].price * cartItems[j].qty) + "\n";
+        }
         
-        document.getElementById('email-submit-btn').href = "mailto:malweneexports@gmail.com?subject=" + emailSubject + "&body=" + emailBody;
+        messageString += 
+            "-----------------------------\n" +
+            "Subtotal: $" + subtotal + "\n" +
+            "Shipping Destination: " + destination + "\n" +
+            "Shipping Fee: $" + shippingFee + "\n" +
+            "TOTAL COST: $" + totalCost + "\n" +
+            "-----------------------------\n" +
+            "Please provide your details below:\n" +
+            "- Customer Full Name:\n" +
+            "- Delivery Address:\n" +
+            "- City:";
+
+        // A. Config Email Integration Node
+        var emailSubject = encodeURIComponent("New Malwene Order: " + orderOverview);
+        var emailBody = encodeURIComponent(messageString);
+        document.getElementById('checkout-email-btn').href = "mailto:malweneexports@gmail.com?subject=" + emailSubject + "&body=" + emailBody;
+
+        // B. Config WhatsApp API Integration Link Node
+        var whatsappText = encodeURIComponent(messageString);
+        document.getElementById('checkout-whatsapp-btn').href = "https://wa.me/8618717323027?text=" + whatsappText;
     }
-    // Initialize calculator script layout instantly on page load
-    window.onload = function() { updateCartTotal(); };
 </script>
 
 </body>
