@@ -460,6 +460,7 @@
                 <select class="order-dropdown" id="shipping-destination">
                     <option value="Zimbabwe" data-shipping="29">Zimbabwe ($29)</option>
                     <option value="Zambia" data-shipping="19">Zambia ($19)</option>
+                    <option value="Rwanda" data-shipping="18">Rwanda 🇷🇼 ($18)</option>
                     <option value="China" data-shipping="3">China ($3)</option>
                 </select>
             </div>
@@ -467,10 +468,15 @@
 
         <!-- TWO CLEAR INTERACTIVE STEP-BY-STEP ACTIONS -->
         <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px;">
-            <!-- STEP 1: ADD TO CART ALONE -->
-            <button onclick="addToCart()" class="action-btn" style="background-color: #333; color: #ffcc00; border: 1px solid #ffcc00;">
-                🛒 Add Item to Cart
-            </button>
+            <!-- STEP 1: ADD TO CART & REMOVE LAST OPTION -->
+            <div style="display: flex; gap: 10px;">
+                <button onclick="addToCart()" class="action-btn" style="flex: 2; background-color: #333; color: #ffcc00; border: 1px solid #ffcc00;">
+                    🛒 Add Item to Cart
+                </button>
+                <button onclick="removeLastItem()" id="remove-btn" class="action-btn" style="flex: 1; background-color: #3a1111; color: #ff4444; border: 1px solid #ff4444; display: none; font-size: 12px; padding: 12px 5px;">
+                    ❌ Clear Last
+                </button>
+            </div>
             
             <!-- STEP 2: PLACE ORDER ALONE (Appears active when items are ready) -->
             <button id="order-btn" onclick="placeOrder()" class="action-btn" style="background-color: #ffcc00; color: #000; display: none;">
@@ -569,19 +575,31 @@
         document.getElementById('invoice-box').style.display = 'none';
     }
 
+    function removeLastItem() {
+        if(cartItems.length > 0) {
+            cartItems.pop(); // Remove the very last added item
+            renderCartList();
+            // Clear receipt frame if updates happen
+            document.getElementById('invoice-box').style.display = 'none';
+        }
+    }
+
     function renderCartList() {
         var container = document.getElementById('cart-container');
         var listElement = document.getElementById('cart-items-list');
         var orderBtn = document.getElementById('order-btn');
+        var removeBtn = document.getElementById('remove-btn');
         
         if(cartItems.length === 0) {
             container.style.display = 'none';
             orderBtn.style.display = 'none';
+            removeBtn.style.display = 'none';
             return;
         }
         
         container.style.display = 'block';
         orderBtn.style.display = 'inline-block'; // Show place order button once items are captured
+        removeBtn.style.display = 'inline-block'; // Show clear last button
         
         var htmlContent = "";
         for(var i = 0; i < cartItems.length; i++) {
@@ -647,6 +665,7 @@
         // Direct paths configurations handles links strings formats
         var emailSubject = encodeURIComponent("New Malwene Order: " + orderOverview);
         var emailBody = encodeURIComponent(messageString);
+        // Corrected destination routing address dynamically to malweneexports@gmail.com
         document.getElementById('checkout-email-btn').href = "mailto:malweneexports@gmail.com?subject=" + emailSubject + "&body=" + emailBody;
 
         var whatsappText = encodeURIComponent(messageString);
@@ -656,3 +675,4 @@
 
 </body>
 </html>
+
