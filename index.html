@@ -272,6 +272,15 @@
         <h2 style="color: #ffcc00; margin-bottom: 5px;">Malwene Exports</h2>
         <p style="color: #aaa; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 30px;">Official Catalog & Order System</p>
 
+        <!-- ==================== LIVE ATTRACTIVE IMAGE PREVIEW WINDOW ==================== -->
+        <div style="background: #222; padding: 15px; border-radius: 8px; border: 1px solid #333; margin-bottom: 25px; text-align: center;">
+            <p style="color: #ffcc00; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin: 0 0 10px 0;">Device Preview</p>
+            <img id="device-preview-img" 
+                 src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80" 
+                 alt="Malwene Electronics Preview" 
+                 style="max-width: 100%; height: 200px; object-fit: contain; border-radius: 6px; transition: all 0.3s ease;">
+        </div>
+
         <!-- ==================== IPHONE MODEL CATALOGS ==================== -->
         <h3 style="color: #ffcc00; font-size: 12px; letter-spacing: 1px; text-align: left; margin-bottom: 12px; border-bottom: 1px solid #333; padding-bottom: 5px;">IPHONE MODELS</h3>
         
@@ -371,81 +380,82 @@
                 select.order-dropdown optgroup { background: #222; color: #ffcc00; }
                 .action-btn { display: inline-block; width: 100%; box-sizing: border-box; font-size: 14px; font-weight: bold; text-decoration: none; padding: 12px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; border: none; cursor: pointer; text-align: center; transition: background 0.2s; }
             </style>
-            <select class="order-dropdown" id="device-model">
+            <!-- Added change trigger function to update pictures dynamically -->
+            <select class="order-dropdown" id="device-model" onchange="updatePreviewImage()">
                 <optgroup label="iPhones">
-                    <option value="70" data-name="iPhone 7 Plus 128GB">iPhone 7 Plus (128GB) — $70</option>
-                    <option value="90" data-name="iPhone 8 Plus 64GB">iPhone 8 Plus (64GB) — $90</option>
-                    <option value="138" data-name="iPhone XS 256GB">iPhone XS (256GB) — $138</option>
-                    <option value="125" data-name="iPhone XR 64GB">iPhone XR (64GB) — $125</option>
-                    <option value="139" data-name="iPhone XR 128GB">iPhone XR (128GB) — $139</option>
-                    <option value="180" data-name="iPhone 11 64GB">iPhone 11 (64GB) — $180</option>
-                    <option value="200" data-name="iPhone 11 128GB">iPhone 11 (128GB) — $200</option>
-                    <option value="170" data-name="iPhone 12 64GB">iPhone 12 (64GB) — $170</option>
-                    <option value="230" data-name="iPhone 12 128GB">iPhone 12 (128GB) — $230</option>
-                    <option value="275" data-name="iPhone 13 128GB">iPhone 13 (128GB) — $275</option>
-                    <option value="330" data-name="iPhone 13 256GB">iPhone 13 (256GB) — $330</option>
-                    <option value="300" data-name="iPhone 14 128GB">iPhone 14 (128GB) — $300</option>
-                    <option value="360" data-name="iPhone 14 256GB">iPhone 14 (256GB) — $360</option>
-                    <option value="420" data-name="iPhone 15 128GB">iPhone 15 (128GB) — $420</option>
-                    <option value="460" data-name="iPhone 15 256GB">iPhone 15 (256GB) — $460</option>
-                    <option value="525" data-name="iPhone 16 128GB">iPhone 16 (128GB) — $525</option>
-                    <option value="200" data-name="iPhone 11 Pro 64GB">iPhone 11 Pro (64GB) — $200</option>
-                    <option value="230" data-name="iPhone 11 Pro 256GB">iPhone 11 Pro (256GB) — $230</option>
-                    <option value="220" data-name="iPhone 11 Pro Max 64GB">iPhone 11 Pro Max (64GB) — $220</option>
-                    <option value="250" data-name="iPhone 11 Pro Max 256GB">iPhone 11 Pro Max (256GB) — $250</option>
-                    <option value="260" data-name="iPhone 12 Pro 128GB">iPhone 12 Pro (128GB) — $260</option>
-                    <option value="270" data-name="iPhone 12 Pro 256GB">iPhone 12 Pro (256GB) — $270</option>
-                    <option value="290" data-name="iPhone 12 Pro Max 128GB">iPhone 12 Pro Max (128GB) — $290</option>
-                    <option value="320" data-name="iPhone 12 Pro Max 256GB">iPhone 12 Pro Max (256GB) — $320</option>
-                    <option value="348" data-name="iPhone 13 Pro 128GB">iPhone 13 Pro (128GB) — $348</option>
-                    <option value="390" data-name="iPhone 13 Pro 256GB">iPhone 13 Pro (256GB) — $390</option>
-                    <option value="365" data-name="iPhone 13 Pro Max 128GB">iPhone 13 Pro Max (128GB) — $365</option>
-                    <option value="420" data-name="iPhone 13 Pro Max 256GB">iPhone 13 Pro Max (256GB) — $420</option>
-                    <option value="430" data-name="iPhone 14 Pro 128GB">iPhone 14 Pro (128GB) — $430</option>
-                    <option value="470" data-name="iPhone 14 Pro 256GB">iPhone 14 Pro (256GB) — $470</option>
-                    <option value="480" data-name="iPhone 14 Pro Max 128GB">iPhone 14 Pro Max (128GB) — $480</option>
-                    <option value="530" data-name="iPhone 14 Pro Max 256GB">iPhone 14 Pro Max (256GB) — $530</option>
-                    <option value="560" data-name="iPhone 15 Pro 128GB">iPhone 15 Pro (128GB) — $560</option>
-                    <option value="590" data-name="iPhone 15 Pro 256GB">iPhone 15 Pro (256GB) — $590</option>
-                    <option value="670" data-name="iPhone 15 Pro Max 256GB">iPhone 15 Pro Max (256GB) — $670</option>
-                    <option value="690" data-name="iPhone 15 Pro Max 512GB">iPhone 15 Pro Max (512GB) — $690</option>
-                    <option value="695" data-name="iPhone 16 Pro 128GB">iPhone 16 Pro (128GB) — $695</option>
-                    <option value="885" data-name="iPhone 16 Pro Max 256GB">iPhone 16 Pro Max (256GB) — $885</option>
+                    <option value="70" data-name="iPhone 7 Plus 128GB" data-img="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500&auto=format&fit=crop&q=80">iPhone 7 Plus (128GB) — $70</option>
+                    <option value="90" data-name="iPhone 8 Plus 64GB" data-img="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500&auto=format&fit=crop&q=80">iPhone 8 Plus (64GB) — $90</option>
+                    <option value="138" data-name="iPhone XS 256GB" data-img="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500&auto=format&fit=crop&q=80">iPhone XS (256GB) — $138</option>
+                    <option value="125" data-name="iPhone XR 64GB" data-img="https://images.unsplash.com/photo-1574755393849-623942496936?w=500&auto=format&fit=crop&q=80">iPhone XR (64GB) — $125</option>
+                    <option value="139" data-name="iPhone XR 128GB" data-img="https://images.unsplash.com/photo-1574755393849-623942496936?w=500&auto=format&fit=crop&q=80">iPhone XR (128GB) — $139</option>
+                    <option value="180" data-name="iPhone 11 64GB" data-img="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500&auto=format&fit=crop&q=80">iPhone 11 (64GB) — $180</option>
+                    <option value="200" data-name="iPhone 11 128GB" data-img="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500&auto=format&fit=crop&q=80">iPhone 11 (128GB) — $200</option>
+                    <option value="170" data-name="iPhone 12 64GB" data-img="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=500&auto=format&fit=crop&q=80">iPhone 12 (64GB) — $170</option>
+                    <option value="230" data-name="iPhone 12 128GB" data-img="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=500&auto=format&fit=crop&q=80">iPhone 12 (128GB) — $230</option>
+                    <option value="275" data-name="iPhone 13 128GB" data-img="https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500&auto=format&fit=crop&q=80">iPhone 13 (128GB) — $275</option>
+                    <option value="330" data-name="iPhone 13 256GB" data-img="https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500&auto=format&fit=crop&q=80">iPhone 13 (256GB) — $330</option>
+                    <option value="300" data-name="iPhone 14 128GB" data-img="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=500&auto=format&fit=crop&q=80">iPhone 14 (128GB) — $300</option>
+                    <option value="360" data-name="iPhone 14 256GB" data-img="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=500&auto=format&fit=crop&q=80">iPhone 14 (256GB) — $360</option>
+                    <option value="420" data-name="iPhone 15 128GB" data-img="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&auto=format&fit=crop&q=80">iPhone 15 (128GB) — $420</option>
+                    <option value="460" data-name="iPhone 15 256GB" data-img="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&auto=format&fit=crop&q=80">iPhone 15 (256GB) — $460</option>
+                    <option value="525" data-name="iPhone 16 128GB" data-img="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&auto=format&fit=crop&q=80">iPhone 16 (128GB) — $525</option>
+                    <option value="200" data-name="iPhone 11 Pro 64GB" data-img="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500&auto=format&fit=crop&q=80">iPhone 11 Pro (64GB) — $200</option>
+                    <option value="230" data-name="iPhone 11 Pro 256GB" data-img="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500&auto=format&fit=crop&q=80">iPhone 11 Pro (256GB) — $230</option>
+                    <option value="220" data-name="iPhone 11 Pro Max 64GB" data-img="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500&auto=format&fit=crop&q=80">iPhone 11 Pro Max (64GB) — $220</option>
+                    <option value="250" data-name="iPhone 11 Pro Max 256GB" data-img="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500&auto=format&fit=crop&q=80">iPhone 11 Pro Max (256GB) — $250</option>
+                    <option value="260" data-name="iPhone 12 Pro 128GB" data-img="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=500&auto=format&fit=crop&q=80">iPhone 12 Pro (128GB) — $260</option>
+                    <option value="270" data-name="iPhone 12 Pro 256GB" data-img="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=500&auto=format&fit=crop&q=80">iPhone 12 Pro (256GB) — $270</option>
+                    <option value="290" data-name="iPhone 12 Pro Max 128GB" data-img="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=500&auto=format&fit=crop&q=80">iPhone 12 Pro Max (128GB) — $290</option>
+                    <option value="320" data-name="iPhone 12 Pro Max 256GB" data-img="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=500&auto=format&fit=crop&q=80">iPhone 12 Pro Max (256GB) — $320</option>
+                    <option value="348" data-name="iPhone 13 Pro 128GB" data-img="https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500&auto=format&fit=crop&q=80">iPhone 13 Pro (128GB) — $348</option>
+                    <option value="390" data-name="iPhone 13 Pro 256GB" data-img="https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500&auto=format&fit=crop&q=80">iPhone 13 Pro (256GB) — $390</option>
+                    <option value="365" data-name="iPhone 13 Pro Max 128GB" data-img="https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500&auto=format&fit=crop&q=80">iPhone 13 Pro Max (128GB) — $365</option>
+                    <option value="420" data-name="iPhone 13 Pro Max 256GB" data-img="https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500&auto=format&fit=crop&q=80">iPhone 13 Pro Max (256GB) — $420</option>
+                    <option value="430" data-name="iPhone 14 Pro 128GB" data-img="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=500&auto=format&fit=crop&q=80">iPhone 14 Pro (128GB) — $430</option>
+                    <option value="470" data-name="iPhone 14 Pro 256GB" data-img="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=500&auto=format&fit=crop&q=80">iPhone 14 Pro (256GB) — $470</option>
+                    <option value="480" data-name="iPhone 14 Pro Max 128GB" data-img="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=500&auto=format&fit=crop&q=80">iPhone 14 Pro Max (128GB) — $480</option>
+                    <option value="530" data-name="iPhone 14 Pro Max 256GB" data-img="https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=500&auto=format&fit=crop&q=80">iPhone 14 Pro Max (256GB) — $530</option>
+                    <option value="560" data-name="iPhone 15 Pro 128GB" data-img="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&auto=format&fit=crop&q=80">iPhone 15 Pro (128GB) — $560</option>
+                    <option value="590" data-name="iPhone 15 Pro 256GB" data-img="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&auto=format&fit=crop&q=80">iPhone 15 Pro (256GB) — $590</option>
+                    <option value="670" data-name="iPhone 15 Pro Max 256GB" data-img="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&auto=format&fit=crop&q=80">iPhone 15 Pro Max (256GB) — $670</option>
+                    <option value="690" data-name="iPhone 15 Pro Max 512GB" data-img="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&auto=format&fit=crop&q=80">iPhone 15 Pro Max (512GB) — $690</option>
+                    <option value="695" data-name="iPhone 16 Pro 128GB" data-img="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&auto=format&fit=crop&q=80">iPhone 16 Pro (128GB) — $695</option>
+                    <option value="885" data-name="iPhone 16 Pro Max 256GB" data-img="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500&auto=format&fit=crop&q=80">iPhone 16 Pro Max (256GB) — $885</option>
                 </optgroup>
                 <optgroup label="Google Pixels">
-                    <option value="160" data-name="Google Pixel 3 64GB">Google Pixel 3 (64GB) — $160</option>
-                    <option value="167" data-name="Google Pixel 3 128GB">Google Pixel 3 (128GB) — $167</option>
-                    <option value="163" data-name="Google Pixel 3XL 64GB">Google Pixel 3XL (64GB) — $163</option>
-                    <option value="173" data-name="Google Pixel 3XL 128GB">Google Pixel 3XL (128GB) — $173</option>
-                    <option value="148" data-name="Google Pixel 3A 64GB">Google Pixel 3A (64GB) — $148</option>
-                    <option value="158" data-name="Google Pixel 3a XL 64GB">Google Pixel 3a XL (64GB) — $158</option>
-                    <option value="183" data-name="Google Pixel 4 64GB">Google Pixel 4 (64GB) — $183</option>
-                    <option value="200" data-name="Google Pixel 4 128GB">Google Pixel 4 (128GB) — $200</option>
-                    <option value="203" data-name="Google Pixel 4XL 64GB">Google Pixel 4XL (64GB) — $203</option>
-                    <option value="217" data-name="Google Pixel 4XL 128GB">Google Pixel 4XL (128GB) — $217</option>
-                    <option value="188" data-name="Google Pixel 4A 5G 128GB">Google Pixel 4A 5G (128GB) — $188</option>
-                    <option value="183" data-name="Google Pixel 4A 4G 128GB">Google Pixel 4A 4G (128GB) — $183</option>
-                    <option value="220" data-name="Google Pixel 5 128GB">Google Pixel 5 (128GB) — $220</option>
-                    <option value="217" data-name="Google Pixel 5A 128GB">Google Pixel 5A (128GB) — $217</option>
-                    <option value="250" data-name="Google Pixel 6 128GB">Google Pixel 6 (128GB) — $250</option>
-                    <option value="274" data-name="Google Pixel 6 256GB">Google Pixel 6 (256GB) — $274</option>
-                    <option value="228" data-name="Google Pixel 6 Pro 128GB">Google Pixel 6 Pro (128GB) — $228</option>
-                    <option value="243" data-name="Google Pixel 6 Pro 256GB">Google Pixel 6 Pro (256GB) — $243</option>
-                    <option value="346" data-name="Google Pixel 6 Pro 512GB">Google Pixel 6 Pro (512GB) — $346</option>
-                    <option value="225" data-name="Google Pixel 6A 128GB">Google Pixel 6A (128GB) — $225</option>
-                    <option value="294" data-name="Google Pixel 7 Pro 128GB">Google Pixel 7 Pro (128GB) — $294</option>
-                    <option value="324" data-name="Google Pixel 7 Pro 256GB">Google Pixel 7 Pro (256GB) — $324</option>
-                    <option value="280" data-name="Google Pixel 7 128GB">Google Pixel 7 (128GB) — $280</option>
-                    <option value="309" data-name="Google Pixel 7 256GB">Google Pixel 7 (256GB) — $309</option>
-                    <option value="287" data-name="Google Pixel 7A 128GB">Google Pixel 7A (128GB) — $287</option>
-                    <option value="435" data-name="Google Pixel 8 Pro 128GB">Google Pixel 8 Pro (128GB) — $435</option>
-                    <option value="487" data-name="Google Pixel 8 Pro 256GB">Google Pixel 8 Pro (256GB) — $487</option>
-                    <option value="568" data-name="Google Pixel 8 Pro 512GB">Google Pixel 8 Pro (512GB) — $568</option>
-                    <option value="405" data-name="Google Pixel 8 128GB">Google Pixel 8 (128GB) — $405</option>
-                    <option value="450" data-name="Google Pixel 8 256GB">Google Pixel 8 (256GB) — $450</option>
-                    <option value="351" data-name="Google Pixel 8A 128GB">Google Pixel 8A (128GB) — $351</option>
-                    <option value="506" data-name="Google Pixel 9 128GB">Google Pixel 9 (128GB) — $506</option>
-                    <option value="702" data-name="Google Pixel 9 Pro 256GB">Google Pixel 9 Pro (256GB) — $702</option>
+                    <option value="160" data-name="Google Pixel 3 64GB" data-img="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80">Google Pixel 3 (64GB) — $160</option>
+                    <option value="167" data-name="Google Pixel 3 128GB" data-img="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80">Google Pixel 3 (128GB) — $167</option>
+                    <option value="163" data-name="Google Pixel 3XL 64GB" data-img="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80">Google Pixel 3XL (64GB) — $163</option>
+                    <option value="173" data-name="Google Pixel 3XL 128GB" data-img="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80">Google Pixel 3XL (128GB) — $173</option>
+                    <option value="148" data-name="Google Pixel 3A 64GB" data-img="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80">Google Pixel 3A (64GB) — $148</option>
+                    <option value="158" data-name="Google Pixel 3a XL 64GB" data-img="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80">Google Pixel 3a XL (64GB) — $158</option>
+                    <option value="183" data-name="Google Pixel 4 64GB" data-img="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80">Google Pixel 4 (64GB) — $183</option>
+                    <option value="200" data-name="Google Pixel 4 128GB" data-img="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80">Google Pixel 4 (128GB) — $200</option>
+                    <option value="203" data-name="Google Pixel 4XL 64GB" data-img="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80">Google Pixel 4XL (64GB) — $203</option>
+                    <option value="217" data-name="Google Pixel 4XL 128GB" data-img="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80">Google Pixel 4XL (128GB) — $217</option>
+                    <option value="188" data-name="Google Pixel 4A 5G 128GB" data-img="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80">Google Pixel 4A 5G (128GB) — $188</option>
+                    <option value="183" data-name="Google Pixel 4A 4G 128GB" data-img="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80">Google Pixel 4A 4G (128GB) — $183</option>
+                    <option value="220" data-name="Google Pixel 5 128GB" data-img="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80">Google Pixel 5 (128GB) — $220</option>
+                    <option value="217" data-name="Google Pixel 5A 128GB" data-img="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80">Google Pixel 5A (128GB) — $217</option>
+                    <option value="250" data-name="Google Pixel 6 128GB" data-img="https://images.unsplash.com/photo-1642425149556-b6f90e946859?w=500&auto=format&fit=crop&q=80">Google Pixel 6 (128GB) — $250</option>
+                    <option value="274" data-name="Google Pixel 6 256GB" data-img="https://images.unsplash.com/photo-1642425149556-b6f90e946859?w=500&auto=format&fit=crop&q=80">Google Pixel 6 (256GB) — $274</option>
+                    <option value="228" data-name="Google Pixel 6 Pro 128GB" data-img="https://images.unsplash.com/photo-1642425149556-b6f90e946859?w=500&auto=format&fit=crop&q=80">Google Pixel 6 Pro (128GB) — $228</option>
+                    <option value="243" data-name="Google Pixel 6 Pro 256GB" data-img="https://images.unsplash.com/photo-1642425149556-b6f90e946859?w=500&auto=format&fit=crop&q=80">Google Pixel 6 Pro (256GB) — $243</option>
+                    <option value="346" data-name="Google Pixel 6 Pro 512GB" data-img="https://images.unsplash.com/photo-1642425149556-b6f90e946859?w=500&auto=format&fit=crop&q=80">Google Pixel 6 Pro (512GB) — $346</option>
+                    <option value="225" data-name="Google Pixel 6A 128GB" data-img="https://images.unsplash.com/photo-1642425149556-b6f90e946859?w=500&auto=format&fit=crop&q=80">Google Pixel 6A (128GB) — $225</option>
+                    <option value="294" data-name="Google Pixel 7 Pro 128GB" data-img="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80">Google Pixel 7 Pro (128GB) — $294</option>
+                    <option value="324" data-name="Google Pixel 7 Pro 256GB" data-img="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80">Google Pixel 7 Pro (256GB) — $324</option>
+                    <option value="280" data-name="Google Pixel 7 128GB" data-img="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80">Google Pixel 7 (128GB) — $280</option>
+                    <option value="309" data-name="Google Pixel 7 256GB" data-img="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80">Google Pixel 7 (256GB) — $309</option>
+                    <option value="287" data-name="Google Pixel 7A 128GB" data-img="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80">Google Pixel 7A (128GB) — $287</option>
+                    <option value="435" data-name="Google Pixel 8 Pro 128GB" data-img="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80">Google Pixel 8 Pro (128GB) — $435</option>
+                    <option value="487" data-name="Google Pixel 8 Pro 256GB" data-img="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80">Google Pixel 8 Pro (256GB) — $487</option>
+                    <option value="568" data-name="Google Pixel 8 Pro 512GB" data-img="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80">Google Pixel 8 Pro (512GB) — $568</option>
+                    <option value="405" data-name="Google Pixel 8 128GB" data-img="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80">Google Pixel 8 (128GB) — $405</option>
+                    <option value="450" data-name="Google Pixel 8 256GB" data-img="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80">Google Pixel 8 (256GB) — $450</option>
+                    <option value="351" data-name="Google Pixel 8A 128GB" data-img="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80">Google Pixel 8A (128GB) — $351</option>
+                    <option value="506" data-name="Google Pixel 9 128GB" data-img="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80">Google Pixel 9 (128GB) — $506</option>
+                    <option value="702" data-name="Google Pixel 9 Pro 256GB" data-img="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80">Google Pixel 9 Pro (256GB) — $702</option>
                 </optgroup>
             </select>
         </div>
@@ -468,7 +478,6 @@
 
         <!-- TWO CLEAR INTERACTIVE STEP-BY-STEP ACTIONS -->
         <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px;">
-            <!-- STEP 1: ADD TO CART & REMOVE LAST OPTION -->
             <div style="display: flex; gap: 10px;">
                 <button onclick="addToCart()" class="action-btn" style="flex: 2; background-color: #333; color: #ffcc00; border: 1px solid #ffcc00;">
                     🛒 Add Item to Cart
@@ -478,7 +487,6 @@
                 </button>
             </div>
             
-            <!-- STEP 2: PLACE ORDER ALONE (Appears active when items are ready) -->
             <button id="order-btn" onclick="placeOrder()" class="action-btn" style="background-color: #ffcc00; color: #000; display: none;">
                 📦 Place Order
             </button>
@@ -490,7 +498,7 @@
             <div id="cart-items-list" style="font-size: 13px; color: #ddd; line-height: 1.6; font-family: monospace;"></div>
         </div>
 
-        <!-- DYNAMIC RECEIPT BREAKDOWN (HIDDEN UNTIL USER PRESSES 'PLACE ORDER') -->
+        <!-- DYNAMIC RECEIPT BREAKDOWN -->
         <div id="invoice-box" style="display: none; background: #151515; padding: 25px; border-radius: 8px; margin-bottom: 10px; border: 2px dashed #ffcc00; font-family: monospace; text-align: left;">
             <h3 style="color: #ffcc00; font-family: sans-serif; margin-top: 0; font-size: 16px; border-bottom: 1px solid #333; padding-bottom: 8px; letter-spacing: 1px;">MALWENE EXPORTS RECEIPT</h3>
             
@@ -509,7 +517,6 @@
                 <span style="color: #ffcc00; font-weight: 900; font-size: 24px; font-family: sans-serif;" id="invoice-total">$0</span>
             </div>
 
-            <!-- CHOOSE PAYMENT / SUBMISSION METHOD -->
             <p style="font-family: sans-serif; color: #aaa; font-size: 11px; margin-bottom: 12px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">Select Payment & Submission Method:</p>
             <div style="display: flex; flex-direction: column; gap: 10px;">
                 <a id="checkout-email-btn" href="#" class="action-btn" style="background-color: #ea4335; color: #fff; font-size: 13px;">
@@ -553,8 +560,17 @@
 
 <!-- SYSTEM DATA HANDLING SCRIPT -->
 <script>
-    // Global Array to Store Cart Items
     var cartItems = [];
+
+    // NEW FUNCTION: Updates the top image when selection changes
+    function updatePreviewImage() {
+        var modelSelect = document.getElementById('device-model');
+        var selectedOption = modelSelect.options[modelSelect.selectedIndex];
+        var imgUrl = selectedOption.getAttribute('data-img');
+        if(imgUrl) {
+            document.getElementById('device-preview-img').src = imgUrl;
+        }
+    }
 
     function addToCart() {
         var modelSelect = document.getElementById('device-model');
@@ -565,21 +581,15 @@
         var qty = parseInt(qtyInput.value) || 1;
         if(qty < 1) { qty = 1; qtyInput.value = 1; }
 
-        // Store selected model data
         cartItems.push({ name: name, price: price, qty: qty });
-        
-        // Update user's shopping cart list UI
         renderCartList();
-        
-        // Clear receipt frame if updates happen
         document.getElementById('invoice-box').style.display = 'none';
     }
 
     function removeLastItem() {
         if(cartItems.length > 0) {
-            cartItems.pop(); // Remove the very last added item
+            cartItems.pop();
             renderCartList();
-            // Clear receipt frame if updates happen
             document.getElementById('invoice-box').style.display = 'none';
         }
     }
@@ -598,8 +608,8 @@
         }
         
         container.style.display = 'block';
-        orderBtn.style.display = 'inline-block'; // Show place order button once items are captured
-        removeBtn.style.display = 'inline-block'; // Show clear last button
+        orderBtn.style.display = 'inline-block';
+        removeBtn.style.display = 'inline-block';
         
         var htmlContent = "";
         for(var i = 0; i < cartItems.length; i++) {
@@ -629,17 +639,14 @@
         
         var totalCost = subtotal + shippingFee;
         
-        // Write details into live receipt fields
         document.getElementById('invoice-items-breakdown').innerHTML = itemsText;
         document.getElementById('invoice-subtotal').innerText = '$' + subtotal;
         document.getElementById('invoice-country').innerText = destination;
         document.getElementById('invoice-shipping').innerText = '+$' + shippingFee;
         document.getElementById('invoice-total').innerText = '$' + totalCost;
         
-        // Reveal receipt item layout summary frame block
         invoiceBox.style.display = 'block';
         
-        // Assemble text dispatch data parameters
         var orderOverview = shortSummaryList.join(", ");
         var messageString = 
             "MALWENE EXPORTS CUSTOMER RECEIPT\n" +
@@ -662,17 +669,14 @@
             "- Delivery Address:\n" +
             "- Contact Number:";
 
-        // Direct paths configurations handles links strings formats
         var emailSubject = encodeURIComponent("New Malwene Order: " + orderOverview);
         var emailBody = encodeURIComponent(messageString);
-        // Corrected destination routing address dynamically to malweneexports@gmail.com
         document.getElementById('checkout-email-btn').href = "mailto:malweneexports@gmail.com?subject=" + emailSubject + "&body=" + emailBody;
 
         var whatsappText = encodeURIComponent(messageString);
         document.getElementById('checkout-whatsapp-btn').href = "https://wa.me/8618717323027?text=" + whatsappText;
     }
 </script>
-
 </body>
 </html>
 
