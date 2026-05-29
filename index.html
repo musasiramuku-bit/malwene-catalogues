@@ -76,7 +76,7 @@
             color: #fff;
         }
 
-        /* DROPDOWN MENU FOR CONTACT */
+        /* CONTACT DROPDOWN */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -116,7 +116,6 @@
             display: block;
         }
 
-        /* MOBILE LAYOUT - SINGLE COLUMN */
         .app-container {
             width: 100%;
             max-width: 100%;
@@ -312,9 +311,9 @@
         }
 
         .storage-pill.active {
-            background: var(--text-dark);
+            background: #1e293b;
             color: #fff;
-            border-color: var(--text-dark);
+            border-color: #1e293b;
         }
 
         .quote-notice {
@@ -356,23 +355,25 @@
         }
 
         .btn-secondary {
-            padding: 8px 12px;
-            background: #fff;
-            border: 1px solid var(--border-color);
+            padding: 8px 14px;
+            background: #ffffff;
+            border: 1px solid #d1d5db;
             border-radius: 6px;
             font-size: 14px;
             font-weight: 500;
-            color: var(--text-dark);
+            color: #111827;
+            cursor: pointer;
         }
 
         .btn-primary {
             padding: 8px 14px;
-            background: var(--accent-green);
+            background: #111827;
             color: #fff;
             border-radius: 6px;
             font-size: 14px;
             font-weight: 500;
             border: none;
+            cursor: pointer;
             display: flex;
             align-items: center;
             gap: 4px;
@@ -392,7 +393,7 @@
             height:46px;
         }
 
-        /* MODAL */
+        /* DETAILS MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -408,20 +409,50 @@
         .modal-content {
             background-color: #fff;
             margin: 5% auto;
-            padding: 20px;
-            border-radius:10px;
+            padding: 24px;
+            border-radius:12px;
             width: 100%;
-            max-width: 420px;
+            max-width: 480px;
             position:relative;
         }
         .close-modal {
             position:absolute;
-            right:14px;
-            top:10px;
-            font-size:24px;
+            right:16px;
+            top:12px;
+            font-size:26px;
             cursor:pointer;
             color:#666;
         }
+        .detail-section {
+            margin: 16px 0;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        .detail-section h3 {
+            font-size: 15px;
+            color: #111827;
+            margin-bottom: 6px;
+        }
+        .detail-section p, .detail-section ul {
+            font-size: 14px;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+        .detail-section ul {
+            padding-left: 18px;
+        }
+        .highlight-tag {
+            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin: 4px 4px 4px 0;
+        }
+
+        /* ORDER MODAL */
         .receipt-item {
             display:flex;
             justify-content:space-between;
@@ -482,7 +513,6 @@
         <a href="#about">About</a>
         <a href="#destinations">Destinations</a>
         <a href="#services">Services</a>
-        <!-- ✅ NEW CONTACT DROPDOWN ADDED HERE -->
         <div class="dropdown">
             <a href="#" class="dropbtn">Contact ▾</a>
             <div class="dropdown-content">
@@ -523,7 +553,6 @@
             <input class="form-input" id="global-qty" type="number" min="1" value="1">
         </div>
 
-        <!-- CART -->
         <div class="cart-box">
             <h3>🛒 Cart <span id="cart-count">0</span></h3>
             <div id="cart-items-list"></div>
@@ -539,6 +568,37 @@
 
         <div class="product-grid" id="catalog-products-root"></div>
     </main>
+</div>
+
+<!-- ✅ DETAILS MODAL -->
+<div id="detailsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeDetailsModal()">&times;</span>
+        <h2 id="detail-model-name" style="font-size:20px; margin-bottom:8px;"></h2>
+        <p id="detail-subtitle" style="color:#64748b; margin-bottom:16px;"></p>
+
+        <div class="detail-section">
+            <h3>✅ Known Functions & Special Features</h3>
+            <p id="detail-functions"></p>
+        </div>
+
+        <div class="detail-section">
+            <h3>💾 Storage Variants <span class="highlight-tag">100% NEW / ORIGINAL</span></h3>
+            <div id="detail-storage-list"></div>
+        </div>
+
+        <div class="detail-section">
+            <h3>📦 Condition</h3>
+            <p><span class="highlight-tag">LIKE NEW / GRADE A+</span> 100% Original, No scratches, Battery ≥90%, Fully tested, Exact unit confirmed before shipping.</p>
+        </div>
+
+        <div class="detail-section">
+            <h3>💰 Device Estimate Price</h3>
+            <div id="detail-price-list"></div>
+        </div>
+
+        <button class="btn-primary" style="width:100%; margin-top:12px;" onclick="closeDetailsModal()">Close</button>
+    </div>
 </div>
 
 <!-- ORDER MODAL -->
@@ -575,52 +635,142 @@
 </footer>
 
 <script>
+    // ✅ FULL DEVICE DATABASE WITH FUNCTIONS/FEATURES
     const deviceInventory = [
-        { brand: "Apple", model: "iPhone 16 Pro Max", subtitle: "Flagship premium", options: [{storage: "256GB", price: 885}] },
-        { brand: "Apple", model: "iPhone 16 Pro", subtitle: "Advanced pro", options: [{storage: "128GB", price: 695}] },
-        { brand: "Apple", model: "iPhone 15 Pro Max", subtitle: "Titanium legacy", options: [{storage: "256GB", price: 670}, {storage: "512GB", price: 690}] },
-        { brand: "Apple", model: "iPhone 15 Pro", subtitle: "Compact flagship", options: [{storage: "128GB", price: 560}, {storage: "256GB", price: 590}] },
-        { brand: "Apple", model: "iPhone 16", subtitle: "Base generation", options: [{storage: "128GB", price: 525}] },
-        { brand: "Apple", model: "iPhone 15", subtitle: "Dynamic Island", options: [{storage: "128GB", price: 420}, {storage: "256GB", price: 460}] },
-        { brand: "Apple", model: "iPhone 14 Pro Max", subtitle: "Large screen pro", options: [{storage: "128GB", price: 480}, {storage: "256GB", price: 530}] },
-        { brand: "Apple", model: "iPhone 14 Pro", subtitle: "Premium design", options: [{storage: "128GB", price: 430}, {storage: "256GB", price: 470}] },
-        { brand: "Apple", model: "iPhone 14", subtitle: "Super Retina", options: [{storage: "128GB", price: 300}, {storage: "256GB", price: 360}] },
-        { brand: "Apple", model: "iPhone 13 Pro Max", subtitle: "ProMotion", options: [{storage: "128GB", price: 365}, {storage: "256GB", price: 420}] },
-        { brand: "Apple", model: "iPhone 13 Pro", subtitle: "Triple lens", options: [{storage: "128GB", price: 348}, {storage: "256GB", price: 390}] },
-        { brand: "Apple", model: "iPhone 13", subtitle: "A15 Bionic", options: [{storage: "128GB", price: 275}, {storage: "256GB", price: 330}] },
-        { brand: "Apple", model: "iPhone 12 Pro Max", subtitle: "5G flagship", options: [{storage: "128GB", price: 290}, {storage: "256GB", price: 320}] },
-        { brand: "Apple", model: "iPhone 12 Pro", subtitle: "Stainless steel", options: [{storage: "128GB", price: 260}, {storage: "256GB", price: 270}] },
-        { brand: "Apple", model: "iPhone 12", subtitle: "OLED display", options: [{storage: "64GB", price: 170}, {storage: "128GB", price: 230}] },
-        { brand: "Apple", model: "iPhone 11 Pro Max", subtitle: "Matte finish", options: [{storage: "64GB", price: 220}, {storage: "256GB", price: 250}] },
-        { brand: "Apple", model: "iPhone 11 Pro", subtitle: "Ergonomic", options: [{storage: "64GB", price: 200}, {storage: "256GB", price: 230}] },
-        { brand: "Apple", model: "iPhone 11", subtitle: "Liquid Retina", options: [{storage: "64GB", price: 180}, {storage: "128GB", price: 200}] },
-        { brand: "Apple", model: "iPhone XR", subtitle: "Long battery", options: [{storage: "64GB", price: 125}, {storage: "128GB", price: 139}] },
-        { brand: "Apple", model: "iPhone XS", subtitle: "Super AMOLED", options: [{storage: "256GB", price: 138}] },
-        { brand: "Apple", model: "iPhone 8 Plus", subtitle: "Touch ID", options: [{storage: "64GB", price: 90}] },
-        { brand: "Apple", model: "iPhone 7 Plus", subtitle: "Dual-lens", options: [{storage: "128GB", price: 70}] },
-        
-        { brand: "Google", model: "Pixel 3", subtitle: "Compact classic", options: [{storage: "64GB", price: 160}, {storage: "128GB", price: 167}] },
-        { brand: "Google", model: "Pixel 3XL", subtitle: "Expanded visual landscape setup", options: [{storage: "64GB", price: 163}, {storage: "128GB", price: 173}] },
-        { brand: "Google", model: "Pixel 3A Series", subtitle: "Incredible value legacy performers", options: [{storage: "64GB (3A)", price: 148}, {storage: "64GB (3a XL)", price: 158}] },
-        { brand: "Google", model: "Pixel 4", subtitle: "Pure Android computational power", options: [{storage: "64GB", price: 184}, {storage: "128GB", price: 200}] },
-        { brand: "Google", model: "Pixel 4XL", subtitle: "Sleek matte design high res layout", options: [{storage: "64GB", price: 203}, {storage: "128GB", price: 218}] },
-        { brand: "Google", model: "Pixel 4A Layouts", subtitle: "Compact pocket sized day-to-day workhorses", options: [{storage: "128GB (5G)", price: 188}, {storage: "128GB (4G)", price: 184}] },
-        { brand: "Google", model: "Pixel 5 / 5A", subtitle: "Biometric secure processing legacy nodes", options: [{storage: "128GB (Pixel 5)", price: 221}, {storage: "128GB (5A)", price: 218}] },
-        { brand: "Google", model: "Pixel 6", subtitle: "Custom dual-tone geometric aesthetics", options: [{storage: "128GB", price: 250}, {storage: "256GB", price: 274}] },
-        { brand: "Google", model: "Pixel 6 Pro", subtitle: "Advanced computational zoom powerhouse", options: [{storage: "128GB", price: 228}, {storage: "256GB", price: 243}, {storage: "512GB", price: 347}] },
-        { brand: "Google", model: "Pixel 6A", subtitle: "Highly efficient all day companion", options: [{storage: "128GB", price: 225}] },
-        { brand: "Google", model: "Pixel 7 Pro", subtitle: "Polished aluminum look visual flagship", options: [{storage: "128GB", price: 295}, {storage: "256GB", price: 325}] },
-        { brand: "Google", model: "Pixel 7", subtitle: "Refined visor layout solid performance", options: [{storage: "128GB", price: 280}, {storage: "256GB", price: 310}] },
-        { brand: "Google", model: "Pixel 7A", subtitle: "High frame value capture layout engine", options: [{storage: "128GB", price: 287}] },
-        { brand: "Google", model: "Pixel 8 Pro", subtitle: "Super actuua bright display AI integration", options: [{storage: "128GB", price: 436}, {storage: "256GB", price: 487}, {storage: "512GB", price: 569}] },
-        { brand: "Google", model: "Pixel 8", subtitle: "Satin glass compute flagship baseline", options: [{storage: "128GB", price: 406}, {storage: "256GB", price: 450}] },
-        { brand: "Google", model: "Pixel 8A", subtitle: "Modern rounded profile performance layout", options: [{storage: "128GB", price: 351}] },
-        { brand: "Google", model: "Pixel 9 Series", subtitle: "Cutting edge next-gen camera modules", options: [{storage: "128GB (Pixel 9)", price: 507}, {storage: "256GB (9 Pro)", price: 702}] }
+        { 
+            brand: "Apple", model: "iPhone 16 Pro Max", subtitle: "Flagship premium - Ultimate iPhone",
+            functions: "Known for: 48MP 5x Telephoto camera, A18 Pro chip, 48MP Main + Ultra Wide, Titanium design, Action Button, 2000nits display, USB-C, longest battery life ever.",
+            options: [{storage: "256GB", price: 885}, {storage: "512GB", price: 955}, {storage: "1TB", price: 1085}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 16 Pro", subtitle: "Advanced pro - Compact powerhouse",
+            functions: "Known for: Pro camera system, 3x telephoto, A18 Pro, Titanium frame, Action Button, USB-C, industry-leading durability, professional video recording.",
+            options: [{storage: "128GB", price: 695}, {storage: "256GB", price: 745}, {storage: "512GB", price: 815}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 15 Pro Max", subtitle: "Large screen pro legacy king",
+            functions: "Known for: 5x optical zoom, 48MP main camera, A17 Pro chip, Titanium design, USB-C port, 29-hour video playback, Super Retina XDR display.",
+            options: [{storage: "256GB", price: 670}, {storage: "512GB", price: 690}, {storage: "1TB", price: 780}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 15 Pro", subtitle: "Premium compact professional",
+            functions: "Known for: A17 Pro, USB-C, Action Button, durable Titanium, 48MP camera, 2x telephoto, console-level gaming performance, proRAW & ProRes video.",
+            options: [{storage: "128GB", price: 560}, {storage: "256GB", price: 590}, {storage: "512GB", price: 640}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 16", subtitle: "Mainstream flagship - Best all-rounder",
+            functions: "Known for: 48MP camera, A18 chip, USB-C, vibrant 6.1-inch display, great low-light photos, smooth performance, long battery life, durable aluminum.",
+            options: [{storage: "128GB", price: 525}, {storage: "256GB", price: 575}, {storage: "512GB", price: 635}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 15", subtitle: "Dynamic Island - Modern standard",
+            functions: "Known for: Dynamic Island, 48MP main camera, USB-C port, A16 Bionic chip, industry-leading video quality, water resistance IP68.",
+            options: [{storage: "128GB", price: 420}, {storage: "256GB", price: 460}, {storage: "512GB", price: 510}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 14 Pro Max", subtitle: "Large screen pro legacy king",
+            functions: "Known for: Always-On Display, Dynamic Island, 48MP camera, A16 Bionic, 5x zoom, 6.7-inch big screen, best battery life in 2022.",
+            options: [{storage: "128GB", price: 480}, {storage: "256GB", price: 530}, {storage: "512GB", price: 580}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 14 Pro", subtitle: "High frame rate pro workhorse",
+            functions: "Known for: 120Hz ProMotion display, Dynamic Island, 48MP sensor, A16 chip, always-on screen, cinematic mode 4K 24fps, satellite SOS.",
+            options: [{storage: "128GB", price: 430}, {storage: "256GB", price: 470}, {storage: "512GB", price: 520}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 14", subtitle: "Super Retina reliable daily driver",
+            functions: "Known for: Powerful A15 chip, great camera system, long battery, durable glass, satellite emergency SOS, bright True Tone display.",
+            options: [{storage: "128GB", price: 300}, {storage: "256GB", price: 360}, {storage: "512GB", price: 410}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 13 Pro Max", subtitle: "ProMotion smoothness leader",
+            functions: "Known for: 120Hz ProMotion display, cinematic mode, macro photography, A15 Bionic, all-day battery, IP68 water resistance.",
+            options: [{storage: "128GB", price: 365}, {storage: "256GB", price: 420}, {storage: "512GB", price: 470}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 13 Pro", subtitle: "Triple lens versatile shooter",
+            functions: "Known for: Telephoto + Ultra Wide + Macro, LiDAR scanner, night mode portraits, 120Hz display, A15 speed, great value pro.",
+            options: [{storage: "128GB", price: 348}, {storage: "256GB", price: 390}, {storage: "512GB", price: 440}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 13", subtitle: "A15 Bionic speed king",
+            functions: "Known for: Fastest chip of 2021, improved battery life, dual-camera system, durable ceramic shield, compact premium feel.",
+            options: [{storage: "128GB", price: 275}, {storage: "256GB", price: 330}, {storage: "512GB", price: 380}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 12 Pro Max", subtitle: "5G flagship large display",
+            functions: "Known for: 5G speed, Ceramic Shield, MagSafe, LiDAR, 2.5x zoom, bright OLED, stainless steel premium build.",
+            options: [{storage: "128GB", price: 290}, {storage: "256GB", price: 320}, {storage: "512GB", price: 370}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 12 Pro", subtitle: "Stainless steel classic design",
+            functions: "Known for: Flat edges, premium stainless steel, MagSafe ecosystem, 5G, Dolby Vision HDR recording, great camera performance.",
+            options: [{storage: "128GB", price: 260}, {storage: "256GB", price: 270}, {storage: "512GB", price: 320}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 12", subtitle: "OLED display 5G entry",
+            functions: "Known for: Super bright OLED, flat modern design, MagSafe, 5G capability, compact, lightweight, very popular model.",
+            options: [{storage: "64GB", price: 170}, {storage: "128GB", price: 230}, {storage: "256GB", price: 280}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 11 Pro Max", subtitle: "Matte finish triple camera",
+            functions: "Known for: First triple camera system, night mode, A13 Bionic, all-day battery, matte glass finish, premium feel.",
+            options: [{storage: "64GB", price: 220}, {storage: "256GB", price: 250}, {storage: "512GB", price: 300}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 11 Pro", subtitle: "Ergonomic compact pro",
+            functions: "Known for: Night mode photography, triple lenses, A13 speed, premium matte design, compact yet powerful, great value.",
+            options: [{storage: "64GB", price: 200}, {storage: "256GB", price: 230}, {storage: "512GB", price: 280}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 11", subtitle: "Liquid Retina reliable workhorse",
+            functions: "Known for: Great battery life, fast performance, dual cameras, wide color display, durable glass, best budget premium iPhone.",
+            options: [{storage: "64GB", price: 180}, {storage: "128GB", price: 200}, {storage: "256GB", price: 230}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone XR", subtitle: "Long battery colorful choice",
+            functions: "Known for: BEST battery life in 2018, colorful designs, Liquid Retina, fast performance, single great camera, super reliable.",
+            options: [{storage: "64GB", price: 125}, {storage: "128GB", price: 139}, {storage: "256GB", price: 160}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone XS", subtitle: "Super AMOLED premium small",
+            functions: "Known for: First premium OLED small phone, stainless steel, great camera, fast A12 chip, compact flagship quality.",
+            options: [{storage: "64GB", price: 115}, {storage: "256GB", price: 138}, {storage: "512GB", price: 165}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 8 Plus", subtitle: "Touch ID classic large",
+            functions: "Known for: Last big Touch ID iPhone, dual cameras, portrait mode, fast performance, easy one-handed use, reliable.",
+            options: [{storage: "64GB", price: 90}, {storage: "256GB", price: 115}] 
+        },
+        { 
+            brand: "Apple", model: "iPhone 7 Plus", subtitle: "Dual-lens portrait pioneer",
+            functions: "Known for: First portrait mode, dual camera, great speed, reliable, perfect for basic use, long-lasting.",
+            options: [{storage: "32GB", price: 60}, {storage: "128GB", price: 70}, {storage: "256GB", price: 85}] 
+        },
+
+        { brand: "Google", model: "Pixel 3", subtitle: "Compact classic camera king", functions: "Known for: Best camera software, Night Sight, unlimited photo storage, fast updates, compact premium build.", options: [{storage: "64GB", price: 160}, {storage: "128GB", price: 167}] },
+        { brand: "Google", model: "Pixel 3XL", subtitle: "Expanded visual landscape setup", functions: "Known for: Large screen, stereo speakers, amazing low-light camera, pure Android, AI features.", options: [{storage: "64GB", price: 163}, {storage: "128GB", price: 173}] },
+        { brand: "Google", model: "Pixel 3A Series", subtitle: "Incredible value legacy performers", functions: "Known for: Same great camera as flagships, affordable, headphone jack, pure Android experience.", options: [{storage: "64GB (3A)", price: 148}, {storage: "64GB (3a XL)", price: 158}] },
+        { brand: "Google", model: "Pixel 4", subtitle: "Pure Android computational power", functions: "Known for: Motion Sense, face unlock, telephoto lens, smooth 90Hz display, excellent software support.", options: [{storage: "64GB", price: 184}, {storage: "128GB", price: 200}] },
+        { brand: "Google", model: "Pixel 4XL", subtitle: "Sleek matte design high res layout", functions: "Known for: Large 90Hz screen, telephoto camera, clean software, great video recording, premium feel.", options: [{storage: "64GB", price: 203}, {storage: "128GB", price: 218}] },
+        { brand: "Google", model: "Pixel 4A Layouts", subtitle: "Compact pocket sized day-to-day workhorses", functions: "Known for: Headphone jack, great camera, amazing value, long software support, perfect daily phone.", options: [{storage: "128GB (5G)", price: 188}, {storage: "128GB (4G)", price: 184}] },
+        { brand: "Google", model: "Pixel 5 / 5A", subtitle: "Biometric secure processing legacy nodes", functions: "Known for: 5G, aluminum body, wireless charging, 90Hz, reliable battery, pure Android updates.", options: [{storage: "128GB (Pixel 5)", price: 221}, {storage: "128GB (5A)", price: 218}] },
+        { brand: "Google", model: "Pixel 6", subtitle: "Custom dual-tone geometric aesthetics", functions: "Known for: Google Tensor chip, amazing AI features, bold design, Magic Eraser, live translate.", options: [{storage: "128GB", price: 250}, {storage: "256GB", price: 274}] },
+        { brand: "Google", model: "Pixel 6 Pro", subtitle: "Advanced computational zoom powerhouse", functions: "Known for: 4x telephoto, Tensor G1, 120Hz LTPO, Magic Eraser, real-time translation, best camera.", options: [{storage: "128GB", price: 228}, {storage: "256GB", price: 243}, {storage: "512GB", price: 347}] },
+        { brand: "Google", model: "Pixel 6A", subtitle: "Highly efficient all day companion", functions: "Known for: Flagship camera quality, affordable, fast updates, great battery life, compact.", options: [{storage: "128GB", price: 225}] },
+        { brand: "Google", model: "Pixel 7 Pro", subtitle: "Polished aluminum look visual flagship", functions: "Known for: Tensor G2, super res zoom, macro focus, smooth display, excellent video, clean OS.", options: [{storage: "128GB", price: 295}, {storage: "256GB", price: 325}] },
+        { brand: "Google", model: "Pixel 7", subtitle: "Refined visor layout solid performance", functions: "Known for: Bright display, fast AI processing, great photos/videos, solid build, great value.", options: [{storage: "128GB", price: 280}, {storage: "256GB", price: 310}] },
+        { brand: "Google", model: "Pixel 7A", subtitle: "High frame value capture layout engine", functions: "Known for: 90Hz, flagship camera features, IP67 water resistance, long software support.", options: [{storage: "128GB", price: 287}] },
+        { brand: "Google", model: "Pixel 8 Pro", subtitle: "Super actuua bright display AI integration", functions: "Known for: Best camera ever, Real Tone, Magic Editor, 24-hour battery, temperature sensor, AI features.", options: [{storage: "128GB", price: 436}, {storage: "256GB", price: 487}, {storage: "512GB", price: 569}] },
+        { brand: "Google", model: "Pixel 8", subtitle: "Satin glass compute flagship baseline", functions: "Known for: Tensor G3, Magic Editor, excellent low-light, 7 years updates, premium feel.", options: [{storage: "128GB", price: 406}, {storage: "256GB", price: 450}] },
+        { brand: "Google", model: "Pixel 8A", subtitle: "Modern rounded profile performance layout", functions: "Known for: Flagship camera quality, 7 years updates, great value, smooth display, reliable.", options: [{storage: "128GB", price: 351}] },
+        { brand: "Google", model: "Pixel 9 Series", subtitle: "Cutting edge next-gen camera modules", functions: "Known for: Latest Tensor G4, ultra wide, pro features, best software, future-proof, premium quality.", options: [{storage: "128GB (Pixel 9)", price: 507}, {storage: "256GB (9 Pro)", price: 702}] }
     ];
 
     let activeBrand = 'Apple';
     let selectionsState = {};
     let cartItems = [];
+    let currentDetailIndex = null;
 
     function filterBrand(brandName) {
         activeBrand = brandName;
@@ -637,6 +787,37 @@
         document.querySelectorAll(`.pill-c-${cardIndex}`).forEach((pill, idx) => {
             pill.classList.toggle('active', idx === optionIndex);
         });
+    }
+
+    // ✅ OPEN DETAILS POPUP
+    function openDetails(index) {
+        currentDetailIndex = index;
+        const filtered = deviceInventory.filter(d => d.brand === activeBrand);
+        const dev = filtered[index];
+
+        document.getElementById('detail-model-name').innerText = dev.model;
+        document.getElementById('detail-subtitle').innerText = dev.subtitle + " - Like New";
+        document.getElementById('detail-functions').innerHTML = dev.functions;
+
+        // Storage list
+        let storageHTML = '';
+        dev.options.forEach(opt => {
+            storageHTML += `<span class="highlight-tag">${opt.storage} - 100% NEW</span>`;
+        });
+        document.getElementById('detail-storage-list').innerHTML = storageHTML;
+
+        // Price list
+        let priceHTML = '';
+        dev.options.forEach(opt => {
+            priceHTML += `<p style="margin:4px 0;">• ${opt.storage}: <strong style="color:#111; font-size:16px;">$${opt.price}</strong></p>`;
+        });
+        document.getElementById('detail-price-list').innerHTML = priceHTML;
+
+        document.getElementById('detailsModal').style.display = "block";
+    }
+
+    function closeDetailsModal() {
+        document.getElementById('detailsModal').style.display = "none";
     }
 
     function renderCatalogGrid() {
@@ -667,11 +848,11 @@
                 </div>
                 <div class="card-footer">
                     <div>
-                        <div class="price-label">Device estimate</div>
+                        <div class="price-label">DEVICE ESTIMATE</div>
                         <div class="price-value" id="price-${idx}">$${opt.price}</div>
                     </div>
                     <div class="card-actions">
-                        <button class="btn-secondary" onclick="alert('Full specs available')">Info</button>
+                        <button class="btn-secondary" onclick="openDetails(${idx})">Details</button>
                         <button class="btn-primary" onclick="addItemToCart(${idx})">🛒 Add To Cart</button>
                     </div>
                 </div>
@@ -745,12 +926,14 @@
     }
 
     window.onclick = e => {
-        const m = document.getElementById('orderModal');
-        if (e.target === m) m.style.display = "none";
+        const detailsModal = document.getElementById('detailsModal');
+        const orderModal = document.getElementById('orderModal');
+        if (e.target === detailsModal) detailsModal.style.display = "none";
+        if (e.target === orderModal) orderModal.style.display = "none";
     };
 
     window.onload = renderCatalogGrid;
 </script>
 
 </body>
-</html>
+</html>>
