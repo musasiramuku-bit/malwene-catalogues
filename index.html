@@ -13,6 +13,7 @@
             --primary: #f59e0b;
             --dark-nav: #000000;
             --accent-green: #15803d;
+            --accent-samsung: #1428A0;
             --border: #e5e7eb;
         }
 
@@ -168,6 +169,14 @@
             font-size: 13px;
             font-weight: 600;
         }
+        .samsung-highlight {
+            background: #eef2ff;
+            color: var(--accent-samsung);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+        }
 
         /* ✅ MAIN LAYOUT */
         .container {
@@ -214,11 +223,17 @@
             font-weight: 500;
             margin-bottom: 8px;
             cursor: pointer;
+            transition: all 0.2s;
         }
         .btn-brand.active {
             background: var(--text-dark);
             color: white;
             border-color: var(--text-dark);
+        }
+        .btn-brand.samsung-btn:hover, .btn-brand.samsung-btn.active {
+            background: var(--accent-samsung);
+            color: white;
+            border-color: var(--accent-samsung);
         }
 
         .form-field {
@@ -254,7 +269,9 @@
             font-weight: 600;
             margin-top: 12px;
             cursor: pointer;
+            transition: opacity 0.2s;
         }
+        .btn-order:hover { opacity: 0.9; }
 
         .banner {
             width: 100%;
@@ -294,8 +311,10 @@
             border-radius: 20px;
             font-size: 14px;
             cursor: pointer;
+            transition: all 0.2s;
         }
         .storage-pill.active { background: var(--text-dark); color: white; border-color: var(--text-dark); }
+        .samsung-pill.active { background: var(--accent-samsung); color: white; border-color: var(--accent-samsung); }
 
         .card-footer {
             display: flex;
@@ -316,7 +335,9 @@
             border-radius: 6px;
             font-size: 14px;
             cursor: pointer;
+            transition: all 0.2s;
         }
+        .btn-info:hover { background: #e5e7eb; }
         .btn-cart {
             padding: 8px 16px;
             background: var(--text-dark);
@@ -328,7 +349,10 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            transition: opacity 0.2s;
         }
+        .btn-cart.samsung-cart { background: var(--accent-samsung); }
+        .btn-cart:hover { opacity: 0.9; }
 
         footer {
             background: var(--dark-nav);
@@ -448,11 +472,11 @@
             <p id="det-func" style="color:#444;"></p>
         </div>
         <div style="margin-bottom:14px;">
-            <h4 style="font-size:15px; margin-bottom:6px;">💾 Storage <span class="highlight">100% NEW / ORIGINAL</span></h4>
+            <h4 style="font-size:15px; margin-bottom:6px;">💾 Storage & SIM <span id="det-badge" class="highlight">100% NEW / ORIGINAL</span></h4>
             <p id="det-store"></p>
         </div>
         <div style="margin-bottom:14px;">
-            <h4 style="font-size:15px; margin-bottom:6px;">💰 Pricing</h4>
+            <h4 style="font-size:15px; margin-bottom:6px;">💰 Exact Pricing</h4>
             <p id="det-price"></p>
         </div>
         <button class="btn-order" onclick="closeModal('detailsModal')">Close</button>
@@ -484,8 +508,9 @@
 
         <div>
             <h4 style="font-size:14px; text-transform:uppercase; color:#777; margin-bottom:8px;">Filter Brand</h4>
-            <button class="btn-brand active" onclick="filterBrand('Apple')">🍎 Apple iPhone</button>
-            <button class="btn-brand" onclick="filterBrand('Google')">📱 Google Pixel</button>
+            <button class="btn-brand active" id="btn-apple" onclick="filterBrand('Apple')">🍎 Apple iPhone</button>
+            <button class="btn-brand" id="btn-google" onclick="filterBrand('Google')">📱 Google Pixel</button>
+            <button class="btn-brand samsung-btn" id="btn-samsung" onclick="filterBrand('Samsung')">🟦 Samsung Galaxy</button>
         </div>
 
         <div style="margin-top:18px;">
@@ -523,8 +548,43 @@
 </footer>
 
 <script>
-// ✅ DATABASE
+// ✅ EXACT DATABASE — ONLY PHONES & PRICES YOU GAVE
 const inventory = [
+    // 🟦 SAMSUNG — EXACT PRICES YOU PROVIDED
+    {
+        brand:"Samsung",
+        model:"Galaxy S22 Ultra",
+        sub:"Premium flagship - Like New",
+        func:"S Pen built-in, 108MP camera, Snapdragon 8 Gen 1, 120Hz Dynamic AMOLED 2X, 5000mAh battery, IP68 water resistance",
+        opts:[
+            {s:"1 SIM • 128GB", p:367},
+            {s:"2 SIM • 128GB", p:383},
+            {s:"1 SIM • 256GB", p:417},
+            {s:"2 SIM • 256GB", p:433}
+        ]
+    },
+    {
+        brand:"Samsung",
+        model:"Galaxy S23 Ultra",
+        sub:"Camera king - Like New",
+        func:"200MP main camera, S Pen, Snapdragon 8 Gen 2, Gorilla Glass Victus 2, improved battery, 45W fast charge",
+        opts:[
+            {s:"1 SIM • 128GB", p:533},
+            {s:"2 SIM • 128GB", p:567},
+            {s:"2 SIM • 256GB", p:583}
+        ]
+    },
+    {
+        brand:"Samsung",
+        model:"Galaxy S24 Ultra",
+        sub:"AI-powered flagship - Like New",
+        func:"Galaxy AI features, Titanium frame, 200MP camera, Snapdragon 8 Gen 3, 7 years updates, brightest display ever",
+        opts:[
+            {s:"2 SIM • 256GB", p:783}
+        ]
+    },
+
+    // 🍎 APPLE
     {brand:"Apple",model:"iPhone 16 Pro",sub:"Advanced pro - Like New",func:"48MP camera, A18 Pro chip, Titanium, USB-C, Action Button, 5x zoom, 120Hz ProMotion",opts:[{s:"128GB",p:695},{s:"256GB",p:745},{s:"512GB",p:815}]},
     {brand:"Apple",model:"iPhone 16 Pro Max",sub:"Ultimate flagship - Like New",func:"Largest display, best battery, 5x optical zoom, 48MP triple cam, A18 Pro, durable titanium",opts:[{s:"256GB",p:885},{s:"512GB",p:955},{s:"1TB",p:1085}]},
     {brand:"Apple",model:"iPhone 15 Pro Max",sub:"Large screen legacy king",func:"5x telephoto, A17 Pro, USB-C, titanium, 29hr battery, Super Retina XDR",opts:[{s:"256GB",p:670},{s:"512GB",p:690}]},
@@ -534,6 +594,8 @@ const inventory = [
     {brand:"Apple",model:"iPhone 13 Pro Max",sub:"ProMotion smoothness leader",func:"120Hz, cinematic mode, macro cam, LiDAR scanner, all-day battery",opts:[{s:"128GB",p:365},{s:"256GB",p:420}]},
     {brand:"Apple",model:"iPhone 12 Pro",sub:"Stainless steel classic",func:"Flat edges, MagSafe, 5G, Dolby Vision HDR recording",opts:[{s:"128GB",p:260},{s:"256GB",p:270}]},
     {brand:"Apple",model:"iPhone 11",sub:"Liquid Retina daily driver",func:"Great battery, fast A13, dual cam, durable glass",opts:[{s:"64GB",p:180},{s:"128GB",p:200}]},
+
+    // 📱 GOOGLE PIXEL
     {brand:"Google",model:"Pixel 9 Pro",sub:"Next-gen camera powerhouse",func:"Tensor G4, Magic Editor, best camera, 7 years updates, premium build",opts:[{s:"128GB",p:507},{s:"256GB",p:702}]},
     {brand:"Google",model:"Pixel 8 Pro",sub:"Bright display AI flagship",func:"Super Actua display, Magic Editor, temperature sensor, real-time translate",opts:[{s:"128GB",p:436},{s:"256GB",p:487}]},
     {brand:"Google",model:"Pixel 7 Pro",sub:"Polished aluminum design",func:"Tensor G2, super res zoom, macro focus, smooth display",opts:[{s:"128GB",p:295},{s:"256GB",p:325}]}
@@ -556,10 +618,21 @@ function render() {
     const grid = document.getElementById('product-grid');
     grid.innerHTML="";
     const list = inventory.filter(d=>d.brand===activeBrand);
+    
+    // Update brand button styles
+    document.querySelectorAll('.btn-brand').forEach(btn=>btn.classList.remove('active'));
+    if(activeBrand==='Apple') document.getElementById('btn-apple').classList.add('active');
+    if(activeBrand==='Google') document.getElementById('btn-google').classList.add('active');
+    if(activeBrand==='Samsung') document.getElementById('btn-samsung').classList.add('active');
+
     list.forEach((dev,i)=>{
         if(selected[i]===undefined) selected[i]=0;
         const opt = dev.opts[selected[i]];
-        const storageHTML = dev.opts.map((o,idx)=>`<span class="storage-pill ${idx==selected[i]?'active':''}" onclick="selectStrg(${i},${idx},${o.p})">${o.s}</span>`).join('');
+        
+        const storageHTML = dev.opts.map((o,idx)=>{
+            const isSamsung = dev.brand==='Samsung';
+            return `<span class="storage-pill ${isSamsung?'samsung-pill':''} ${idx==selected[i]?'active':''}" onclick="selectStrg(${i},${idx},${o.p})">${o.s}</span>`;
+        }).join('');
 
         grid.innerHTML += `
         <div class="card">
@@ -575,7 +648,7 @@ function render() {
                 </div>
                 <div class="btn-group">
                     <button class="btn-info" onclick="openDetails(${i})">Info</button>
-                    <button class="btn-cart" onclick="addToCart(${i})">🛒 Add To Cart</button>
+                    <button class="btn-cart ${dev.brand==='Samsung'?'samsung-cart':''}" onclick="addToCart(${i})">🛒 Add To Cart</button>
                 </div>
             </div>
         </div>`;
@@ -589,11 +662,27 @@ function filterBrand(b) { activeBrand=b; selected={}; render(); }
 function openDetails(i) {
     const dev = inventory.filter(d=>d.brand===activeBrand)[i];
     const opts = dev.opts;
+    
     document.getElementById('det-model').innerText = dev.model;
     document.getElementById('det-sub').innerText = dev.sub;
     document.getElementById('det-func').innerText = dev.func;
-    document.getElementById('det-store').innerHTML = opts.map(o=>`<span class="highlight">${o.s} - 100% NEW</span>`).join(' ');
-    document.getElementById('det-price').innerHTML = opts.map(o=>`• ${o.s}: <strong style="color:#111;">$${o.p}</strong>`).join('<br>');
+    
+    // Badge color
+    const badge = document.getElementById('det-badge');
+    if(dev.brand==='Samsung') {
+        badge.className = 'samsung-highlight';
+        badge.innerText = '100% NEW / ORIGINAL';
+    } else {
+        badge.className = 'highlight';
+        badge.innerText = '100% NEW / ORIGINAL';
+    }
+
+    document.getElementById('det-store').innerHTML = opts.map(o=>{
+        const cls = dev.brand==='Samsung'?'samsung-highlight':'highlight';
+        return `<span class="${cls}" style="margin:2px 4px 2px 0; display:inline-block;">${o.s}</span>`;
+    }).join(' ');
+
+    document.getElementById('det-price').innerHTML = opts.map(o=>`• ${o.s}: <strong style="color:#111; font-size:16px;">$${o.p}</strong>`).join('<br>');
     openModal('detailsModal');
 }
 
@@ -607,7 +696,7 @@ function addToCart(i) {
 }
 function updateCart() {
     const list = document.getElementById('cartlist');
-    list.innerHTML=""; cart.forEach((it,i)=>list.innerHTML+=`<div class="cart-item"><span>${it.m} (${it.s}) ×${it.q}</span><span>$${it.t} <button onclick="cart.splice(${i},1);updateCart()" style="border:none; color:red; background:transparent; cursor:pointer;">❌</button></span></div>`);
+    list.innerHTML=""; cart.forEach((it,i)=>list.innerHTML+=`<div class="cart-item"><span>${it.m} (${it.s}) ×${it.q}</span><span>$${it.t} <button onclick="cart.splice(${i},1);updateCart()" style="border:none; color:red; background:transparent; cursor:pointer; font-size:16px; padding:0 4px;">❌</button></span></div>`);
     document.getElementById('cartnum').innerText=cart.length;
 }
 
@@ -620,9 +709,12 @@ function openOrder() {
     const sub = cart.reduce((a,b)=>a+b.t,0);
     const total = sub+ship;
 
-    let itemsHTML="", msg=`*MALWENE EXPORTS ORDER*%0A----------------%0A`;
-    cart.forEach(it=>{ itemsHTML+=`<div class="cart-item"><span>${it.m} (${it.s}) ×${it.q}</span><span>$${it.t}</span></div>`; msg+=`• ${it.m} | ${it.s} | Qty:${it.q} | $${it.t}%0A`; });
-    msg += `----------------%0A*Subtotal:* $${sub}%0A*Shipping:* $${ship} (${shipName})%0A*TOTAL:* $${total}`;
+    let itemsHTML="", msg=`*MALWENE EXPORTS ORDER*%0A------------------------%0A`;
+    cart.forEach(it=>{ 
+        itemsHTML+=`<div class="cart-item"><span>${it.m}</span><span>${it.s} ×${it.q} — $${it.t}</span></div>`; 
+        msg+=`• ${it.m} | ${it.s} | Qty:${it.q} | $${it.t}%0A`; 
+    });
+    msg += `------------------------%0A*Subtotal:* $${sub}%0A*Shipping:* $${ship} (${shipName})%0A*TOTAL:* $${total}%0A------------------------%0APlease confirm & arrange payment.`;
 
     document.getElementById('order-items').innerHTML=itemsHTML;
     document.getElementById('subtotal').innerText=`$${sub}`;
