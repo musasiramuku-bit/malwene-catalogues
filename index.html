@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- CRITICAL FOR ANDROID -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Malwene Exports — Official Device Catalog</title>
     <style>
@@ -38,6 +37,7 @@
             color: #fff;
             padding: 12px 16px;
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
             position: sticky;
@@ -50,18 +50,70 @@
             font-size: 18px;
             font-weight: 700;
             letter-spacing: -0.3px;
+            margin-bottom: 4px;
         }
 
         header .logo span {
             color: var(--primary);
         }
 
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+        }
+
         nav a {
             color: #cbd5e1;
             text-decoration: none;
-            margin-left: 12px;
             font-size: 13px;
             font-weight: 500;
+            padding: 4px 6px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        /* DROPDOWN MENU FOR CONTACT */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropbtn {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 260px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
+            z-index: 9999;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .dropdown-content a {
+            color: #1e293b;
+            padding: 10px 14px;
+            text-decoration: none;
+            display: block;
+            font-size: 13px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .dropdown-content a:hover {
+            background-color: #f8fafc;
+            color: var(--accent-green);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         /* MOBILE LAYOUT - SINGLE COLUMN */
@@ -80,7 +132,7 @@
             border-radius: 10px;
             padding: 16px;
             border: 1px solid var(--border-color);
-            order: 1; /* SIDEBAR ON TOP ON MOBILE */
+            order: 1;
         }
 
         .sidebar h2 {
@@ -153,7 +205,7 @@
             color: var(--text-dark);
             outline: none;
             margin-top: 4px;
-            height: 44px; /* EASY TOUCH */
+            height: 44px;
         }
 
         .cart-box {
@@ -190,7 +242,7 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
-            order: 2; /* PRODUCTS BELOW */
+            order: 2;
         }
 
         .stretchy-banner {
@@ -209,7 +261,7 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: 1fr; /* SINGLE COLUMN ON ANDROID */
+            grid-template-columns: 1fr;
             gap: 12px;
         }
 
@@ -340,7 +392,7 @@
             height:46px;
         }
 
-        /* MODAL - FULL WIDTH MOBILE */
+        /* MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -408,7 +460,7 @@
             margin-top: 30px;
         }
 
-        /* TABLET/DESKTOP ONLY */
+        /* TABLET/DESKTOP */
         @media (min-width: 768px) {
             .app-container {
                 max-width: 1200px;
@@ -427,8 +479,19 @@
 <header>
     <div class="logo">Malwene<span>Exports</span></div>
     <nav>
-        <a href="#catalog">About</a>
-        <a href="#catalog">Destinations</a>
+        <a href="#about">About</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#services">Services</a>
+        <!-- ✅ NEW CONTACT DROPDOWN ADDED HERE -->
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Contact ▾</a>
+            <div class="dropdown-content">
+                <a href="tel:+8618717323027">📞 WhatsApp: +86 18717323027</a>
+                <a href="mailto:malweneexports@gmail.com">✉️ Email: malweneexports@gmail.com</a>
+                <a href="https://chat.whatsapp.com/HIxzcztIvXBLr149EpTOXD?mode=gi_t" target="_blank">👥 WhatsApp Group</a>
+                <a href="https://whatsapp.com/channel/0029VbBxOWmCcW4rNT2geE1Z" target="_blank">📢 WhatsApp Channel 🇨🇳🇿🇼🌍</a>
+            </div>
+        </div>
     </nav>
 </header>
 
@@ -507,6 +570,8 @@
 
 <footer>
     &copy; 2026 Malwene Exports. All Rights Reserved.
+    <br>
+    📞 +86 18717323027 | ✉️ malweneexports@gmail.com
 </footer>
 
 <script>
@@ -535,22 +600,22 @@
         { brand: "Apple", model: "iPhone 7 Plus", subtitle: "Dual-lens", options: [{storage: "128GB", price: 70}] },
         
         { brand: "Google", model: "Pixel 3", subtitle: "Compact classic", options: [{storage: "64GB", price: 160}, {storage: "128GB", price: 167}] },
-        { brand: "Google", model: "Pixel 3XL", subtitle: "Large display", options: [{storage: "64GB", price: 163}, {storage: "128GB", price: 173}] },
-        { brand: "Google", model: "Pixel 3A", subtitle: "Great value", options: [{storage: "64GB", price: 148}, {storage: "64GB XL", price: 158}] },
-        { brand: "Google", model: "Pixel 4", subtitle: "Pure Android", options: [{storage: "64GB", price: 184}, {storage: "128GB", price: 200}] },
-        { brand: "Google", model: "Pixel 4XL", subtitle: "Matte design", options: [{storage: "64GB", price: 203}, {storage: "128GB", price: 218}] },
-        { brand: "Google", model: "Pixel 4A", subtitle: "Budget 5G/4G", options: [{storage: "128GB 5G", price: 188}, {storage: "128GB 4G", price: 184}] },
-        { brand: "Google", model: "Pixel 5/5A", subtitle: "Secure & fast", options: [{storage: "128GB P5", price: 221}, {storage: "128GB 5A", price: 218}] },
-        { brand: "Google", model: "Pixel 6", subtitle: "Dual-tone", options: [{storage: "128GB", price: 250}, {storage: "256GB", price: 274}] },
-        { brand: "Google", model: "Pixel 6 Pro", subtitle: "Zoom powerhouse", options: [{storage: "128GB", price: 228}, {storage: "256GB", price: 243}, {storage: "512GB", price: 347}] },
-        { brand: "Google", model: "Pixel 6A", subtitle: "All-day battery", options: [{storage: "128GB", price: 225}] },
-        { brand: "Google", model: "Pixel 7 Pro", subtitle: "Premium look", options: [{storage: "128GB", price: 295}, {storage: "256GB", price: 325}] },
-        { brand: "Google", model: "Pixel 7", subtitle: "Solid performer", options: [{storage: "128GB", price: 280}, {storage: "256GB", price: 310}] },
-        { brand: "Google", model: "Pixel 7A", subtitle: "Fast refresh", options: [{storage: "128GB", price: 287}] },
-        { brand: "Google", model: "Pixel 8 Pro", subtitle: "Bright display AI", options: [{storage: "128GB", price: 436}, {storage: "256GB", price: 487}, {storage: "512GB", price: 569}] },
-        { brand: "Google", model: "Pixel 8", subtitle: "Satin glass", options: [{storage: "128GB", price: 406}, {storage: "256GB", price: 450}] },
-        { brand: "Google", model: "Pixel 8A", subtitle: "Modern design", options: [{storage: "128GB", price: 351}] },
-        { brand: "Google", model: "Pixel 9", subtitle: "Next-gen camera", options: [{storage: "128GB P9", price: 507}, {storage: "256GB 9Pro", price: 702}] }
+        { brand: "Google", model: "Pixel 3XL", subtitle: "Expanded visual landscape setup", options: [{storage: "64GB", price: 163}, {storage: "128GB", price: 173}] },
+        { brand: "Google", model: "Pixel 3A Series", subtitle: "Incredible value legacy performers", options: [{storage: "64GB (3A)", price: 148}, {storage: "64GB (3a XL)", price: 158}] },
+        { brand: "Google", model: "Pixel 4", subtitle: "Pure Android computational power", options: [{storage: "64GB", price: 184}, {storage: "128GB", price: 200}] },
+        { brand: "Google", model: "Pixel 4XL", subtitle: "Sleek matte design high res layout", options: [{storage: "64GB", price: 203}, {storage: "128GB", price: 218}] },
+        { brand: "Google", model: "Pixel 4A Layouts", subtitle: "Compact pocket sized day-to-day workhorses", options: [{storage: "128GB (5G)", price: 188}, {storage: "128GB (4G)", price: 184}] },
+        { brand: "Google", model: "Pixel 5 / 5A", subtitle: "Biometric secure processing legacy nodes", options: [{storage: "128GB (Pixel 5)", price: 221}, {storage: "128GB (5A)", price: 218}] },
+        { brand: "Google", model: "Pixel 6", subtitle: "Custom dual-tone geometric aesthetics", options: [{storage: "128GB", price: 250}, {storage: "256GB", price: 274}] },
+        { brand: "Google", model: "Pixel 6 Pro", subtitle: "Advanced computational zoom powerhouse", options: [{storage: "128GB", price: 228}, {storage: "256GB", price: 243}, {storage: "512GB", price: 347}] },
+        { brand: "Google", model: "Pixel 6A", subtitle: "Highly efficient all day companion", options: [{storage: "128GB", price: 225}] },
+        { brand: "Google", model: "Pixel 7 Pro", subtitle: "Polished aluminum look visual flagship", options: [{storage: "128GB", price: 295}, {storage: "256GB", price: 325}] },
+        { brand: "Google", model: "Pixel 7", subtitle: "Refined visor layout solid performance", options: [{storage: "128GB", price: 280}, {storage: "256GB", price: 310}] },
+        { brand: "Google", model: "Pixel 7A", subtitle: "High frame value capture layout engine", options: [{storage: "128GB", price: 287}] },
+        { brand: "Google", model: "Pixel 8 Pro", subtitle: "Super actuua bright display AI integration", options: [{storage: "128GB", price: 436}, {storage: "256GB", price: 487}, {storage: "512GB", price: 569}] },
+        { brand: "Google", model: "Pixel 8", subtitle: "Satin glass compute flagship baseline", options: [{storage: "128GB", price: 406}, {storage: "256GB", price: 450}] },
+        { brand: "Google", model: "Pixel 8A", subtitle: "Modern rounded profile performance layout", options: [{storage: "128GB", price: 351}] },
+        { brand: "Google", model: "Pixel 9 Series", subtitle: "Cutting edge next-gen camera modules", options: [{storage: "128GB (Pixel 9)", price: 507}, {storage: "256GB (9 Pro)", price: 702}] }
     ];
 
     let activeBrand = 'Apple';
@@ -595,19 +660,19 @@
                 <div>
                     <div class="card-tag">SMARTPHONE</div>
                     <div class="card-title">${device.model}</div>
-                    <div class="card-subtitle">${device.subtitle}</div>
-                    <div style="font-size: 12px; margin-bottom:6px;">Storage:</div>
+                    <div class="card-subtitle">${device.subtitle} - Like New</div>
+                    <div style="font-size: 12px; margin-bottom:6px;">Storage Variant:</div>
                     <div class="storage-selector">${storageHTML}</div>
-                    <div class="quote-notice"><span style="color:#10b981;">✓</span> Verified condition</div>
+                    <div class="quote-notice"><span style="color:#10b981;">✓</span> Exact unit condition confirmed prior to escrow.</div>
                 </div>
                 <div class="card-footer">
                     <div>
-                        <div class="price-label">Price</div>
+                        <div class="price-label">Device estimate</div>
                         <div class="price-value" id="price-${idx}">$${opt.price}</div>
                     </div>
                     <div class="card-actions">
                         <button class="btn-secondary" onclick="alert('Full specs available')">Info</button>
-                        <button class="btn-primary" onclick="addItemToCart(${idx})">🛒 Add</button>
+                        <button class="btn-primary" onclick="addItemToCart(${idx})">🛒 Add To Cart</button>
                     </div>
                 </div>
             </div>`;
@@ -650,27 +715,27 @@
     }
 
     function openOrderModal() {
-        if(cartItems.length === 0) return alert("Cart empty!");
+        if(cartItems.length === 0) return alert("Your cart is empty!");
         const shipSel = document.getElementById('global-shipping');
         const shipFee = parseInt(shipSel.value);
         const dest = shipSel.selectedOptions[0].dataset.name;
 
         let subtotal = 0;
         let itemsHTML = '';
-        let msg = `*MALWENE EXPORTS ORDER*\n------------------------\n`;
+        let msg = `*MALWENE EXPORTS - NEW ORDER*%0A------------------------%0A`;
         cartItems.forEach(itm => {
             subtotal += itm.total;
             itemsHTML += `<div class="receipt-item"><span>${itm.model} (${itm.storage}) ×${itm.qty}</span><span>$${itm.total}</span></div>`;
-            msg += `• ${itm.model} | ${itm.storage} | Qty:${itm.qty} | $${itm.total}\n`;
+            msg += `• ${itm.model} | ${itm.storage} | Qty:${itm.qty} | $${itm.total}%0A`;
         });
         const grandTotal = subtotal + shipFee;
-        msg += `------------------------\n*Subtotal:* $${subtotal}\n*Shipping to ${dest}:* $${shipFee}\n*TOTAL:* $${grandTotal}\n------------------------\nPlease confirm & pay.`;
+        msg += `------------------------%0A*Subtotal:* $${subtotal}%0A*Shipping to ${dest}:* $${shipFee}%0A*TOTAL:* $${grandTotal}%0A------------------------%0APlease confirm & arrange payment.`;
 
         document.getElementById('receipt-items').innerHTML = itemsHTML;
         document.getElementById('receipt-subtotal').innerText = `$${subtotal}`;
         document.getElementById('receipt-shipping').innerText = `$${shipFee} (${dest})`;
         document.getElementById('receipt-grandtotal').innerText = `$${grandTotal}`;
-        document.getElementById('pay-whatsapp').href = `https://wa.me/8618717323027?text=${encodeURIComponent(msg)}`;
+        document.getElementById('pay-whatsapp').href = `https://wa.me/8618717323027?text=${msg}`;
 
         document.getElementById('orderModal').style.display = "block";
     }
