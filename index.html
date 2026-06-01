@@ -548,9 +548,9 @@
 </footer>
 
 <script>
-// ✅ EXACT DATABASE — ONLY PHONES & PRICES YOU GAVE
+// ✅ EXACT DATABASE — COMPLETE: OLD + NEW Z FLIP PRICES
 const inventory = [
-    // 🟦 SAMSUNG — EXACT PRICES YOU PROVIDED
+    // 🟦 SAMSUNG GALAXY S SERIES
     {
         brand:"Samsung",
         model:"Galaxy S22 Ultra",
@@ -581,6 +581,72 @@ const inventory = [
         func:"Galaxy AI features, Titanium frame, 200MP camera, Snapdragon 8 Gen 3, 7 years updates, brightest display ever",
         opts:[
             {s:"2 SIM • 256GB", p:783}
+        ]
+    },
+
+    // ✅🆕 SAMSUNG Z FLIP SERIES — EXACTLY AS YOU REQUESTED
+    {
+        brand:"Samsung",
+        model:"Galaxy Z Flip 1",
+        sub:"Compact foldable - Original",
+        func:"Foldable Infinity Flex Display, 12MP dual camera, Snapdragon 855+, Compact pocket design",
+        opts:[
+            {s:"1 SIM • 256GB", p:177}
+        ]
+    },
+    {
+        brand:"Samsung",
+        model:"Galaxy Z Flip 2",
+        sub:"Reliable foldable - Original",
+        func:"Improved hinge, 6.7-inch foldable display, 12MP camera, 3300mAh battery",
+        opts:[
+            {s:"1 SIM • 256GB", p:161}
+        ]
+    },
+    {
+        brand:"Samsung",
+        model:"Galaxy Z Flip 3",
+        sub:"Water-resistant foldable - Original",
+        func:"IPX8 water resistance, Custom Cover Screen, 12MP dual cam, Snapdragon 888",
+        opts:[
+            {s:"1 SIM • 256GB", p:215}
+        ]
+    },
+    {
+        brand:"Samsung",
+        model:"Galaxy Z Flip 4",
+        sub:"All-day battery foldable - Original",
+        func:"Stronger hinge, faster charging, improved battery life, 12MP dual pixel",
+        opts:[
+            {s:"1 SIM • 128GB", p:200},
+            {s:"1 SIM • 256GB", p:238}
+        ]
+    },
+    {
+        brand:"Samsung",
+        model:"Galaxy Z Flip 5",
+        sub:"Large cover screen - Original",
+        func:"3.4-inch Flex Window, new hinge design, Snapdragon 8 Gen 2, compact",
+        opts:[
+            {s:"1 SIM • 256GB", p:299}
+        ]
+    },
+    {
+        brand:"Samsung",
+        model:"Galaxy Z Flip 6",
+        sub:"Premium performance foldable - Original",
+        func:"Brighter display, faster processor, better durability, AI features",
+        opts:[
+            {s:"1 SIM • 256GB", p:461}
+        ]
+    },
+    {
+        brand:"Samsung",
+        model:"Galaxy Z Flip 7",
+        sub:"Latest flagship foldable - Original",
+        func:"Advanced durability, premium materials, best camera & performance",
+        opts:[
+            {s:"1 SIM • 256GB", p:530}
         ]
     },
 
@@ -659,7 +725,7 @@ function selectStrg(i,idx,price) { selected[i]=idx; document.getElementById(`p${
 function filterBrand(b) { activeBrand=b; selected={}; render(); }
 
 // ✅ DETAILS
-function openDetails(i) {
+function openInfo(i) {
     const dev = inventory.filter(d=>d.brand===activeBrand)[i];
     const opts = dev.opts;
     
