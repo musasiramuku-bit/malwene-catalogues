@@ -14,6 +14,7 @@
             --dark-nav: #000000;
             --accent-green: #15803d;
             --accent-samsung: #1428A0;
+            --accent-apple: #0071e3;
             --border: #e5e7eb;
         }
 
@@ -177,6 +178,14 @@
             font-size: 13px;
             font-weight: 600;
         }
+        .apple-highlight {
+            background: #f0f7ff;
+            color: var(--accent-apple);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+        }
 
         /* ✅ MAIN LAYOUT */
         .container {
@@ -229,6 +238,11 @@
             background: var(--text-dark);
             color: white;
             border-color: var(--text-dark);
+        }
+        .btn-brand.apple-btn:hover, .btn-brand.apple-btn.active {
+            background: var(--accent-apple);
+            color: white;
+            border-color: var(--accent-apple);
         }
         .btn-brand.samsung-btn:hover, .btn-brand.samsung-btn.active {
             background: var(--accent-samsung);
@@ -314,6 +328,7 @@
             transition: all 0.2s;
         }
         .storage-pill.active { background: var(--text-dark); color: white; border-color: var(--text-dark); }
+        .apple-pill.active { background: var(--accent-apple); color: white; border-color: var(--accent-apple); }
         .samsung-pill.active { background: var(--accent-samsung); color: white; border-color: var(--accent-samsung); }
 
         .card-footer {
@@ -351,6 +366,7 @@
             gap: 5px;
             transition: opacity 0.2s;
         }
+        .btn-cart.apple-cart { background: var(--accent-apple); }
         .btn-cart.samsung-cart { background: var(--accent-samsung); }
         .btn-cart:hover { opacity: 0.9; }
 
@@ -472,7 +488,7 @@
             <p id="det-func" style="color:#444;"></p>
         </div>
         <div style="margin-bottom:14px;">
-            <h4 style="font-size:15px; margin-bottom:6px;">💾 Storage & SIM <span id="det-badge" class="highlight">100% NEW / ORIGINAL</span></h4>
+            <h4 style="font-size:15px; margin-bottom:6px;">💾 Storage & SIM <span id="det-badge" class="highlight">100% ORIGINAL</span></h4>
             <p id="det-store"></p>
         </div>
         <div style="margin-bottom:14px;">
@@ -508,8 +524,7 @@
 
         <div>
             <h4 style="font-size:14px; text-transform:uppercase; color:#777; margin-bottom:8px;">Filter Brand</h4>
-            <button class="btn-brand active" id="btn-apple" onclick="filterBrand('Apple')">🍎 Apple iPhone</button>
-            <button class="btn-brand" id="btn-google" onclick="filterBrand('Google')">📱 Google Pixel</button>
+            <button class="btn-brand apple-btn active" id="btn-apple" onclick="filterBrand('Apple')">🍎 Apple iPhone</button>
             <button class="btn-brand samsung-btn" id="btn-samsung" onclick="filterBrand('Samsung')">🟦 Samsung Galaxy</button>
         </div>
 
@@ -548,9 +563,165 @@
 </footer>
 
 <script>
-// ✅ EXACT DATABASE — COMPLETE: OLD + NEW Z FLIP PRICES
+// ✅ FULL INVENTORY — EXACT PRICES AS REQUESTED
 const inventory = [
-    // 🟦 SAMSUNG GALAXY S SERIES
+    // 🍎 APPLE IPHONE — YOUR NEW EXACT PRICE LIST
+    {
+        brand:"Apple",
+        model:"iPhone 7 Plus",
+        sub:"Budget daily driver - Grade A/B",
+        func:"12MP camera, Touch ID, A10 Fusion, 5.5-inch Retina HD, 2900mAh battery",
+        opts:[ {s:"128GB", p:70} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 8 Plus",
+        sub:"Reliable classic - Grade A/B",
+        func:"12MP dual cam, Wireless charging, A11 Bionic, 5.5-inch, IP67",
+        opts:[ {s:"64GB", p:90} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone XS",
+        sub:"Premium OLED display - Grade A",
+        func:"5.8-inch Super Retina OLED, Dual 12MP, A12 Bionic, Face ID",
+        opts:[ {s:"256GB", p:138} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone XR",
+        sub:"Long battery life - Grade A",
+        func:"6.1-inch Liquid Retina, Single 12MP, A12 Bionic, Best battery in X-series",
+        opts:[ {s:"64GB", p:125}, {s:"128GB", p:139} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 11",
+        sub:"Dual camera favorite - Grade A",
+        func:"A13 Bionic, Night Mode, 6.1-inch Liquid Retina, IP68, 2x optical zoom out",
+        opts:[ {s:"64GB", p:180}, {s:"128GB", p:200} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 12",
+        sub:"5G flat edge design - Grade A",
+        func:"Ceramic Shield, A14 Bionic, 5G, MagSafe, Super Retina XDR, Night Mode",
+        opts:[ {s:"64GB", p:170}, {s:"128GB", p:230} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 13",
+        sub:"Better battery & speed - Grade A",
+        func:"A15 Bionic, Cinematic Mode, Sensor-shift OIS, 5G, All-day battery",
+        opts:[ {s:"128GB", p:275}, {s:"256GB", p:330} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 14",
+        sub:"Reliable everyday flagship - Grade A",
+        func:"A15 Bionic, Emergency SOS via satellite, Crash Detection, 5G",
+        opts:[ {s:"128GB", p:300}, {s:"256GB", p:360} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 15",
+        sub:"USB-C modern design - Grade A",
+        func:"USB-C port, Dynamic Island, A16 Bionic, 48MP main cam, 5G",
+        opts:[ {s:"128GB", p:420}, {s:"256GB", p:460} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 11 Pro",
+        sub:"Triple camera pro - Grade A",
+        func:"Triple 12MP, Telephoto + Ultra Wide, A13 Bionic, OLED",
+        opts:[ {s:"64GB", p:200}, {s:"256GB", p:230} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 11 Pro Max",
+        sub:"Large screen pro - Grade A",
+        func:"6.5-inch OLED, Triple cam, Longest battery, A13 Bionic",
+        opts:[ {s:"64GB", p:220}, {s:"256GB", p:250} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 12 Pro",
+        sub:"Sleek stainless steel - Grade A",
+        func:"Ceramic Shield, LiDAR scanner, 2.5x zoom, A14 Bionic, 5G",
+        opts:[ {s:"128GB", p:260}, {s:"256GB", p:270} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 12 Pro Max",
+        sub:"Biggest display & zoom - Grade A",
+        func:"6.7-inch, 2.5x optical zoom, Sensor-shift OIS, Long battery",
+        opts:[ {s:"128GB", p:290}, {s:"256GB", p:320} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 13 Pro",
+        sub:"120Hz ProMotion display - Grade A",
+        func:"A15 Bionic, 3x optical zoom, 1TB option, Cinematic Mode",
+        opts:[ {s:"128GB", p:348}, {s:"256GB", p:390} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 13 Pro Max",
+        sub:"Ultimate battery pro - Grade A",
+        func:"6.7-inch 120Hz, Best battery life, 3x zoom, A15 Bionic",
+        opts:[ {s:"128GB", p:365}, {s:"256GB", p:420} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 14 Pro",
+        sub:"Dynamic Island first gen - Grade A",
+        func:"Always-On Display, Dynamic Island, 48MP cam, A16 Bionic",
+        opts:[ {s:"128GB", p:430}, {s:"256GB", p:470} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 14 Pro Max",
+        sub:"Large Dynamic Island - Grade A",
+        func:"6.7-inch Always-On, 48MP, Dynamic Island, Fast A16 chip",
+        opts:[ {s:"128GB", p:480}, {s:"256GB", p:530} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 15 Pro",
+        sub:"Titanium USB-C pro - Grade A+",
+        func:"Titanium design, USB-C, Action Button, A17 Pro, 3nm chip",
+        opts:[ {s:"128GB", p:560}, {s:"256GB", p:590} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 15 Pro Max",
+        sub:"Ultimate flagship titanium - Grade A+",
+        func:"5x optical zoom, 6.7-inch, Action Button, USB-C, Longest battery",
+        opts:[ {s:"256GB", p:670}, {s:"512GB", p:690} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 16",
+        sub:"Next-gen standard iPhone - New",
+        func:"A18 chip, Improved camera system, USB-C, Longer battery",
+        opts:[ {s:"128GB", p:525} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 16 Pro",
+        sub:"Advanced pro system - New",
+        func:"A18 Pro chip, 48MP quad-pixel, 5x zoom, Titanium, Action Button",
+        opts:[ {s:"128GB", p:695} ]
+    },
+    {
+        brand:"Apple",
+        model:"iPhone 16 Pro Max",
+        sub:"Top tier flagship - New",
+        func:"Largest display, Maximum battery, 5x telephoto, All premium features",
+        opts:[ {s:"256GB", p:885} ]
+    },
+
+    // 🟦 SAMSUNG — COMPLETE Z FLIP + S SERIES PRICES
     {
         brand:"Samsung",
         model:"Galaxy S22 Ultra",
@@ -583,88 +754,55 @@ const inventory = [
             {s:"2 SIM • 256GB", p:783}
         ]
     },
-
-    // ✅🆕 SAMSUNG Z FLIP SERIES — EXACTLY AS YOU REQUESTED
     {
         brand:"Samsung",
         model:"Galaxy Z Flip 1",
         sub:"Compact foldable - Original",
         func:"Foldable Infinity Flex Display, 12MP dual camera, Snapdragon 855+, Compact pocket design",
-        opts:[
-            {s:"1 SIM • 256GB", p:177}
-        ]
+        opts:[ {s:"1 SIM • 256GB", p:177} ]
     },
     {
         brand:"Samsung",
         model:"Galaxy Z Flip 2",
         sub:"Reliable foldable - Original",
         func:"Improved hinge, 6.7-inch foldable display, 12MP camera, 3300mAh battery",
-        opts:[
-            {s:"1 SIM • 256GB", p:161}
-        ]
+        opts:[ {s:"1 SIM • 256GB", p:161} ]
     },
     {
         brand:"Samsung",
         model:"Galaxy Z Flip 3",
         sub:"Water-resistant foldable - Original",
         func:"IPX8 water resistance, Custom Cover Screen, 12MP dual cam, Snapdragon 888",
-        opts:[
-            {s:"1 SIM • 256GB", p:215}
-        ]
+        opts:[ {s:"1 SIM • 256GB", p:215} ]
     },
     {
         brand:"Samsung",
         model:"Galaxy Z Flip 4",
         sub:"All-day battery foldable - Original",
         func:"Stronger hinge, faster charging, improved battery life, 12MP dual pixel",
-        opts:[
-            {s:"1 SIM • 128GB", p:200},
-            {s:"1 SIM • 256GB", p:238}
-        ]
+        opts:[ {s:"1 SIM • 128GB", p:200}, {s:"1 SIM • 256GB", p:238} ]
     },
     {
         brand:"Samsung",
         model:"Galaxy Z Flip 5",
         sub:"Large cover screen - Original",
         func:"3.4-inch Flex Window, new hinge design, Snapdragon 8 Gen 2, compact",
-        opts:[
-            {s:"1 SIM • 256GB", p:299}
-        ]
+        opts:[ {s:"1 SIM • 256GB", p:299} ]
     },
     {
         brand:"Samsung",
         model:"Galaxy Z Flip 6",
         sub:"Premium performance foldable - Original",
         func:"Brighter display, faster processor, better durability, AI features",
-        opts:[
-            {s:"1 SIM • 256GB", p:461}
-        ]
+        opts:[ {s:"1 SIM • 256GB", p:461} ]
     },
     {
         brand:"Samsung",
         model:"Galaxy Z Flip 7",
         sub:"Latest flagship foldable - Original",
         func:"Advanced durability, premium materials, best camera & performance",
-        opts:[
-            {s:"1 SIM • 256GB", p:530}
-        ]
-    },
-
-    // 🍎 APPLE
-    {brand:"Apple",model:"iPhone 16 Pro",sub:"Advanced pro - Like New",func:"48MP camera, A18 Pro chip, Titanium, USB-C, Action Button, 5x zoom, 120Hz ProMotion",opts:[{s:"128GB",p:695},{s:"256GB",p:745},{s:"512GB",p:815}]},
-    {brand:"Apple",model:"iPhone 16 Pro Max",sub:"Ultimate flagship - Like New",func:"Largest display, best battery, 5x optical zoom, 48MP triple cam, A18 Pro, durable titanium",opts:[{s:"256GB",p:885},{s:"512GB",p:955},{s:"1TB",p:1085}]},
-    {brand:"Apple",model:"iPhone 15 Pro Max",sub:"Large screen legacy king",func:"5x telephoto, A17 Pro, USB-C, titanium, 29hr battery, Super Retina XDR",opts:[{s:"256GB",p:670},{s:"512GB",p:690}]},
-    {brand:"Apple",model:"iPhone 15 Pro",sub:"Premium compact pro",func:"A17 Pro, USB-C, Action Button, durable frame, 48MP cam, console gaming",opts:[{s:"128GB",p:560},{s:"256GB",p:590}]},
-    {brand:"Apple",model:"iPhone 14 Pro Max",sub:"Large screen pro workhorse",func:"Always-On display, Dynamic Island, 48MP, A16, satellite SOS, 5G",opts:[{s:"128GB",p:480},{s:"256GB",p:530}]},
-    {brand:"Apple",model:"iPhone 14 Pro",sub:"High frame rate reliable",func:"120Hz ProMotion, Dynamic Island, 48MP sensor, cinematic mode 4K",opts:[{s:"128GB",p:430},{s:"256GB",p:470}]},
-    {brand:"Apple",model:"iPhone 13 Pro Max",sub:"ProMotion smoothness leader",func:"120Hz, cinematic mode, macro cam, LiDAR scanner, all-day battery",opts:[{s:"128GB",p:365},{s:"256GB",p:420}]},
-    {brand:"Apple",model:"iPhone 12 Pro",sub:"Stainless steel classic",func:"Flat edges, MagSafe, 5G, Dolby Vision HDR recording",opts:[{s:"128GB",p:260},{s:"256GB",p:270}]},
-    {brand:"Apple",model:"iPhone 11",sub:"Liquid Retina daily driver",func:"Great battery, fast A13, dual cam, durable glass",opts:[{s:"64GB",p:180},{s:"128GB",p:200}]},
-
-    // 📱 GOOGLE PIXEL
-    {brand:"Google",model:"Pixel 9 Pro",sub:"Next-gen camera powerhouse",func:"Tensor G4, Magic Editor, best camera, 7 years updates, premium build",opts:[{s:"128GB",p:507},{s:"256GB",p:702}]},
-    {brand:"Google",model:"Pixel 8 Pro",sub:"Bright display AI flagship",func:"Super Actua display, Magic Editor, temperature sensor, real-time translate",opts:[{s:"128GB",p:436},{s:"256GB",p:487}]},
-    {brand:"Google",model:"Pixel 7 Pro",sub:"Polished aluminum design",func:"Tensor G2, super res zoom, macro focus, smooth display",opts:[{s:"128GB",p:295},{s:"256GB",p:325}]}
+        opts:[ {s:"1 SIM • 256GB", p:530} ]
+    }
 ];
 
 let activeBrand = "Apple", cart=[], selected={};
@@ -688,7 +826,6 @@ function render() {
     // Update brand button styles
     document.querySelectorAll('.btn-brand').forEach(btn=>btn.classList.remove('active'));
     if(activeBrand==='Apple') document.getElementById('btn-apple').classList.add('active');
-    if(activeBrand==='Google') document.getElementById('btn-google').classList.add('active');
     if(activeBrand==='Samsung') document.getElementById('btn-samsung').classList.add('active');
 
     list.forEach((dev,i)=>{
@@ -696,8 +833,12 @@ function render() {
         const opt = dev.opts[selected[i]];
         
         const storageHTML = dev.opts.map((o,idx)=>{
+            const isApple = dev.brand==='Apple';
             const isSamsung = dev.brand==='Samsung';
-            return `<span class="storage-pill ${isSamsung?'samsung-pill':''} ${idx==selected[i]?'active':''}" onclick="selectStrg(${i},${idx},${o.p})">${o.s}</span>`;
+            let pillClass = '';
+            if(isApple) pillClass = 'apple-pill';
+            if(isSamsung) pillClass = 'samsung-pill';
+            return `<span class="storage-pill ${pillClass} ${idx==selected[i]?'active':''}" onclick="selectStrg(${i},${idx},${o.p})">${o.s}</span>`;
         }).join('');
 
         grid.innerHTML += `
@@ -709,12 +850,12 @@ function render() {
             <p style="font-size:12px; color:#166534; margin:6px 0;">✓ Exact unit condition confirmed prior to escrow.</p>
             <div class="card-footer">
                 <div>
-                    <div class="price-label">DEVICE ESTIMATE</div>
+                    <div class="price-label">DEVICE PRICE</div>
                     <div class="price-value" id="p${i}">$${opt.p}</div>
                 </div>
                 <div class="btn-group">
                     <button class="btn-info" onclick="openDetails(${i})">Info</button>
-                    <button class="btn-cart ${dev.brand==='Samsung'?'samsung-cart':''}" onclick="addToCart(${i})">🛒 Add To Cart</button>
+                    <button class="btn-cart ${dev.brand==='Apple'?'apple-cart':'samsung-cart'}" onclick="addToCart(${i})">🛒 Add</button>
                 </div>
             </div>
         </div>`;
@@ -725,7 +866,7 @@ function selectStrg(i,idx,price) { selected[i]=idx; document.getElementById(`p${
 function filterBrand(b) { activeBrand=b; selected={}; render(); }
 
 // ✅ DETAILS
-function openInfo(i) {
+function openDetails(i) {
     const dev = inventory.filter(d=>d.brand===activeBrand)[i];
     const opts = dev.opts;
     
@@ -735,16 +876,19 @@ function openInfo(i) {
     
     // Badge color
     const badge = document.getElementById('det-badge');
-    if(dev.brand==='Samsung') {
+    if(dev.brand==='Apple') {
+        badge.className = 'apple-highlight';
+        badge.innerText = '100% ORIGINAL';
+    } else if(dev.brand==='Samsung') {
         badge.className = 'samsung-highlight';
-        badge.innerText = '100% NEW / ORIGINAL';
+        badge.innerText = '100% ORIGINAL';
     } else {
         badge.className = 'highlight';
-        badge.innerText = '100% NEW / ORIGINAL';
+        badge.innerText = '100% ORIGINAL';
     }
 
     document.getElementById('det-store').innerHTML = opts.map(o=>{
-        const cls = dev.brand==='Samsung'?'samsung-highlight':'highlight';
+        const cls = dev.brand==='Apple'?'apple-highlight':'samsung-highlight';
         return `<span class="${cls}" style="margin:2px 4px 2px 0; display:inline-block;">${o.s}</span>`;
     }).join(' ');
 
