@@ -16,7 +16,7 @@
             --accent-samsung: #1428A0;
             --accent-apple: #0071e3;
             --accent-pixel: #4285F4;
-            --accent-laptop: #6366f1;
+            --accent-ipad: #6366f1;
             --accent-generic: #374151;
             --border: #e5e7eb;
         }
@@ -170,7 +170,7 @@
         .samsung-highlight { background: #eef2ff; color: var(--accent-samsung); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
         .apple-highlight { background: #f0f7ff; color: var(--accent-apple); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
         .pixel-highlight { background: #e8f0fe; color: var(--accent-pixel); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
-        .laptop-highlight { background: #f5f3ff; color: var(--accent-laptop); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
+        .ipad-highlight { background: #f5f3ff; color: var(--accent-ipad); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
         .generic-highlight { background: #f3f4f6; color: var(--accent-generic); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
 
         /* ✅ RESPONSIVE LAYOUT */
@@ -237,7 +237,7 @@
         .btn-brand.apple-btn:hover, .btn-brand.apple-btn.active { background: var(--accent-apple); color: white; border-color: var(--accent-apple); }
         .btn-brand.samsung-btn:hover, .btn-brand.samsung-btn.active { background: var(--accent-samsung); color: white; border-color: var(--accent-samsung); }
         .btn-brand.pixel-btn:hover, .btn-brand.pixel-btn.active { background: var(--accent-pixel); color: white; border-color: var(--accent-pixel); }
-        .btn-brand.laptop-btn:hover, .btn-brand.laptop-btn.active { background: var(--accent-laptop); color: white; border-color: var(--accent-laptop); }
+        .btn-brand.ipad-btn:hover, .btn-brand.ipad-btn.active { background: var(--accent-ipad); color: white; border-color: var(--accent-ipad); }
         .btn-brand.generic-btn:hover, .btn-brand.generic-btn.active { background: var(--accent-generic); color: white; border-color: var(--accent-generic); }
 
         /* Sub-options for Phones */
@@ -357,7 +357,7 @@
         .apple-pill.active { background: var(--accent-apple); color: white; border-color: var(--accent-apple); }
         .samsung-pill.active { background: var(--accent-samsung); color: white; border-color: var(--accent-samsung); }
         .pixel-pill.active { background: var(--accent-pixel); color: white; border-color: var(--accent-pixel); }
-        .laptop-pill.active { background: var(--accent-laptop); color: white; border-color: var(--accent-laptop); }
+        .ipad-pill.active { background: var(--accent-ipad); color: white; border-color: var(--accent-ipad); }
         .generic-pill.active { background: var(--accent-generic); color: white; border-color: var(--accent-generic); }
 
         .card-footer {
@@ -396,7 +396,7 @@
         .btn-cart.apple-cart { background: var(--accent-apple); }
         .btn-cart.samsung-cart { background: var(--accent-samsung); }
         .btn-cart.pixel-cart { background: var(--accent-pixel); }
-        .btn-cart.laptop-cart { background: var(--accent-laptop); }
+        .btn-cart.ipad-cart { background: var(--accent-ipad); }
         .btn-cart.generic-cart { background: var(--accent-generic); }
         .btn-cart:hover { opacity: 0.9; }
 
@@ -522,12 +522,12 @@
             <div class="filter-btn-container">
                 <button class="btn-brand active" id="btn-phones" onclick="togglePhoneSub()">📱 Phones ▾</button>
                 <div id="phone-submenu" class="sub-filter show">
-                    <button class="btn-sub active" onclick="filterBrand('Phones', 'Apple')">🍎 iPhone</button>
-                    <button class="btn-sub" onclick="filterBrand('Phones', 'Samsung')">📱 Samsung</button>
-                    <button class="btn-sub" onclick="filterBrand('Phones', 'Google')">🔍 Google Pixel</button>
+                    <button class="btn-sub active" onclick="filterBrand('Apple')">🍎 iPhone</button>
+                    <button class="btn-sub" onclick="filterBrand('Samsung')">📱 Samsung</button>
+                    <button class="btn-sub" onclick="filterBrand('Google')">🔍 Google Pixel</button>
                 </div>
 
-                <button class="btn-brand laptop-btn" id="btn-laptops" onclick="filterBrand('Laptops')">💻 Laptops</button>
+                <button class="btn-brand ipad-btn" id="btn-ipads" onclick="filterBrand('iPads')">📟 iPads</button>
                 <button class="btn-brand generic-btn" id="btn-shoes" onclick="filterBrand('Shoes')">👟 Shoes</button>
                 <button class="btn-brand generic-btn" id="btn-handbags" onclick="filterBrand('Handbags')">👜 Handbags</button>
                 <button class="btn-brand generic-btn" id="btn-clothing" onclick="filterBrand('Clothing')">👕 Clothing</button>
@@ -773,42 +773,122 @@ const inventory = [
         opts:[ {s:"128GB", p:430}, {s:"256GB", p:475} ]
     },
 
-    // 💻 LAPTOPS (Windows + Android)
+    // 📟 IPADS
     {
-        brand:"Windows",
-        category:"Laptops",
-        model:"Dell Latitude 5400",
-        sub:"Business laptop - Grade A",
-        func:"Intel i5-8350U, 14-inch FHD, 8GB RAM, 256GB SSD, Windows 11",
-        opts:[ {s:"8GB/256GB", p:290}, {s:"16GB/512GB", p:345} ]
+        brand:"iPads",
+        category:"iPads",
+        model:"iPad Mini 4",
+        sub:"Compact and Portable Tablet Ecosystem",
+        func:"Retina display metrics, Touch ID module, Slim lightweight aluminum profile",
+        opts:[
+            {s:"128GB (WiFi)", p:146},
+            {s:"128GB (Sim)", p:161}
+        ]
     },
     {
-        brand:"Windows",
-        category:"Laptops",
-        model:"HP ProBook 450 G8",
-        sub:"Durable everyday use - Grade A",
-        func:"Intel i5-1135G7, 15.6-inch FHD, 8GB RAM, 256GB SSD",
-        opts:[ {s:"8GB/256GB", p:310}, {s:"16GB/512GB", p:365} ]
+        brand:"iPads",
+        category:"iPads",
+        model:"iPad Mini 5",
+        sub:"High Performance Mini Production Line",
+        func:"Apple A12 Bionic engine, Apple Pencil access tracking capabilities, True Tone integration",
+        opts:[
+            {s:"64GB (WiFi)", p:192},
+            {s:"64GB (Sim)", p:253},
+            {s:"256GB (WiFi)", p:268},
+            {s:"256GB (Sim)", p:288}
+        ]
     },
     {
-        brand:"Android",
-        category:"Laptops",
-        model:"Samsung Galaxy Book Go",
-        sub:"Lightweight Android laptop - Grade A",
-        func:"Snapdragon 7c Gen 2, 14-inch FHD, 4GB RAM, 128GB eMMC",
-        opts:[ {s:"4GB/128GB", p:220}, {s:"8GB/256GB", p:260} ]
+        brand:"iPads",
+        category:"iPads",
+        model:"iPad Mini 6",
+        sub:"Modern All-Screen Mini Dynamic Unit",
+        func:"A15 Bionic layout processing, Center Stage digital lens, USB-C multi-channel port",
+        opts:[
+            {s:"64GB (WiFi)", p:345},
+            {s:"64GB (Sim)", p:407},
+            {s:"256GB (WiFi)", p:422},
+            {s:"256GB (Sim)", p:484}
+        ]
     },
     {
-        brand:"Windows",
-        category:"Laptops",
-        model:"Lenovo ThinkPad X1 Carbon",
-        sub:"Premium ultrabook - Grade A+",
-        func:"Intel i7-1165G7, 14-inch 4K, 16GB RAM, 512GB SSD, Carbon fiber",
-        opts:[ {s:"16GB/512GB", p:520}, {s:"16GB/1TB", p:575} ]
+        brand:"iPads",
+        category:"iPads",
+        model:"iPad Standard (Gen 6/7/8)",
+        sub:"High Efficiency Education and Production Hubs",
+        func:"Spacious high-res viewing glass, smart keyboard attachment readiness pipelines",
+        opts:[
+            {s:"Gen 6 • 128GB (Sim)", p:187},
+            {s:"Gen 7 • 128GB (Sim)", p:253},
+            {s:"Gen 8 • 128GB (Sim)", p:283}
+        ]
+    },
+    {
+        brand:"iPads",
+        category:"iPads",
+        model:"iPad Gen 9",
+        sub:"Classic Operational Tablet System",
+        func:"A13 Bionic baseline chip speed matrix, Ultra-Wide front lens tracking arrays",
+        opts:[
+            {s:"64GB (WiFi)", p:238},
+            {s:"64GB (Sim)", p:267},
+            {s:"256GB (WiFi)", p:299},
+            {s:"256GB (Sim)", p:336}
+        ]
+    },
+    {
+        brand:"iPads",
+        category:"iPads",
+        model:"iPad Gen 10",
+        sub:"Redesigned All-Screen Entry System",
+        func:"10.9-inch Liquid Retina matrix, A14 Bionic power rails, Landscape camera setup",
+        opts:[
+            {s:"64GB (WiFi)", p:361},
+            {s:"64GB (Sim)", p:392},
+            {s:"256GB (WiFi)", p:397},
+            {s:"256GB (Sim)", p:474}
+        ]
+    },
+    {
+        brand:"iPads",
+        category:"iPads",
+        model:"iPad Air 4",
+        sub:"Mid-Tier Premium Professional Build",
+        func:"Liquid Retina layout structures, Top-button Touch ID integration, USB-C framework",
+        opts:[
+            {s:"64GB (WiFi)", p:345},
+            {s:"64GB (Sim)", p:376},
+            {s:"256GB (WiFi)", p:407},
+            {s:"256GB (Sim)", p:453}
+        ]
+    },
+    {
+        brand:"iPads",
+        category:"iPads",
+        model:"iPad Air 5",
+        sub:"Desktop-Class Processing Ecosystem",
+        func:"Apple M1 advanced system chip implementation, ultra-fast file transfer capabilities",
+        opts:[
+            {s:"256GB (WiFi)", p:515},
+            {s:"256GB (Sim)", p:561}
+        ]
+    },
+    {
+        brand:"iPads",
+        category:"iPads",
+        model:"iPad Air 6 [11 inches]",
+        sub:"Next-Generation Advanced Air Engine",
+        func:"Apple M2 architecture integration, ultra-vibrant liquid framework, ultimate productivity tier",
+        opts:[
+            {s:"128GB (WiFi)", p:515},
+            {s:"128GB (Sim)", p:576},
+            {s:"256GB (WiFi)", p:561},
+            {s:"256GB (Sim)", p:592}
+        ]
     }
 ];
 
-let activeCategory = "Phones", activeBrand = "Apple", cart=[], selected={};
+let activeBrand = "Apple", cart=[], selected={};
 
 function openAbout() { openModal('aboutModal'); }
 function openDestinations() { openModal('destModal'); }
@@ -827,19 +907,18 @@ function togglePhoneSub() {
     submenu.classList.toggle('show');
 }
 
-function filterBrand(catName, brandName = null) {
-    activeCategory = catName;
-    if(brandName) activeBrand = brandName;
+function filterBrand(brandName) {
+    activeBrand = brandName;
 
     // Update button states
     document.querySelectorAll('.btn-brand').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll('.btn-sub').forEach(btn => btn.classList.remove('active'));
     
-    if(activeCategory === 'Phones') {
+    if(["Apple", "Samsung", "Google"].includes(brandName)) {
         document.getElementById('btn-phones').classList.add('active');
-        document.querySelector(`.btn-sub[onclick*="${activeBrand}"]`).classList.add('active');
+        document.querySelector(`.btn-sub[onclick*="${brandName}"]`).classList.add('active');
     } else {
-        document.getElementById(`btn-${catName.toLowerCase()}`).classList.add('active');
+        document.getElementById(`btn-${brandName.toLowerCase()}`).classList.add('active');
     }
 
     render();
@@ -851,21 +930,18 @@ function render() {
 
     // Restock notice for these categories
     const restockCategories = ["Shoes", "Handbags", "Clothing", "Machinery"];
-    if(restockCategories.includes(activeCategory)) {
+    if(restockCategories.includes(activeBrand)) {
         grid.innerHTML = `
             <div class="restock-notice">
                 <h3>📦 Currently Restocking</h3>
-                <p>We are updating our inventory for ${activeCategory}. New stock arriving soon!</p>
+                <p>We are updating our inventory for ${activeBrand}. New stock arriving soon!</p>
                 <p style="margin-top:10px; font-size:14px;">Contact us to pre-order or get notified: <strong>+86 18717323027</strong></p>
             </div>`;
         return;
     }
 
     // Filter items
-    let filteredItems = inventory.filter(item => item.category === activeCategory);
-    if(activeCategory === "Phones") {
-        filteredItems = filteredItems.filter(item => item.brand === activeBrand);
-    }
+    let filteredItems = inventory.filter(item => item.brand === activeBrand);
 
     if(filteredItems.length === 0) {
         grid.innerHTML = `<p style="padding:20px; color:var(--text-muted);">No products available at the moment.</p>`;
@@ -880,7 +956,7 @@ function render() {
         if(dev.brand === 'Apple') { pillClass = 'apple-pill'; cartClass = 'apple-cart'; highlightClass = 'apple-highlight'; }
         if(dev.brand === 'Samsung') { pillClass = 'samsung-pill'; cartClass = 'samsung-cart'; highlightClass = 'samsung-highlight'; }
         if(dev.brand === 'Google') { pillClass = 'pixel-pill'; cartClass = 'pixel-cart'; highlightClass = 'pixel-highlight'; }
-        if(dev.category === 'Laptops') { pillClass = 'laptop-pill'; cartClass = 'laptop-cart'; highlightClass = 'laptop-highlight'; }
+        if(dev.brand === 'iPads') { pillClass = 'ipad-pill'; cartClass = 'ipad-cart'; highlightClass = 'ipad-highlight'; }
 
         const storageHTML = dev.opts.map((o, optIdx) => 
             `<span class="storage-pill ${pillClass} ${optIdx === selected[idx] ? 'active' : ''}" 
@@ -890,7 +966,7 @@ function render() {
         grid.innerHTML += `
         <div class="card">
             <div>
-                <div class="card-tag">${dev.brand.toUpperCase()} ${dev.category.toUpperCase()}</div>
+                <div class="card-tag">${dev.brand.toUpperCase()}</div>
                 <h3 class="card-title">${dev.model}</h3>
                 <p class="card-sub">${dev.sub}</p>
                 <div class="storage-options">${storageHTML}</div>
@@ -918,9 +994,7 @@ function selectStrg(itemIdx, optIdx) {
 }
 
 function openDetails(idx) {
-    const dev = inventory.filter(i => 
-        activeCategory === "Phones" ? (i.category === activeCategory && i.brand === activeBrand) : (i.category === activeCategory)
-    )[idx];
+    const dev = inventory.filter(i => i.brand === activeBrand)[idx];
     const opts = dev.opts;
     
     document.getElementById('det-model').innerText = dev.model;
@@ -928,7 +1002,7 @@ function openDetails(idx) {
     document.getElementById('det-func').innerText = dev.func;
 
     const badge = document.getElementById('det-badge');
-    badge.className = dev.brand === 'Apple' ? 'apple-highlight' : dev.brand === 'Samsung' ? 'samsung-highlight' : dev.brand === 'Google' ? 'pixel-highlight' : 'laptop-highlight';
+    badge.className = dev.brand === 'Apple' ? 'apple-highlight' : dev.brand === 'Samsung' ? 'samsung-highlight' : dev.brand === 'Google' ? 'pixel-highlight' : 'ipad-highlight';
 
     document.getElementById('det-store').innerHTML = opts.map(o => 
         `<span class="${badge.className}" style="margin:3px 4px; display:inline-block; border-radius:8px;">${o.s}</span>`
@@ -942,51 +1016,5 @@ function openDetails(idx) {
 }
 
 function addToCart(idx) {
-    const dev = inventory.filter(i => 
-        activeCategory === "Phones" ? (i.category === activeCategory && i.brand === activeBrand) : (i.category === activeCategory)
-    )[idx];
-    const currentSel = selected[idx] || 0;
-    const opt = dev.opts[currentSel];
-    const qty = parseInt(document.getElementById('qty').value) || 1;
-    
-    cart.push({ m: dev.model, s: opt.s, p: opt.p, q: qty, t: opt.p * qty });
-    updateCart();
-}
-
-function updateCart() {
-    const list = document.getElementById('cartlist');
-    list.innerHTML = "";
-    cart.forEach((it, i) => {
-        list.innerHTML += `
-        <div class="cart-item">
-            <span>${it.m} (${it.s}) ×${it.q}</span>
-            <span>$${it.t} <button onclick="cart.splice(${i},1);updateCart();" style="border:none; color:red; background:transparent; cursor:pointer; margin-left:5px;">❌</button></span>
-        </div>`;
-    });
-    document.getElementById('cartnum').innerText = cart.length;
-}
-
-function openOrder() {
-    if(!cart.length) return alert("Your cart is empty!");
-    const shipEl = document.getElementById('ship-to');
-    const ship = parseInt(shipEl.value);
-    const shipName = shipEl.selectedOptions[0].dataset.name;
-    const sub = cart.reduce((a, b) => a + b.t, 0);
-    const total = sub + ship;
-
-    let itemsHTML = "", msg = `*MALWENE EXPORTS ORDER*%0A------------------------%0A`;
-    cart.forEach(it => { 
-        itemsHTML += `<div class="cart-item"><span>${it.m}</span><span>${it.s} ×${it.q} — $${it.t}</span></div>`; 
-        msg += `• ${it.m} | ${it.s} | Qty:${it.q} | $${it.t}%0A`; 
-    });
-    msg += `------------------------%0A*Subtotal:* $${sub}%0A*Shipping:* $${ship} (${shipName})%0A*TOTAL:* $${total}%0A------------------------%0APlease confirm your order.`;
-
-    document.getElementById('order-items').innerHTML = itemsHTML;
-    document.getElementById('subtotal').innerText = `$${sub}`;
-    document.getElementById('shipcost').innerText = `$${ship} (${shipName})`;
-    document.getElementById('gtotal').innerText = `$${total}`;
-    document.getElementById('paylink').href = `https://wa.me/8618717323027?text=${msg}`;
-    openModal('orderModal');
-}
-
-window
+    const dev = inventory.filter(i => i.brand === activeBrand)[idx];
+    const currentSel = selected[idx] || 0
