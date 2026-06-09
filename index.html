@@ -34,7 +34,6 @@
             line-height: 1.5;
         }
 
-        /* ✅ TOP NAVIGATION BAR - MOBILE & DESKTOP OPTIMIZED */
         header {
             background-color: var(--dark-nav);
             padding: 14px 18px;
@@ -86,7 +85,6 @@
             background-color: #1f2937;
         }
 
-        /* ✅ DROPDOWN MENUS */
         .dropdown { position: relative; display: inline-block; }
         .dropdown-content {
             display: none;
@@ -111,7 +109,6 @@
         .dropdown-content a:hover { background: #f9fafb; color: var(--accent-green); }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* ✅ MODALS */
         .modal {
             display: none;
             position: fixed;
@@ -171,7 +168,6 @@
         .ipad-highlight { background: #f5f3ff; color: var(--accent-ipad); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
         .google-highlight { background: #e8f0fe; color: var(--accent-google); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
 
-        /* ✅ RESPONSIVE MAIN LAYOUT */
         .container {
             max-width: 1200px;
             margin: 16px auto;
@@ -212,12 +208,6 @@
             flex-direction: column;
             gap: 8px;
         }
-        @media(max-width:991px) {
-            .filter-btn-container {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-            }
-        }
 
         .btn-brand {
             width: 100%;
@@ -227,15 +217,45 @@
             border-radius: 6px;
             text-align: left;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .btn-brand.active { background: var(--text-dark); color: white; border-color: var(--text-dark); }
-        .btn-brand.apple-btn:hover, .btn-brand.apple-btn.active { background: var(--accent-apple); color: white; border-color: var(--accent-apple); }
-        .btn-brand.samsung-btn:hover, .btn-brand.samsung-btn.active { background: var(--accent-samsung); color: white; border-color: var(--accent-samsung); }
-        .btn-brand.ipad-btn:hover, .btn-brand.ipad-btn.active { background: var(--accent-ipad); color: white; border-color: var(--accent-ipad); }
-        .btn-brand.google-btn:hover, .btn-brand.google-btn.active { background: var(--accent-google); color: white; border-color: var(--accent-google); }
+
+        /* Subcategories Navigation Panel Layouts */
+        .sub-filter-panel {
+            display: none;
+            background: #f9fafb;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px;
+            margin-top: 4px;
+            margin-bottom: 10px;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .sub-filter-panel.active { display: flex; }
+        
+        .btn-sub {
+            padding: 8px 12px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .btn-sub:hover { background: #f3f4f6; }
+        .btn-sub.active-apple { background: var(--accent-apple); color: white; border-color: var(--accent-apple); }
+        .btn-sub.active-samsung { background: var(--accent-samsung); color: white; border-color: var(--accent-samsung); }
+        .btn-sub.active-google { background: var(--accent-google); color: white; border-color: var(--accent-google); }
+        .btn-sub.active-ipad { background: var(--accent-ipad); color: white; border-color: var(--accent-ipad); }
 
         .form-field {
             width: 100%;
@@ -398,14 +418,13 @@
     </div>
 </header>
 
+<!-- MODALS SECTION -->
 <div id="aboutModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeModal('aboutModal')">&times;</span>
         <h2>🏢 About Malwene Exports</h2>
         <p><strong>Malwene Exports</strong> is a trusted global wholesale supplier of premium refurbished and brand-new smartphones, tablets, and tech devices. Founded with a vision to bridge quality technology across borders, we specialize in sourcing, grading, and delivering top-tier mobile devices from China directly to businesses and individuals across Africa and worldwide.</p>
         <p>We are headquartered in China 🇨🇳 with distribution hubs across Southern Africa, ensuring fast, safe, and affordable logistics. Our core focus is <strong>100% original quality, transparent pricing, and reliable delivery</strong>.</p>
-        <h3 style="margin:16px 0 6px 0; font-size:17px;">🎯 Our Mission</h3>
-        <p>To make premium technology accessible, affordable, and trustworthy for everyone — connecting global supply with local demand, securely and efficiently.</p>
     </div>
 </div>
 
@@ -419,11 +438,8 @@
             <li>🇿🇲 <strong>Zambia</strong> — Lusaka, Kitwe, Ndola</li>
             <li>🇷🇼 <strong>Rwanda</strong> — Kigali & all districts</li>
             <li>🇿🇦 <strong>South Africa</strong> — Johannesburg, Cape Town, Durban</li>
-            <li>🇰🇪 <strong>Kenya</strong> — Nairobi, Mombasa</li>
-            <li>🇹🇿 <strong>Tanzania</strong> — Dar es Salaam, Arusha</li>
             <li>🇨🇳 <strong>China</strong> — Local shipping available</li>
         </ul>
-        <p style="margin-top:12px;"><span class="highlight">✈️ Express Delivery: 3–7 days to Africa</span></p>
     </div>
 </div>
 
@@ -435,7 +451,6 @@
             <li><strong>📦 Global Device Sourcing:</strong> Direct factory access to authentic premium stock.</li>
             <li><strong>✅ Professional Testing:</strong> Hand-graded and performance verified before delivery.</li>
             <li><strong>🚚 Fast Logistics:</strong> Full tracked global airfreight options.</li>
-            <li><strong>🔐 Safe Protection:</strong> Escrow processing and buyer clearance parameters secured.</li>
         </ul>
     </div>
 </div>
@@ -483,12 +498,30 @@
         </div>
 
         <div>
-            <h4 style="font-size:13px; text-transform:uppercase; color:#777; margin-bottom:8px;">Filter Category</h4>
+            <h4 style="font-size:13px; text-transform:uppercase; color:#777; margin-bottom:8px;">Categories</h4>
             <div class="filter-btn-container">
-                <button class="btn-brand apple-btn active" id="btn-apple" onclick="filterBrand('Apple')">🍎 iPhones</button>
-                <button class="btn-brand ipad-btn" id="btn-ipad" onclick="filterBrand('iPads')">平板 iPads</button>
-                <button class="btn-brand samsung-btn" id="btn-samsung" onclick="filterBrand('Samsung')">🟦 Samsung</button>
-                <button class="btn-brand google-btn" id="btn-google" onclick="filterBrand('Google')">🌐 Google Pixels</button>
+                <!-- MAIN OPTION 1: PHONES & TABLETS -->
+                <button class="btn-brand" id="main-devices" onclick="toggleMainCategory('devices')">
+                    <span>📱 Phones & Tablets</span> <span>▾</span>
+                </button>
+                
+                <!-- DROPDOWN OPTIONS UNDER PHONES -->
+                <div class="sub-filter-panel" id="devices-sub-panel">
+                    <button class="btn-sub" id="sub-apple" onclick="filterSubBrand('Apple')">🍎 iPhones</button>
+                    <button class="btn-sub" id="sub-samsung" onclick="filterSubBrand('Samsung')">🟦 Samsung</button>
+                    <button class="btn-sub" id="sub-google" onclick="filterSubBrand('Google')">🌐 Google Pixels</button>
+                    <button class="btn-sub" id="sub-ipad" onclick="filterSubBrand('iPads')">平板 iPads</button>
+                </div>
+
+                <!-- MAIN OPTION 2: AGENCY SERVICES -->
+                <button class="btn-brand" id="main-agency" onclick="toggleMainCategory('agency')">
+                    <span>📦 Agency Services</span> <span>▾</span>
+                </button>
+
+                <!-- MAIN OPTION 3: RESTOCKING PARAMETERS -->
+                <button class="btn-brand" id="main-restock" onclick="toggleMainCategory('restock')">
+                    <span>🚀 Priority Restocking</span> <span>▾</span>
+                </button>
             </div>
         </div>
 
@@ -529,430 +562,58 @@
 <script>
 const inventory = [
     // 🍎 APPLE IPHONE
-    {
-        brand:"Apple",
-        model:"iPhone 7 Plus",
-        sub:"Budget daily driver - Grade A/B",
-        func:"12MP camera, Touch ID, A10 Fusion, 5.5-inch Retina HD",
-        opts:[ {s:"128GB", p:70} ]
-    },
-    {
-        brand:"Apple",
-        model:"iPhone 8 Plus",
-        sub:"Reliable classic - Grade A/B",
-        func:"12MP dual cam, Wireless charging, A11 Bionic, 5.5-inch",
-        opts:[ {s:"64GB", p:90} ]
-    },
-    {
-        brand:"Apple",
-        model:"iPhone XS",
-        sub:"Premium OLED display - Grade A",
-        func:"5.8-inch Super Retina OLED, Dual 12MP, Face ID",
-        opts:[ {s:"256GB", p:138} ]
-    },
-    {
-        brand:"Apple",
-        model:"iPhone XR",
-        sub:"Long battery life - Grade A",
-        func:"6.1-inch Liquid Retina, Single 12MP, A12 Bionic",
-        opts:[ {s:"64GB", p:125}, {s:"128GB", p:139} ]
-    },
-    {
-        brand:"Apple",
-        model:"iPhone 11",
-        sub:"Dual camera favorite - Grade A",
-        func:"A13 Bionic, Night Mode, 6.1-inch Liquid Retina, IP68",
-        opts:[ {s:"64GB", p:180}, {s:"128GB", p:200} ]
-    },
-    {
-        brand:"Apple",
-        model:"iPhone 12",
-        sub:"5G flat edge design - Grade A",
-        func:"Ceramic Shield, A14 Bionic, 5G, MagSafe system",
-        opts:[ {s:"64GB", p:170}, {s:"128GB", p:230} ]
-    },
-    {
-        brand:"Apple",
-        model:"iPhone 13",
-        sub:"Better battery & speed - Grade A",
-        func:"A15 Bionic, Cinematic Mode, Sensor-shift setup",
-        opts:[ {s:"128GB", p:275}, {s:"256GB", p:330} ]
-    },
-    {
-        brand:"Apple",
-        model:"iPhone 14",
-        sub:"Reliable flagship layout - Grade A",
-        func:"A15 Bionic architecture, Advanced Action features, 5G",
-        opts:[ {s:"128GB", p:300}, {s:"256GB", p:360} ]
-    },
-    {
-        brand:"Apple",
-        model:"iPhone 15",
-        sub:"USB-C modern design - Grade A+",
-        func:"USB-C architecture, Dynamic Island UI, 48MP lenses",
-        opts:[ {s:"128GB", p:420}, {s:"256GB", p:460} ]
-    },
-    {
-        brand:"Apple",
-        model:"iPhone 11 Pro Max",
-        sub:"Large screen pro - Grade A",
-        func:"6.5-inch OLED grid, Triple camera setup, High processing tier",
-        opts:[ {s:"64GB", p:220}, {s:"256GB", p:250} ]
-    },
-    {
-        brand:"Apple",
-        model:"iPhone 12 Pro Max",
-        sub:"Max performance layout - Grade A",
-        func:"6.7-inch display matrix, LiDAR scanners, Premium framework",
-        opts:[ {s:"128GB", p:290}, {s:"256GB", p:320} ]
-    },
-    {
-        brand:"Apple",
-        model:"iPhone 13 Pro Max",
-        sub:"Ultimate dynamic frame - Grade A+",
-        func:"ProMotion 120Hz display parameters, A15 premium flagship stability",
-        opts:[ {s:"128GB", p:365}, {s:"256GB", p:420} ]
-    },
-    {
-        brand:"Apple",
-        model:"iPhone 14 Pro Max",
-        sub:"Dynamic display master - Grade A+",
-        func:"Always-On interface layouts, Dynamic Island framework, 48MP modules",
-        opts:[ {s:"128GB", p:480}, {s:"256GB", p:530} ]
-    },
-    {
-        brand:"Apple",
-        model:"iPhone 15 Pro Max",
-        sub:"Premium Titanium Standard - Grade A+",
-        func:"Action input buttons, A17 Pro high-speed chip dynamic layout",
-        opts:[ {s:"256GB", p:670}, {s:"512GB", p:690} ]
-    },
+    { brand:"Apple", model:"iPhone 7 Plus", sub:"Budget daily driver - Grade A/B", func:"12MP camera, Touch ID, A10 Fusion", opts:[{s:"128GB", p:70}] },
+    { brand:"Apple", model:"iPhone 8 Plus", sub:"Reliable classic - Grade A/B", func:"12MP dual cam, Wireless charging, A11 Bionic", opts:[{s:"64GB", p:90}] },
+    { brand:"Apple", model:"iPhone XS", sub:"Premium OLED display - Grade A", func:"5.8-inch Super Retina OLED, Dual 12MP, Face ID", opts:[{s:"256GB", p:138}] },
+    { brand:"Apple", model:"iPhone XR", sub:"Long battery life - Grade A", func:"6.1-inch Liquid Retina, Single 12MP, A12 Bionic", opts:[{s:"64GB", p:125}, {s:"128GB", p:139}] },
+    { brand:"Apple", model:"iPhone 11", sub:"Dual camera favorite - Grade A", func:"A13 Bionic, Night Mode, 6.1-inch Liquid Retina", opts:[{s:"64GB", p:180}, {s:"128GB", p:200}] },
+    { brand:"Apple", model:"iPhone 12", sub:"5G flat edge design - Grade A", func:"Ceramic Shield, A14 Bionic, 5G, MagSafe system", opts:[{s:"64GB", p:170}, {s:"128GB", p:230}] },
+    { brand:"Apple", model:"iPhone 13", sub:"Better battery & speed - Grade A", func:"A15 Bionic, Cinematic Mode, Sensor-shift setup", opts:[{s:"128GB", p:275}, {s:"256GB", p:330}] },
+    { brand:"Apple", model:"iPhone 14", sub:"Reliable flagship layout - Grade A", func:"A15 Bionic architecture, Advanced Action features, 5G", opts:[{s:"128GB", p:300}, {s:"256GB", p:360}] },
+    { brand:"Apple", model:"iPhone 15", sub:"USB-C modern design - Grade A+", func:"USB-C architecture, Dynamic Island UI, 48MP lenses", opts:[{s:"128GB", p:420}, {s:"256GB", p:460}] },
+    { brand:"Apple", model:"iPhone 11 Pro Max", sub:"Large screen pro - Grade A", func:"6.5-inch OLED grid, Triple camera setup, High processing tier", opts:[{s:"64GB", p:220}, {s:"256GB", p:250}] },
+    { brand:"Apple", model:"iPhone 12 Pro Max", sub:"Max performance layout - Grade A", func:"6.7-inch display matrix, LiDAR scanners, Premium framework", opts:[{s:"128GB", p:290}, {s:"256GB", p:320}] },
+    { brand:"Apple", model:"iPhone 13 Pro Max", sub:"Ultimate dynamic frame - Grade A+", func:"ProMotion 120Hz display parameters, A15 premium flagship stability", opts:[{s:"128GB", p:365}, {s:"256GB", p:420}] },
+    { brand:"Apple", model:"iPhone 14 Pro Max", sub:"Dynamic display master - Grade A+", func:"Always-On interface layouts, Dynamic Island framework, 48MP modules", opts:[{s:"128GB", p:480}, {s:"256GB", p:530}] },
+    { brand:"Apple", model:"iPhone 15 Pro Max", sub:"Premium Titanium Standard - Grade A+", func:"Action input buttons, A17 Pro high-speed chip dynamic layout", opts:[{s:"256GB", p:670}, {s:"512GB", p:690}] },
 
     // 📱 CATEGORY: IPADS
-    {
-        brand:"iPads",
-        model:"iPad Mini 4",
-        sub:"Compact and Portable Tablet Ecosystem",
-        func:"Retina display metrics, Touch ID module, Slim lightweight aluminum profile",
-        opts:[
-            {s:"128GB (WiFi)", p:146},
-            {s:"128GB (Sim)", p:161}
-        ]
-    },
-    {
-        brand:"iPads",
-        model:"iPad Mini 5",
-        sub:"High Performance Mini Production Line",
-        func:"Apple A12 Bionic engine, Apple Pencil access tracking capabilities, True Tone integration",
-        opts:[
-            {s:"64GB (WiFi)", p:192},
-            {s:"64GB (Sim)", p:253},
-            {s:"256GB (WiFi)", p:268},
-            {s:"256GB (Sim)", p:288}
-        ]
-    },
-    {
-        brand:"iPads",
-        model:"iPad Mini 6",
-        sub:"Modern All-Screen Mini Dynamic Unit",
-        func:"A15 Bionic layout processing, Center Stage digital lens, USB-C multi-channel port",
-        opts:[
-            {s:"64GB (WiFi)", p:345},
-            {s:"64GB (Sim)", p:407},
-            {s:"256GB (WiFi)", p:422},
-            {s:"256GB (Sim)", p:484}
-        ]
-    },
-    {
-        brand:"iPads",
-        model:"iPad Standard (Gen 6/7/8)",
-        sub:"High Efficiency Education and Production Hubs",
-        func:"Spacious high-res viewing glass, smart keyboard attachment readiness pipelines",
-        opts:[
-            {s:"Gen 6 • 128GB (Sim)", p:187},
-            {s:"Gen 7 • 128GB (Sim)", p:253},
-            {s:"Gen 8 • 128GB (Sim)", p:283}
-        ]
-    },
-    {
-        brand:"iPads",
-        model:"iPad Gen 9",
-        sub:"Classic Operational Tablet System",
-        func:"A13 Bionic baseline chip speed matrix, Ultra-Wide front lens tracking arrays",
-        opts:[
-            {s:"64GB (WiFi)", p:238},
-            {s:"64GB (Sim)", p:267},
-            {s:"256GB (WiFi)", p:299},
-            {s:"256GB (Sim)", p:336}
-        ]
-    },
-    {
-        brand:"iPads",
-        model:"iPad Gen 10",
-        sub:"Redesigned All-Screen Entry System",
-        func:"10.9-inch Liquid Retina matrix, A14 Bionic power rails, Landscape camera setup",
-        opts:[
-            {s:"64GB (WiFi)", p:361},
-            {s:"64GB (Sim)", p:392},
-            {s:"256GB (WiFi)", p:397},
-            {s:"256GB (Sim)", p:474}
-        ]
-    },
-    {
-        brand:"iPads",
-        model:"iPad Air 4",
-        sub:"Mid-Tier Premium Professional Build",
-        func:"Liquid Retina layout structures, Top-button Touch ID integration, USB-C framework",
-        opts:[
-            {s:"64GB (WiFi)", p:345},
-            {s:"64GB (Sim)", p:376},
-            {s:"256GB (WiFi)", p:407},
-            {s:"256GB (Sim)", p:453}
-        ]
-    },
-    {
-        brand:"iPads",
-        model:"iPad Air 5",
-        sub:"Desktop-Class Processing Ecosystem",
-        func:"Apple M1 advanced system chip implementation, ultra-fast file transfer capabilities",
-        opts:[
-            {s:"256GB (WiFi)", p:515},
-            {s:"256GB (Sim)", p:561}
-        ]
-    },
-    {
-        brand:"iPads",
-        model:"iPad Air 6 [11 inches]",
-        sub:"Next-Generation Advanced Air Engine",
-        func:"Apple M2 architecture integration, ultra-vibrant liquid framework, ultimate productivity tier",
-        opts:[
-            {s:"128GB (WiFi)", p:515},
-            {s:"128GB (Sim)", p:576},
-            {s:"256GB (WiFi)", p:561},
-            {s:"256GB (Sim)", p:592}
-        ]
-    },
-    {
-        brand:"iPads",
-        model:"iPad Pro 4th Gen (2020)",
-        sub:"11\" & 12.9\" Cinematic Retina Performance",
-        func:"A12Z Bionic chip, Dual Camera setup with LiDAR Scanner, True Tone display engineering",
-        opts:[
-            {s:"11\" • 128GB (Sim)", p:545},
-            {s:"11\" • 256GB (Sim)", p:607},
-            {s:"11\" • 512GB (Sim)", p:653},
-            {s:"12.9\" • 128GB (Sim)", p:607},
-            {s:"12.9\" • 256GB (Sim)", p:653},
-            {s:"12.9\" • 512GB (Sim)", p:730}
-        ]
-    },
-    {
-        brand:"iPads",
-        model:"iPad Pro 5th Gen (M1 - 2021)",
-        sub:"Next-Gen M1 Desktop Processing Architecture",
-        func:"Apple M1 System Chip, Thunderbolt port connectivity, Liquid Retina XDR display parameters",
-        opts:[
-            {s:"11\" • 128GB (Sim)", p:730},
-            {s:"11\" • 256GB (Sim)", p:766},
-            {s:"11\" • 512GB (Sim)", p:776},
-            {s:"12.9\" • 128GB (Sim)", p:720},
-            {s:"12.9\" • 256GB (Sim)", p:776},
-            {s:"12.9\" • 512GB (Sim)", p:868}
-        ]
-    },
-    {
-        brand:"iPads",
-        model:"iPad Pro 6th Gen (M2 - 2022)",
-        sub:"Premium M2 Core Power - 11 Inches",
-        func:"Apple M2 processor configuration, Apple Pencil hover detection, ProRes video encoding",
-        opts:[
-            {s:"11\" • 128GB (Sim)", p:731},
-            {s:"11\" • 256GB (Sim)", p:868},
-            {s:"11\" • 512GB (Sim)", p:920},
-            {s:"11\" • 512GB (Sim) Premium", p:1012}
-        ]
-    },
-    {
-        brand:"iPads",
-        model:"iPad Pro Latest M4 (2024)",
-        sub:"Ultra-Thin Tandem OLED Evolution Model",
-        func:"Apple M4 high-end processing, Breakthrough Ultra Retina XDR matrix, Ultimate Pro workflow tier",
-        opts:[
-            {s:"11\" • 256GB (Sim)", p:1022},
-            {s:"11\" • 512GB (Sim)", p:1145},
-            {s:"13\" • 256GB (Sim)", p:1184},
-            {s:"13\" • 512GB (Sim)", p:1290}
-        ]
-    },
+    { brand:"iPads", model:"iPad Mini 4", sub:"Compact and Portable Tablet Ecosystem", func:"Retina display metrics, Touch ID module, Slim profile", opts:[{s:"128GB (WiFi)", p:146}, {s:"128GB (Sim)", p:161}] },
+    { brand:"iPads", model:"iPad Mini 5", sub:"High Performance Mini Production Line", func:"Apple A12 Bionic engine, Apple Pencil access, True Tone", opts:[{s:"64GB (WiFi)", p:192}, {s:"64GB (Sim)", p:253}, {s:"256GB (WiFi)", p:268}, {s:"256GB (Sim)", p:288}] },
+    { brand:"iPads", model:"iPad Mini 6", sub:"Modern All-Screen Mini Dynamic Unit", func:"A15 Bionic layout processing, Center Stage lens, USB-C port", opts:[{s:"64GB (WiFi)", p:345}, {s:"64GB (Sim)", p:407}, {s:"256GB (WiFi)", p:422}, {s:"256GB (Sim)", p:484}] },
+    { brand:"iPads", model:"iPad Standard (Gen 6/7/8)", sub:"High Efficiency Education and Production Hubs", func:"Spacious high-res viewing glass, smart keyboard readiness", opts:[{s:"Gen 6 • 128GB (Sim)", p:187}, {s:"Gen 7 • 128GB (Sim)", p:253}, {s:"Gen 8 • 128GB (Sim)", p:283}] },
+    { brand:"iPads", model:"iPad Gen 9", sub:"Classic Operational Tablet System", func:"A13 Bionic baseline chip, Ultra-Wide front lens tracking layout", opts:[{s:"64GB (WiFi)", p:238}, {s:"64GB (Sim)", p:267}, {s:"256GB (WiFi)", p:299}, {s:"256GB (Sim)", p:336}] },
+    { brand:"iPads", model:"iPad Gen 10", sub:"Redesigned All-Screen Entry System", func:"10.9-inch Liquid Retina matrix, A14 Bionic, Landscape camera", opts:[{s:"64GB (WiFi)", p:361}, {s:"64GB (Sim)", p:392}, {s:"256GB (WiFi)", p:397}, {s:"256GB (Sim)", p:474}] },
+    { brand:"iPads", model:"iPad Air 4", sub:"Mid-Tier Premium Professional Build", func:"Liquid Retina layout structures, Top-button Touch ID, USB-C", opts:[{s:"64GB (WiFi)", p:345}, {s:"64GB (Sim)", p:376}, {s:"256GB (WiFi)", p:407}, {s:"256GB (Sim)", p:453}] },
+    { brand:"iPads", model:"iPad Air 5", sub:"Desktop-Class Processing Ecosystem", func:"Apple M1 advanced system chip implementation, fast file transfer", opts:[{s:"256GB (WiFi)", p:515}, {s:"256GB (Sim)", p:561}] },
+    { brand:"iPads", model:"iPad Air 6 [11 inches]", sub:"Next-Generation Advanced Air Engine", func:"Apple M2 architecture integration, ultra-vibrant framework", opts:[{s:"128GB (WiFi)", p:515}, {s:"128GB (Sim)", p:576}, {s:"256GB (WiFi)", p:561}, {s:"256GB (Sim)", p:592}] },
+    { brand:"iPads", model:"iPad Pro 4th Gen (2020)", sub:"11\" & 12.9\" Cinematic Retina Performance", func:"A12Z Bionic chip, Dual Camera setup with LiDAR Scanner", opts:[{s:"11\" • 128GB (Sim)", p:545}, {s:"11\" • 256GB (Sim)", p:607}, {s:"11\" • 512GB (Sim)", p:653}, {s:"12.9\" • 128GB (Sim)", p:607}, {s:"12.9\" • 256GB (Sim)", p:653}, {s:"12.9\" • 512GB (Sim)", p:730}] },
+    { brand:"iPads", model:"iPad Pro 5th Gen (M1 - 2021)", sub:"Next-Gen M1 Desktop Processing Architecture", func:"Apple M1 System Chip, Thunderbolt port, Liquid Retina XDR", opts:[{s:"11\" • 128GB (Sim)", p:730}, {s:"11\" • 256GB (Sim)", p:766}, {s:"11\" • 512GB (Sim)", p:776}, {s:"12.9\" • 128GB (Sim)", p:720}, {s:"12.9\" • 256GB (Sim)", p:776}, {s:"12.9\" • 512GB (Sim)", p:868}] },
+    { brand:"iPads", model:"iPad Pro 6th Gen (M2 - 2022)", sub:"Premium M2 Core Power - 11 Inches", func:"Apple M2 processor configuration, Apple Pencil hover tracking", opts:[{s:"11\" • 128GB (Sim)", p:731}, {s:"11\" • 256GB (Sim)", p:868}, {s:"11\" • 512GB (Sim)", p:920}, {s:"11\" • 512GB (Sim) Premium", p:1012}] },
+    { brand:"iPads", model:"iPad Pro Latest M4 (2024)", sub:"Ultra-Thin Tandem OLED Evolution Model", func:"Apple M4 processing, Ultra Retina XDR matrix, Ultimate Pro workflow", opts:[{s:"11\" • 256GB (Sim)", p:1022}, {s:"11\" • 512GB (Sim)", p:1145}, {s:"13\" • 256GB (Sim)", p:1184}, {s:"13\" • 512GB (Sim)", p:1290}] },
 
     // 🟦 SAMSUNG GALAXY
-    {
-        brand:"Samsung",
-        model:"Galaxy S22 Ultra",
-        sub:"Premium flagship - Like New",
-        func:"S Pen built-in, 108MP camera, Snapdragon 8 Gen 1, 120Hz AMOLED",
-        opts:[
-            {s:"1 SIM • 128GB", p:367},
-            {s:"2 SIM • 128GB", p:383},
-            {s:"1 SIM • 256GB", p:417},
-            {s:"2 SIM • 256GB", p:433}
-        ]
-    },
-    {
-        brand:"Samsung",
-        model:"Galaxy S23 Ultra",
-        sub:"Camera king flagship - Like New",
-        func:"200MP main camera matrix, Enhanced night optics engineering, Snapdragon 8 Gen 2",
-        opts:[
-            {s:"1 SIM • 128GB", p:533},
-            {s:"2 SIM • 128GB", p:567},
-            {s:"2 SIM • 256GB", p:583}
-        ]
-    },
-    {
-        brand:"Samsung",
-        model:"Galaxy S24 Ultra",
-        sub:"AI-driven Ultimate Smartphone - Pristine",
-        func:"Galaxy AI automated operations, Industrial grade Titanium design, Pro Visual Engine",
-        opts:[ {s:"2 SIM • 256GB", p:783} ]
-    },
-    {
-        brand:"Samsung",
-        model:"Galaxy Z Flip 4",
-        sub:"Compact multi-angle foldable",
-        func:"FlexCam system integration, 120Hz main interactive panel, custom operations layout",
-        opts:[
-            {s:"1 SIM • 128GB", p:200},
-            {s:"1 SIM • 256GB", p:238}
-        ]
-    },
-    {
-        brand:"Samsung",
-        model:"Galaxy Z Flip 5",
-        sub:"Pristine Flex Window Pocket Mini",
-        func:"Expanded dynamic external view window, upgraded gapless protective display hinges",
-        opts:[ {s:"1 SIM • 256GB", p:299} ]
-    },
+    { brand:"Samsung", model:"Galaxy S22 Ultra", sub:"Premium flagship - Like New", func:"S Pen built-in, 108MP camera, Snapdragon 8 Gen 1, 120Hz AMOLED", opts:[{s:"1 SIM • 128GB", p:367}, {s:"2 SIM • 128GB", p:383}, {s:"1 SIM • 256GB", p:417}, {s:"2 SIM • 256GB", p:433}] },
+    { brand:"Samsung", model:"Galaxy S23 Ultra", sub:"Camera king flagship - Like New", func:"200MP main camera matrix, Snapdragon 8 Gen 2", opts:[{s:"1 SIM • 128GB", p:533}, {s:"2 SIM • 128GB", p:567}, {s:"2 SIM • 256GB", p:583}] },
+    { brand:"Samsung", model:"Galaxy S24 Ultra", sub:"AI-driven Ultimate Smartphone - Pristine", func:"Galaxy AI automated operations, Industrial grade Titanium design", opts:[{s:"2 SIM • 256GB", p:783}] },
+    { brand:"Samsung", model:"Galaxy Z Flip 4", sub:"Compact multi-angle foldable", func:"FlexCam system integration, 120Hz main interactive panel", opts:[{s:"1 SIM • 128GB", p:200}, {s:"1 SIM • 256GB", p:238}] },
+    { brand:"Samsung", model:"Galaxy Z Flip 5", sub:"Pristine Flex Window Pocket Mini", func:"Expanded dynamic external view window, upgraded protection hinges", opts:[{s:"1 SIM • 256GB", p:299}] },
 
-    // 🌐 NEW CATEGORY: GOOGLE PIXELS
-    {
-        brand:"Google",
-        model:"Pixel 3 Series",
-        sub:"Classic Pure Android Flagship Layout",
-        func:"Top-tier single lens computational photography, HDR+, Unlimited cloud fallback setups",
-        opts:[
-            {s:"Pixel 3 • 64GB", p:160},
-            {s:"Pixel 3 • 128GB", p:167},
-            {s:"Pixel 3XL • 64GB", p:163},
-            {s:"Pixel 3XL • 128GB", p:173}
-        ]
-    },
-    {
-        brand:"Google",
-        model:"Pixel 3A Series",
-        sub:"Budget-Friendly Clean Android System",
-        func:"Flagship-grade camera sensor parameters, Headphone jack accessibility, lightweight design",
-        opts:[
-            {s:"Pixel 3A • 64GB", p:148},
-            {s:"Pixel 3A • 128GB", p:43},
-            {s:"Pixel 3a XL • 64GB", p:158},
-            {s:"Pixel 3a XL • 128GB", p:43}
-        ]
-    },
-    {
-        brand:"Google",
-        model:"Pixel 4 Series",
-        sub:"90Hz Smooth Display Smart Matrix",
-        func:"Motion Sense Radar operations, Dual lens layout with telephoto module, secure Face Unlock",
-        opts:[
-            {s:"Pixel 4 • 64GB", p:183},
-            {s:"Pixel 4 • 128GB", p:200},
-            {s:"Pixel 4XL • 64GB", p:203},
-            {s:"Pixel 4XL • 128GB", p:217}
-        ]
-    },
-    {
-        brand:"Google",
-        model:"Pixel 4A Series",
-        sub:"Compact Ergonomic Everyday Solution",
-        func:"Punch-hole modern display matrix, highly efficient battery management, 5G standard compatibility",
-        opts:[
-            {s:"Pixel 4A 5G • 128GB", p:188},
-            {s:"Pixel 4A 4G • 128GB", p:183}
-        ]
-    },
-    {
-        brand:"Google",
-        model:"Pixel 5 / 5A",
-        sub:"Premium Uniform Bezel Enterprise Edition",
-        func:"Ultra-wide second lens configuration, Premium bio-resin coated aluminum framework, high capacity power rails",
-        opts:[
-            {s:"Pixel 5 • 128GB", p:220},
-            {s:"Pixel 5A • 128GB", p:217}
-        ]
-    },
-    {
-        brand:"Google",
-        model:"Pixel 6 Series",
-        sub:"First-Gen Custom Tensor Intelligent Core",
-        func:"Google Tensor AI structural engine, Signature design camera bar layout, Advanced real tone imaging features",
-        opts:[
-            {s:"Pixel 6 • 128GB", p:250},
-            {s:"Pixel 6 • 256GB", p:274},
-            {s:"Pixel 6 Pro • 128GB", p:228},
-            {s:"Pixel 6 Pro • 256GB", p:243},
-            {s:"Pixel 6 Pro • 512GB", p:346}
-        ]
-    },
-    {
-        brand:"Google",
-        model:"Pixel 6A / 7A",
-        sub:"High Efficiency Google A-Series Framework",
-        func:"High tier core processing speeds, premium software feature drop access points",
-        opts:[
-            {s:"Pixel 6A • 128GB", p:225},
-            {s:"Pixel 7A • 128GB", p:287}
-        ]
-    },
-    {
-        brand:"Google",
-        model:"Pixel 7 / 7 Pro",
-        sub:"Refined Sleek Matte Aluminum Framework",
-        func:"Macro focus lens layers, Next-gen Tensor G2 secure computing, high brightness outdoor viewing panel",
-        opts:[
-            {s:"Pixel 7 Pro • 128GB", p:294},
-            {s:"Pixel 7 Pro • 256GB", p:324},
-            {s:"Pixel 7 • 128GB", p:280},
-            {s:"Pixel 7 • 256GB", p:309}
-        ]
-    },
-    {
-        brand:"Google",
-        model:"Pixel 8 Series",
-        sub:"Advanced Tensor G3 Ultimate Generation",
-        func:"7-year long term configuration support, Generative AI imagery tools, automated call screening modules",
-        opts:[
-            {s:"Pixel 8 Pro • 128GB", p:435},
-            {s:"Pixel 8 Pro • 256GB", p:487},
-            {s:"Pixel 8 Pro • 512GB", p:568},
-            {s:"Pixel 8 • 128GB", p:405},
-            {s:"Pixel 8 • 256GB", p:450},
-            {s:"Pixel 8A • 2080*", p:351}
-        ]
-    },
-    {
-        brand:"Google",
-        model:"Google Pixel 9 Series",
-        sub:"Latest Ultra Flagship Dynamic Engineering",
-        func:"Next-gen Tensor computing architecture, premium flat rail industrial design layout, professional visual stack",
-        opts:[
-            {s:"Google 9 • 128GB", p:506},
-            {s:"Google 9 Pro • 256GB", p:702}
-        ]
-    }
+    // 🌐 GOOGLE PIXELS
+    { brand:"Google", model:"Pixel 3 Series", sub:"Classic Pure Android Layout", func:"Computational photography, HDR+, Unlimited cloud fallback", opts:[{s:"Pixel 3 • 64GB", p:160}, {s:"Pixel 3 • 128GB", p:167}, {s:"Pixel 3XL • 64GB", p:163}, {s:"Pixel 3XL • 128GB", p:173}] },
+    { brand:"Google", model:"Pixel 3A Series", sub:"Budget-Friendly Clean Android System", func:"Flagship-grade camera sensor parameters, Headphone jack layout", opts:[{s:"Pixel 3A • 64GB", p:148}, {s:"Pixel 3A • 128GB", p:43}, {s:"Pixel 3a XL • 64GB", p:158}, {s:"Pixel 3a XL • 128GB", p:43}] },
+    { brand:"Google", model:"Pixel 4 Series", sub:"90Hz Smooth Display Smart Matrix", func:"Motion Sense Radar operations, Dual lens layout, Face Unlock", opts:[{s:"Pixel 4 • 64GB", p:183}, {s:"Pixel 4 • 128GB", p:200}, {s:"Pixel 4XL • 64GB", p:203}, {s:"Pixel 4XL • 128GB", p:217}] },
+    { brand:"Google", model:"Pixel 4A Series", sub:"Compact Ergonomic Everyday Solution", func:"Punch-hole modern display matrix, 5G standard compatibility", opts:[{s:"Pixel 4A 5G • 128GB", p:188}, {s:"Pixel 4A 4G • 128GB", p:183}] },
+    { brand:"Google", model:"Pixel 5 / 5A", sub:"Premium Uniform Bezel Enterprise Edition", func:"Ultra-wide second lens configuration, bio-resin coated frame", opts:[{s:"Pixel 5 • 128GB", p:220}, {s:"Pixel 5A • 128GB", p:217}] },
+    { brand:"Google", model:"Pixel 6 Series", sub:"First-Gen Custom Tensor Intelligent Core", func:"Google Tensor AI structural engine, Signature design camera bar", opts:[{s:"Pixel 6 • 128GB", p:250}, {s:"Pixel 6 • 256GB", p:274}, {s:"Pixel 6 Pro • 128GB", p:228}, {s:"Pixel 6 Pro • 256GB", p:243}, {s:"Pixel 6 Pro • 512GB", p:346}] },
+    { brand:"Google", model:"Pixel 6A / 7A", sub:"High Efficiency Google A-Series Framework", func:"High tier core processing speeds, premium software feature drops", opts:[{s:"Pixel 6A • 128GB", p:225}, {s:"Pixel 7A • 128GB", p:287}] },
+    { brand:"Google", model:"Pixel 7 / 7 Pro", sub:"Refined Sleek Matte Aluminum Framework", func:"Macro focus lens layers, Next-gen Tensor G2 secure computing", opts:[{s:"Pixel 7 Pro • 128GB", p:294}, {s:"Pixel 7 Pro • 256GB", p:324}, {s:"Pixel 7 • 128GB", p:280}, {s:"Pixel 7 • 256GB", p:309}] },
+    { brand:"Google", model:"Pixel 8 Series", sub:"Advanced Tensor G3 Ultimate Generation", func:"7-year long term configuration support, Generative AI imagery tools", opts:[{s:"Pixel 8 Pro • 128GB", p:435}, {s:"Pixel 8 Pro • 256GB", p:487}, {s:"Pixel 8 Pro • 512GB", p:568}, {s:"Pixel 8 • 128GB", p:405}, {s:"Pixel 8 • 256GB", p:450}, {s:"Pixel 8A • 2080*", p:351}] },
+    { brand:"Google", model:"Google Pixel 9 Series", sub:"Latest Ultra Flagship Dynamic Engineering", func:"Next-gen Tensor computing architecture, premium flat rail layout", opts:[{s:"Google 9 • 128GB", p:506}, {s:"Google 9 Pro • 256GB", p:702}] }
 ];
 
-let activeBrand = "Apple", cart=[], selected={};
+let currentMainCategory = 'devices'; // options: 'devices', 'agency', 'restock'
+let activeSubBrand = "Apple", cart=[], selected={};
 
 function openAbout() { openModal('aboutModal'); }
 function openDestinations() { openModal('destModal'); }
@@ -966,74 +627,122 @@ window.onclick = e => {
     }
 };
 
-// ✅ IMPROVED RENDERING LOGIC FOR ALL MOBILE/LAPTOP PLATFORMS
+function toggleMainCategory(category) {
+    currentMainCategory = category;
+    
+    // Reset visual dynamic classes across main structural components
+    document.getElementById('main-devices').classList.remove('active');
+    document.getElementById('main-agency').classList.remove('active');
+    document.getElementById('main-restock').classList.remove('active');
+    document.getElementById('devices-sub-panel').classList.remove('active');
+
+    if(category === 'devices') {
+        document.getElementById('main-devices').classList.add('active');
+        document.getElementById('devices-sub-panel').classList.add('active');
+    } else if(category === 'agency') {
+        document.getElementById('main-agency').classList.add('active');
+    } else if(category === 'restock') {
+        document.getElementById('main-restock').classList.add('active');
+    }
+    render();
+}
+
+function filterSubBrand(brandName) {
+    activeSubBrand = brandName;
+    render();
+}
+
 function render() {
     const grid = document.getElementById('product-grid');
     grid.innerHTML = "";
     
-    // Manage active visual classes safely across navigation tabs
-    document.querySelectorAll('.btn-brand').forEach(btn => btn.classList.remove('active'));
-    if(activeBrand === 'Apple') document.getElementById('btn-apple').classList.add('active');
-    if(activeBrand === 'iPads') document.getElementById('btn-ipad').classList.add('active');
-    if(activeBrand === 'Samsung') document.getElementById('btn-samsung').classList.add('active');
-    if(activeBrand === 'Google') document.getElementById('btn-google').classList.add('active');
-
-    const filteredItems = inventory.map((item, originalIndex) => ({item, originalIndex}))
-                                   .filter(wrapped => wrapped.item.brand === activeBrand);
-
-    if(filteredItems.length === 0) {
-        grid.innerHTML = `<p style="padding:20px; color:var(--text-muted);">No products currently logged in this configuration.</p>`;
-        return;
-    }
-
-    filteredItems.forEach(wrapped => {
-        const dev = wrapped.item;
-        const oIdx = wrapped.originalIndex;
+    // Update Sub-Navigation highlighting safely
+    document.querySelectorAll('.btn-sub').forEach(btn => {
+        btn.className = "btn-sub"; 
+    });
+    if(currentMainCategory === 'devices') {
+        if(activeSubBrand === 'Apple') document.getElementById('sub-apple').classList.add('active-apple');
+        if(activeSubBrand === 'Samsung') document.getElementById('sub-samsung').classList.add('active-samsung');
+        if(activeSubBrand === 'Google') document.getElementById('sub-google').classList.add('active-google');
+        if(activeSubBrand === 'iPads') document.getElementById('sub-ipad').classList.add('active-ipad');
         
-        if(selected[oIdx] === undefined || selected[oIdx] >= dev.opts.length) {
-            selected[oIdx] = 0;
-        }
-        
-        const currentOpt = dev.opts[selected[oIdx]];
-        
-        const storageHTML = dev.opts.map((o, idx) => {
-            let pillClass = 'apple-pill';
-            if(dev.brand === 'Samsung') pillClass = 'samsung-pill';
-            if(dev.brand === 'iPads') pillClass = 'ipad-pill';
-            if(dev.brand === 'Google') pillClass = 'google-pill';
+        // Render device cards dynamically
+        const filteredItems = inventory.map((item, originalIndex) => ({item, originalIndex}))
+                                       .filter(wrapped => wrapped.item.brand === activeSubBrand);
+
+        filteredItems.forEach(wrapped => {
+            const dev = wrapped.item;
+            const oIdx = wrapped.originalIndex;
             
-            return `<span class="storage-pill ${pillClass} ${idx === selected[oIdx] ? 'active' : ''}" 
-                          onclick="selectStrg(${oIdx}, ${idx})">${o.s}</span>`;
-        }).join('');
+            if(selected[oIdx] === undefined || selected[oIdx] >= dev.opts.length) {
+                selected[oIdx] = 0;
+            }
+            const currentOpt = dev.opts[selected[oIdx]];
+            
+            const storageHTML = dev.opts.map((o, idx) => {
+                let pillClass = 'apple-pill';
+                if(dev.brand === 'Samsung') pillClass = 'samsung-pill';
+                if(dev.brand === 'iPads') pillClass = 'ipad-pill';
+                if(dev.brand === 'Google') pillClass = 'google-pill';
+                return `<span class="storage-pill ${pillClass} ${idx === selected[oIdx] ? 'active' : ''}" onclick="selectStrg(${oIdx}, ${idx})">${o.s}</span>`;
+            }).join('');
 
-        let btnCartClass = 'apple-cart';
-        if(dev.brand === 'Samsung') btnCartClass = 'samsung-cart';
-        if(dev.brand === 'iPads') btnCartClass = 'ipad-cart';
-        if(dev.brand === 'Google') btnCartClass = 'google-cart';
+            let btnCartClass = 'apple-cart';
+            if(dev.brand === 'Samsung') btnCartClass = 'samsung-cart';
+            if(dev.brand === 'iPads') btnCartClass = 'ipad-cart';
+            if(dev.brand === 'Google') btnCartClass = 'google-cart';
 
-        grid.innerHTML += `
-        <div class="card">
-            <div>
-                <div class="card-tag">${dev.brand.toUpperCase()} DEVICE</div>
-                <h3 class="card-title">${dev.model}</h3>
-                <p class="card-sub">${dev.sub}</p>
-                <div class="storage-options">${storageHTML}</div>
+            grid.innerHTML += `
+            <div class="card">
+                <div>
+                    <div class="card-tag">${dev.brand.toUpperCase()} SUPPLIES</div>
+                    <h3 class="card-title">${dev.model}</h3>
+                    <p class="card-sub">${dev.sub}</p>
+                    <div class="storage-options">${storageHTML}</div>
+                </div>
+                <div>
+                    <p style="font-size:11px; color:#166534; margin:4px 0;">✓ Verified authentic batch sourcing protocol.</p>
+                    <div class="card-footer">
+                        <div>
+                            <div class="price-label">Unit Price</div>
+                            <div class="price-value">$${currentOpt.p}</div>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn-info" onclick="openDetails(${oIdx})">Info</button>
+                            <button class="btn-cart ${btnCartClass}" onclick="addToCart(${oIdx})">🛒 Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+        });
+    } 
+    // RENDER AGENCY CATEGORY SECTION
+    else if(currentMainCategory === 'agency') {
+        grid.innerHTML = `
+        <div class="card" style="grid-column: 1 / -1;">
+            <div style="text-align: center; padding: 40px 20px;">
+                <h3 style="font-size:22px; margin-bottom:10px;">📦 Global Sourcing & Cargo Agency Services</h3>
+                <p style="color:var(--text-muted); max-width:600px; margin:0 auto 20px auto;">We provide complete export verification parameters, escrow handling, airfreight coordination, and verification pipelines directly out of China manufacturing networks.</p>
+                <span class="highlight" style="font-size:14px; padding:6px 16px;">Contact Admin for Custom Cargo Allocations</span>
             </div>
-            <div>
-                <p style="font-size:11px; color:#166534; margin:4px 0;">✓ Verified authentic batch sourcing protocol.</p>
-                <div class="card-footer">
-                    <div>
-                        <div class="price-label">Unit Price</div>
-                        <div class="price-value">$${currentOpt.p}</div>
-                    </div>
-                    <div class="btn-group">
-                        <button class="btn-info" onclick="openDetails(${oIdx})">Info</button>
-                        <button class="btn-cart ${btnCartClass}" onclick="addToCart(${oIdx})">🛒 Add</button>
-                    </div>
+        </div>`;
+    } 
+    // RENDER PRIORITY RESTOCKING ENGINE
+    else if(currentMainCategory === 'restock') {
+        grid.innerHTML = `
+        <div class="card" style="grid-column: 1 / -1;">
+            <div style="padding: 30px 15px;">
+                <h3 style="font-size:20px; margin-bottom:8px; color:var(--primary);">🚀 Instant Inventory Restocking Protocol</h3>
+                <p style="color:#4b5563; font-size:15px; margin-bottom:20px;">Can't find the model, custom storage matrix, or specific product line you need inside the active catalog right now? Submit a restocking request directly down to our control center.</p>
+                <div style="background:#f3f4f6; padding:20px; border-radius:8px; border:1px solid var(--border);">
+                    <h4 style="margin-bottom:12px; font-size:15px;">Submit Desired Restock Specification:</h4>
+                    <label style="font-size:13px; color:#444; font-weight:600;">Device Name / Product Requirement:</label>
+                    <input type="text" id="restock-item" placeholder="e.g., iPhone 15 Pro Max 1TB White Titanium or Custom Electronics Batch" class="form-field" style="margin-bottom:14px;">
+                    <button class="btn-order" onclick="submitRestockRequest()" style="margin-top:0;">Request Stocking via WhatsApp</button>
                 </div>
             </div>
         </div>`;
-    });
+    }
 }
 
 function selectStrg(itemIdx, optIdx) {
@@ -1041,9 +750,11 @@ function selectStrg(itemIdx, optIdx) {
     render();
 }
 
-function filterBrand(b) {
-    activeBrand = b;
-    render();
+function submitRestockRequest() {
+    const itemSpec = document.getElementById('restock-item').value.trim();
+    if(!itemSpec) return alert("Please specify what structural configuration or stock item you require!");
+    const msg = `*MALWENE EXPORTS RESTOCK REQUEST*%0A------------------------%0A*Requested Item:* ${encodeURIComponent(itemSpec)}%0A------------------------%0APlease check availability and provide pricing variables inside the China shipping pipelines.`;
+    window.open(`https://wa.me/8618717323027?text=${msg}`, '_blank');
 }
 
 function openDetails(originalIdx) {
@@ -1128,7 +839,8 @@ function openOrder() {
     openModal('orderModal');
 }
 
-window.onload = render;
+// Initial script bootstrap setup
+toggleMainCategory('devices');
 </script>
 
 </body>
