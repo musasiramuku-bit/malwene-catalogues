@@ -13,10 +13,19 @@
             --primary: #f59e0b;
             --dark-nav: #000000;
             --accent-green: #15803d;
-            --accent-samsung: #1428A0;
+            
+            /* Corporate Brand Color Matrices */
             --accent-apple: #0071e3;
-            --accent-ipad: #6366f1;
+            --accent-samsung: #1428A0;
             --accent-google: #4285f4;
+            --accent-ipad: #6366f1;
+            
+            /* Apparel High-End Aesthetics Matrices */
+            --luxury-gold: #b45309;
+            --luxury-slate: #374151;
+            --luxury-emerald: #065f46;
+            --luxury-burgundy: #7f1d1d;
+            
             --border: #e5e7eb;
         }
 
@@ -162,11 +171,13 @@
         .modal ul { padding-left: 20px; }
         .modal li { margin-bottom: 6px; }
         
+        /* Premium Badge Stylings */
         .highlight { background: #f0fdf4; color: #166534; padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
-        .samsung-highlight { background: #eef2ff; color: var(--accent-samsung); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
         .apple-highlight { background: #f0f7ff; color: var(--accent-apple); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
-        .ipad-highlight { background: #f5f3ff; color: var(--accent-ipad); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
+        .samsung-highlight { background: #eef2ff; color: var(--accent-samsung); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
         .google-highlight { background: #e8f0fe; color: var(--accent-google); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
+        .ipad-highlight { background: #f5f3ff; color: var(--accent-ipad); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
+        .luxury-highlight { background: #fffbeb; color: var(--luxury-gold); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; border: 1px solid #fef3c7; }
 
         .container {
             max-width: 1200px;
@@ -226,7 +237,7 @@
         }
         .btn-brand.active { background: var(--text-dark); color: white; border-color: var(--text-dark); }
 
-        /* Subcategories Navigation Panel Layouts */
+        /* Dynamic Expandable Sidebar Panel Layouts */
         .sub-filter-panel {
             display: none;
             background: #f9fafb;
@@ -234,7 +245,7 @@
             border-radius: 8px;
             padding: 8px;
             margin-top: 4px;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
             flex-direction: column;
             gap: 6px;
         }
@@ -252,10 +263,15 @@
             transition: all 0.15s;
         }
         .btn-sub:hover { background: #f3f4f6; }
+        
+        /* Active Electronics Selections */
         .btn-sub.active-apple { background: var(--accent-apple); color: white; border-color: var(--accent-apple); }
         .btn-sub.active-samsung { background: var(--accent-samsung); color: white; border-color: var(--accent-samsung); }
         .btn-sub.active-google { background: var(--accent-google); color: white; border-color: var(--accent-google); }
         .btn-sub.active-ipad { background: var(--accent-ipad); color: white; border-color: var(--accent-ipad); }
+        
+        /* Active Luxury Apparel Selections */
+        .btn-sub.active-luxury { background: var(--luxury-gold); color: white; border-color: var(--luxury-gold); }
 
         .form-field {
             width: 100%;
@@ -345,6 +361,7 @@
         .samsung-pill.active { background: var(--accent-samsung); color: white; border-color: var(--accent-samsung); }
         .ipad-pill.active { background: var(--accent-ipad); color: white; border-color: var(--accent-ipad); }
         .google-pill.active { background: var(--accent-google); color: white; border-color: var(--accent-google); }
+        .luxury-pill.active { background: var(--luxury-gold); color: white; border-color: var(--luxury-gold); }
 
         .card-footer {
             display: flex;
@@ -383,6 +400,7 @@
         .btn-cart.samsung-cart { background: var(--accent-samsung); }
         .btn-cart.ipad-cart { background: var(--accent-ipad); }
         .btn-cart.google-cart { background: var(--accent-google); }
+        .btn-cart.luxury-cart { background: var(--luxury-gold); }
         .btn-cart:hover { opacity: 0.9; }
 
         footer {
@@ -423,22 +441,21 @@
     <div class="modal-content">
         <span class="close-modal" onclick="closeModal('aboutModal')">&times;</span>
         <h2>🏢 About Malwene Exports</h2>
-        <p><strong>Malwene Exports</strong> is a trusted global wholesale supplier of premium refurbished and brand-new smartphones, tablets, and tech devices. Founded with a vision to bridge quality technology across borders, we specialize in sourcing, grading, and delivering top-tier mobile devices from China directly to businesses and individuals across Africa and worldwide.</p>
-        <p>We are headquartered in China 🇨🇳 with distribution hubs across Southern Africa, ensuring fast, safe, and affordable logistics. Our core focus is <strong>100% original quality, transparent pricing, and reliable delivery</strong>.</p>
+        <p><strong>Malwene Exports</strong> is a trusted premium wholesale global supplier of original electronics, state-of-the-art consumer tablets, luxury fashion gear, apparel, and customized procurement lines. Operating direct supply logistics channels from mainland China production grids to global networks, we ensure safe and verified delivery pipelines.</p>
     </div>
 </div>
 
 <div id="destModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeModal('destModal')">&times;</span>
-        <h2>🌍 Countries We Deliver To</h2>
-        <p>We ship <strong>fast & safe</strong> to these and many more countries worldwide:</p>
+        <h2>🌍 Distribution Terminals</h2>
+        <p>We deploy directly from hubs to the following regional endpoints with dynamic tracking logs:</p>
         <ul>
-            <li>🇿🇼 <strong>Zimbabwe</strong> — Harare, Bulawayo, Gweru, Mutare</li>
-            <li>🇿🇲 <strong>Zambia</strong> — Lusaka, Kitwe, Ndola</li>
-            <li>🇷🇼 <strong>Rwanda</strong> — Kigali & all districts</li>
-            <li>🇿🇦 <strong>South Africa</strong> — Johannesburg, Cape Town, Durban</li>
-            <li>🇨🇳 <strong>China</strong> — Local shipping available</li>
+            <li>🇿🇼 <strong>Zimbabwe Hub</strong> — Premium Express Tracking [$29/unit]</li>
+            <li>🇿🇲 <strong>Zambia Gateway</strong> — Consolidated Secure Transit [$19/unit]</li>
+            <li>🇷🇼 <strong>Rwanda Cargo Terminal</strong> — Priority Direct Transit [$18/unit]</li>
+            <li>🇿🇦 <strong>South Africa Grid</strong> — Regional Cross-Border Air Freight</li>
+            <li>🇨🇳 <strong>China Mainland Grid</strong> — Domestic Cargo Logistics</li>
         </ul>
     </div>
 </div>
@@ -448,9 +465,9 @@
         <span class="close-modal" onclick="closeModal('servicesModal')">&times;</span>
         <h2>⚙️ Our Services</h2>
         <ul>
-            <li><strong>📦 Global Device Sourcing:</strong> Direct factory access to authentic premium stock.</li>
-            <li><strong>✅ Professional Testing:</strong> Hand-graded and performance verified before delivery.</li>
-            <li><strong>🚚 Fast Logistics:</strong> Full tracked global airfreight options.</li>
+            <li><strong>📦 Premium Trade Sourcing:</strong> Factory connection across high-demand tech nodes and fashion houses.</li>
+            <li><strong>✅ Quality Insurance Validation:</strong> Strict grading routines for hardware parameters and textile parameters.</li>
+            <li><strong>🚚 Freight Coordination:</strong> Highly integrated global cargo distribution chains.</li>
         </ul>
     </div>
 </div>
@@ -461,15 +478,15 @@
         <h2 id="det-model"></h2>
         <p id="det-sub" style="color:#6b7280; margin-bottom:14px;"></p>
         <div style="margin-bottom:14px;">
-            <h4 style="font-size:15px; margin-bottom:6px;">✨ Known Functions & Features</h4>
+            <h4 style="font-size:15px; margin-bottom:6px;">✨ System Specifications & Features</h4>
             <p id="det-func" style="color:#444;"></p>
         </div>
         <div style="margin-bottom:14px;">
-            <h4 style="font-size:15px; margin-bottom:6px;">💾 Layout Configurations <span id="det-badge" class="highlight">100% ORIGINAL</span></h4>
+            <h4 style="font-size:15px; margin-bottom:6px;">📐 Available Variant Matrices <span id="det-badge" class="highlight">PREMIUM</span></h4>
             <p id="det-store"></p>
         </div>
         <div style="margin-bottom:14px;">
-            <h4 style="font-size:15px; margin-bottom:6px;">💰 Pricing Breakdown</h4>
+            <h4 style="font-size:15px; margin-bottom:6px;">💰 Cost Configurations</h4>
             <p id="det-price"></p>
         </div>
         <button class="btn-order" onclick="closeModal('detailsModal')">Close</button>
@@ -479,46 +496,56 @@
 <div id="orderModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeModal('orderModal')">&times;</span>
-        <h2>🧾 Your Order Summary</h2>
+        <h2>🧾 Wholesale Bill of Lading</h2>
         <div id="order-items"></div>
         <div style="border-top:1px solid #eee; padding-top:10px; margin:10px 0;">
-            <div style="display:flex; justify-content:space-between;"><span>Subtotal:</span><span id="subtotal">$0</span></div>
-            <div style="display:flex; justify-content:space-between; color:#666;"><span>Shipping:</span><span id="shipcost">$0</span></div>
-            <div style="display:flex; justify-content:space-between; font-size:19px; font-weight:bold; color:#15803d; margin-top:8px;"><span>TOTAL:</span><span id="gtotal">$0</span></div>
+            <div style="display:flex; justify-content:space-between;"><span>Items Subtotal:</span><span id="subtotal">$0</span></div>
+            <div style="display:flex; justify-content:space-between; color:#666;"><span>Logistics Allocation:</span><span id="shipcost">$0</span></div>
+            <div style="display:flex; justify-content:space-between; font-size:19px; font-weight:bold; color:#15803d; margin-top:8px;"><span>INVOICE TOTAL:</span><span id="gtotal">$0</span></div>
         </div>
-        <a href="" id="paylink" target="_blank" class="btn-order" style="text-decoration:none; display:block; text-align:center; margin-top:16px;">💳 Pay via WhatsApp</a>
+        <a href="" id="paylink" target="_blank" class="btn-order" style="text-decoration:none; display:block; text-align:center; margin-top:16px;">💳 Forward Invoice to WhatsApp</a>
     </div>
 </div>
 
 <div class="container">
     <aside class="sidebar">
         <div class="box-dark">
-            <h3>★ Buyer Process</h3>
-            <p>Select → Review → Order → Pay → Ship — Fast & Simple</p>
+            <h3>★ Global Pipeline</h3>
+            <p>Select Department → Configure Variants → Generate Manifest → Forward to Admin Control.</p>
         </div>
 
         <div>
-            <h4 style="font-size:13px; text-transform:uppercase; color:#777; margin-bottom:8px;">Categories</h4>
+            <h4 style="font-size:13px; text-transform:uppercase; color:#777; margin-bottom:8px;">Trade Departments</h4>
             <div class="filter-btn-container">
-                <!-- MAIN OPTION 1: PHONES & TABLETS -->
-                <button class="btn-brand" id="main-devices" onclick="toggleMainCategory('devices')">
-                    <span>📱 Phones & Tablets</span> <span>▾</span>
-                </button>
                 
-                <!-- DROPDOWN OPTIONS UNDER PHONES -->
+                <!-- DEPARTMENT 1: PHONES & TABLETS -->
+                <button class="btn-brand" id="main-devices" onclick="toggleMainCategory('devices')">
+                    <span>📱 Premium Electronics</span> <span>▾</span>
+                </button>
                 <div class="sub-filter-panel" id="devices-sub-panel">
-                    <button class="btn-sub" id="sub-apple" onclick="filterSubBrand('Apple')">🍎 iPhones</button>
-                    <button class="btn-sub" id="sub-samsung" onclick="filterSubBrand('Samsung')">🟦 Samsung</button>
+                    <button class="btn-sub" id="sub-apple" onclick="filterSubBrand('Apple')">🍎 Apple iPhones</button>
+                    <button class="btn-sub" id="sub-samsung" onclick="filterSubBrand('Samsung')">🟦 Samsung Galaxy</button>
                     <button class="btn-sub" id="sub-google" onclick="filterSubBrand('Google')">🌐 Google Pixels</button>
-                    <button class="btn-sub" id="sub-ipad" onclick="filterSubBrand('iPads')">平板 iPads</button>
+                    <button class="btn-sub" id="sub-ipad" onclick="filterSubBrand('iPads')">平板 Apple iPads</button>
                 </div>
 
-                <!-- MAIN OPTION 2: AGENCY SERVICES -->
+                <!-- DEPARTMENT 2: APPAREL & ACCESSORIES (NEW CLOTHING UPGRADE) -->
+                <button class="btn-brand" id="main-apparel" onclick="toggleMainCategory('apparel')">
+                    <span>🔥 High-End Apparel</span> <span>▾</span>
+                </button>
+                <div class="sub-filter-panel" id="apparel-sub-panel">
+                    <button class="btn-sub" id="sub-bags" onclick="filterSubBrand('Bags')">👜 Designer Bags & Travel Gear</button>
+                    <button class="btn-sub" id="sub-shoes" onclick="filterSubBrand('Shoes')">👟 Footwear Modules & Sneakers</button>
+                    <button class="btn-sub" id="sub-tracksuits" onclick="filterSubBrand('Tracksuits')">⚡ Streetwear Tracksuits</button>
+                    <button class="btn-sub" id="sub-suits" onclick="filterSubBrand('Suits')">👔 Bespoke Sartorial Suits</button>
+                </div>
+
+                <!-- DEPARTMENT 3: AGENCY SERVICES -->
                 <button class="btn-brand" id="main-agency" onclick="toggleMainCategory('agency')">
-                    <span>📦 Agency Services</span> <span>▾</span>
+                    <span>📦 Global Agency Network</span> <span>▾</span>
                 </button>
 
-                <!-- MAIN OPTION 3: RESTOCKING PARAMETERS -->
+                <!-- DEPARTMENT 4: RESTOCKING MANAGEMENT -->
                 <button class="btn-brand" id="main-restock" onclick="toggleMainCategory('restock')">
                     <span>🚀 Priority Restocking</span> <span>▾</span>
                 </button>
@@ -526,7 +553,7 @@
         </div>
 
         <div style="margin-top:18px;">
-            <h4 style="font-size:13px; text-transform:uppercase; color:#777; margin-bottom:8px;">Shipping To</h4>
+            <h4 style="font-size:13px; text-transform:uppercase; color:#777; margin-bottom:8px;">Logistics Endpoint</h4>
             <select id="ship-to" class="form-field" onchange="updateCart()">
                 <option value="29" data-name="Zimbabwe 🇿🇼">Zimbabwe (+$29)</option>
                 <option value="19" data-name="Zambia 🇿🇲">Zambia (+$19)</option>
@@ -535,20 +562,20 @@
                 <option value="3" data-name="China 🇨🇳">China (+$3)</option>
             </select>
 
-            <label style="font-size:13px; color:#666;">Quantity:</label>
+            <label style="font-size:13px; color:#666;">Batch Quantity Allocation:</label>
             <input type="number" id="qty" min="1" value="1" class="form-field">
         </div>
 
         <div class="cart-box">
-            <h4 style="margin-bottom:10px; display:flex; justify-content:space-between;">🛒 Cart <span id="cartnum">0</span></h4>
+            <h4 style="margin-bottom:10px; display:flex; justify-content:space-between;">🛒 Current Manifest <span id="cartnum">0</span></h4>
             <div id="cartlist"></div>
-            <button class="btn-order" onclick="openOrder()">📦 Place Order</button>
+            <button class="btn-order" onclick="openOrder()">📋 Deploy Order Manifest</button>
         </div>
     </aside>
 
     <main>
         <div class="banner">
-            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200&auto=format&fit=crop&q=80" alt="Premium Tech Supply">
+            <img id="main-banner-img" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200&auto=format&fit=crop&q=80" alt="Premium Tech Supply">
         </div>
         <div id="product-grid" class="product-grid"></div>
     </main>
@@ -556,7 +583,7 @@
 
 <footer>
     &copy; 2026 Malwene Exports. All Rights Reserved.<br>
-    📞 +86 18717323027 | ✉️ malweneexports@gmail.com | 🌍 Premium Global Electronics
+    Tracking System Hub Node | 📞 +86 18717323027 | ✉️ malweneexports@gmail.com
 </footer>
 
 <script>
@@ -578,41 +605,38 @@ const inventory = [
     { brand:"Apple", model:"iPhone 15 Pro Max", sub:"Premium Titanium Standard - Grade A+", func:"Action input buttons, A17 Pro high-speed chip dynamic layout", opts:[{s:"256GB", p:670}, {s:"512GB", p:690}] },
 
     // 📱 CATEGORY: IPADS
-    { brand:"iPads", model:"iPad Mini 4", sub:"Compact and Portable Tablet Ecosystem", func:"Retina display metrics, Touch ID module, Slim profile", opts:[{s:"128GB (WiFi)", p:146}, {s:"128GB (Sim)", p:161}] },
-    { brand:"iPads", model:"iPad Mini 5", sub:"High Performance Mini Production Line", func:"Apple A12 Bionic engine, Apple Pencil access, True Tone", opts:[{s:"64GB (WiFi)", p:192}, {s:"64GB (Sim)", p:253}, {s:"256GB (WiFi)", p:268}, {s:"256GB (Sim)", p:288}] },
-    { brand:"iPads", model:"iPad Mini 6", sub:"Modern All-Screen Mini Dynamic Unit", func:"A15 Bionic layout processing, Center Stage lens, USB-C port", opts:[{s:"64GB (WiFi)", p:345}, {s:"64GB (Sim)", p:407}, {s:"256GB (WiFi)", p:422}, {s:"256GB (Sim)", p:484}] },
-    { brand:"iPads", model:"iPad Standard (Gen 6/7/8)", sub:"High Efficiency Education and Production Hubs", func:"Spacious high-res viewing glass, smart keyboard readiness", opts:[{s:"Gen 6 • 128GB (Sim)", p:187}, {s:"Gen 7 • 128GB (Sim)", p:253}, {s:"Gen 8 • 128GB (Sim)", p:283}] },
-    { brand:"iPads", model:"iPad Gen 9", sub:"Classic Operational Tablet System", func:"A13 Bionic baseline chip, Ultra-Wide front lens tracking layout", opts:[{s:"64GB (WiFi)", p:238}, {s:"64GB (Sim)", p:267}, {s:"256GB (WiFi)", p:299}, {s:"256GB (Sim)", p:336}] },
-    { brand:"iPads", model:"iPad Gen 10", sub:"Redesigned All-Screen Entry System", func:"10.9-inch Liquid Retina matrix, A14 Bionic, Landscape camera", opts:[{s:"64GB (WiFi)", p:361}, {s:"64GB (Sim)", p:392}, {s:"256GB (WiFi)", p:397}, {s:"256GB (Sim)", p:474}] },
-    { brand:"iPads", model:"iPad Air 4", sub:"Mid-Tier Premium Professional Build", func:"Liquid Retina layout structures, Top-button Touch ID, USB-C", opts:[{s:"64GB (WiFi)", p:345}, {s:"64GB (Sim)", p:376}, {s:"256GB (WiFi)", p:407}, {s:"256GB (Sim)", p:453}] },
-    { brand:"iPads", model:"iPad Air 5", sub:"Desktop-Class Processing Ecosystem", func:"Apple M1 advanced system chip implementation, fast file transfer", opts:[{s:"256GB (WiFi)", p:515}, {s:"256GB (Sim)", p:561}] },
-    { brand:"iPads", model:"iPad Air 6 [11 inches]", sub:"Next-Generation Advanced Air Engine", func:"Apple M2 architecture integration, ultra-vibrant framework", opts:[{s:"128GB (WiFi)", p:515}, {s:"128GB (Sim)", p:576}, {s:"256GB (WiFi)", p:561}, {s:"256GB (Sim)", p:592}] },
-    { brand:"iPads", model:"iPad Pro 4th Gen (2020)", sub:"11\" & 12.9\" Cinematic Retina Performance", func:"A12Z Bionic chip, Dual Camera setup with LiDAR Scanner", opts:[{s:"11\" • 128GB (Sim)", p:545}, {s:"11\" • 256GB (Sim)", p:607}, {s:"11\" • 512GB (Sim)", p:653}, {s:"12.9\" • 128GB (Sim)", p:607}, {s:"12.9\" • 256GB (Sim)", p:653}, {s:"12.9\" • 512GB (Sim)", p:730}] },
-    { brand:"iPads", model:"iPad Pro 5th Gen (M1 - 2021)", sub:"Next-Gen M1 Desktop Processing Architecture", func:"Apple M1 System Chip, Thunderbolt port, Liquid Retina XDR", opts:[{s:"11\" • 128GB (Sim)", p:730}, {s:"11\" • 256GB (Sim)", p:766}, {s:"11\" • 512GB (Sim)", p:776}, {s:"12.9\" • 128GB (Sim)", p:720}, {s:"12.9\" • 256GB (Sim)", p:776}, {s:"12.9\" • 512GB (Sim)", p:868}] },
-    { brand:"iPads", model:"iPad Pro 6th Gen (M2 - 2022)", sub:"Premium M2 Core Power - 11 Inches", func:"Apple M2 processor configuration, Apple Pencil hover tracking", opts:[{s:"11\" • 128GB (Sim)", p:731}, {s:"11\" • 256GB (Sim)", p:868}, {s:"11\" • 512GB (Sim)", p:920}, {s:"11\" • 512GB (Sim) Premium", p:1012}] },
-    { brand:"iPads", model:"iPad Pro Latest M4 (2024)", sub:"Ultra-Thin Tandem OLED Evolution Model", func:"Apple M4 processing, Ultra Retina XDR matrix, Ultimate Pro workflow", opts:[{s:"11\" • 256GB (Sim)", p:1022}, {s:"11\" • 512GB (Sim)", p:1145}, {s:"13\" • 256GB (Sim)", p:1184}, {s:"13\" • 512GB (Sim)", p:1290}] },
+    { brand:"iPads", model:"iPad Mini 6", sub:"Modern All-Screen Mini Dynamic Unit", func:"A15 Bionic layout processing, Center Stage lens, USB-C port", opts:[{s:"64GB (WiFi)", p:345}, {s:"256GB (Sim)", p:484}] },
+    { brand:"iPads", model:"iPad Gen 10", sub:"Redesigned All-Screen Entry System", func:"10.9-inch Liquid Retina matrix, A14 Bionic", opts:[{s:"64GB (WiFi)", p:361}, {s:"256GB (Sim)", p:474}] },
+    { brand:"iPads", model:"iPad Pro Latest M4", sub:"Ultra-Thin Tandem OLED Evolution Model", func:"Apple M4 processing, Ultra Retina XDR matrix, Ultimate Pro workflow", opts:[{s:"11\" 256GB", p:1022}, {s:"13\" 512GB", p:1290}] },
 
     // 🟦 SAMSUNG GALAXY
-    { brand:"Samsung", model:"Galaxy S22 Ultra", sub:"Premium flagship - Like New", func:"S Pen built-in, 108MP camera, Snapdragon 8 Gen 1, 120Hz AMOLED", opts:[{s:"1 SIM • 128GB", p:367}, {s:"2 SIM • 128GB", p:383}, {s:"1 SIM • 256GB", p:417}, {s:"2 SIM • 256GB", p:433}] },
-    { brand:"Samsung", model:"Galaxy S23 Ultra", sub:"Camera king flagship - Like New", func:"200MP main camera matrix, Snapdragon 8 Gen 2", opts:[{s:"1 SIM • 128GB", p:533}, {s:"2 SIM • 128GB", p:567}, {s:"2 SIM • 256GB", p:583}] },
+    { brand:"Samsung", model:"Galaxy S23 Ultra", sub:"Camera king flagship - Like New", func:"200MP main camera matrix, Snapdragon 8 Gen 2", opts:[{s:"1 SIM • 128GB", p:533}, {s:"2 SIM • 256GB", p:583}] },
     { brand:"Samsung", model:"Galaxy S24 Ultra", sub:"AI-driven Ultimate Smartphone - Pristine", func:"Galaxy AI automated operations, Industrial grade Titanium design", opts:[{s:"2 SIM • 256GB", p:783}] },
-    { brand:"Samsung", model:"Galaxy Z Flip 4", sub:"Compact multi-angle foldable", func:"FlexCam system integration, 120Hz main interactive panel", opts:[{s:"1 SIM • 128GB", p:200}, {s:"1 SIM • 256GB", p:238}] },
-    { brand:"Samsung", model:"Galaxy Z Flip 5", sub:"Pristine Flex Window Pocket Mini", func:"Expanded dynamic external view window, upgraded protection hinges", opts:[{s:"1 SIM • 256GB", p:299}] },
 
     // 🌐 GOOGLE PIXELS
-    { brand:"Google", model:"Pixel 3 Series", sub:"Classic Pure Android Layout", func:"Computational photography, HDR+, Unlimited cloud fallback", opts:[{s:"Pixel 3 • 64GB", p:160}, {s:"Pixel 3 • 128GB", p:167}, {s:"Pixel 3XL • 64GB", p:163}, {s:"Pixel 3XL • 128GB", p:173}] },
-    { brand:"Google", model:"Pixel 3A Series", sub:"Budget-Friendly Clean Android System", func:"Flagship-grade camera sensor parameters, Headphone jack layout", opts:[{s:"Pixel 3A • 64GB", p:148}, {s:"Pixel 3A • 128GB", p:43}, {s:"Pixel 3a XL • 64GB", p:158}, {s:"Pixel 3a XL • 128GB", p:43}] },
-    { brand:"Google", model:"Pixel 4 Series", sub:"90Hz Smooth Display Smart Matrix", func:"Motion Sense Radar operations, Dual lens layout, Face Unlock", opts:[{s:"Pixel 4 • 64GB", p:183}, {s:"Pixel 4 • 128GB", p:200}, {s:"Pixel 4XL • 64GB", p:203}, {s:"Pixel 4XL • 128GB", p:217}] },
-    { brand:"Google", model:"Pixel 4A Series", sub:"Compact Ergonomic Everyday Solution", func:"Punch-hole modern display matrix, 5G standard compatibility", opts:[{s:"Pixel 4A 5G • 128GB", p:188}, {s:"Pixel 4A 4G • 128GB", p:183}] },
-    { brand:"Google", model:"Pixel 5 / 5A", sub:"Premium Uniform Bezel Enterprise Edition", func:"Ultra-wide second lens configuration, bio-resin coated frame", opts:[{s:"Pixel 5 • 128GB", p:220}, {s:"Pixel 5A • 128GB", p:217}] },
-    { brand:"Google", model:"Pixel 6 Series", sub:"First-Gen Custom Tensor Intelligent Core", func:"Google Tensor AI structural engine, Signature design camera bar", opts:[{s:"Pixel 6 • 128GB", p:250}, {s:"Pixel 6 • 256GB", p:274}, {s:"Pixel 6 Pro • 128GB", p:228}, {s:"Pixel 6 Pro • 256GB", p:243}, {s:"Pixel 6 Pro • 512GB", p:346}] },
-    { brand:"Google", model:"Pixel 6A / 7A", sub:"High Efficiency Google A-Series Framework", func:"High tier core processing speeds, premium software feature drops", opts:[{s:"Pixel 6A • 128GB", p:225}, {s:"Pixel 7A • 128GB", p:287}] },
-    { brand:"Google", model:"Pixel 7 / 7 Pro", sub:"Refined Sleek Matte Aluminum Framework", func:"Macro focus lens layers, Next-gen Tensor G2 secure computing", opts:[{s:"Pixel 7 Pro • 128GB", p:294}, {s:"Pixel 7 Pro • 256GB", p:324}, {s:"Pixel 7 • 128GB", p:280}, {s:"Pixel 7 • 256GB", p:309}] },
-    { brand:"Google", model:"Pixel 8 Series", sub:"Advanced Tensor G3 Ultimate Generation", func:"7-year long term configuration support, Generative AI imagery tools", opts:[{s:"Pixel 8 Pro • 128GB", p:435}, {s:"Pixel 8 Pro • 256GB", p:487}, {s:"Pixel 8 Pro • 512GB", p:568}, {s:"Pixel 8 • 128GB", p:405}, {s:"Pixel 8 • 256GB", p:450}, {s:"Pixel 8A • 2080*", p:351}] },
-    { brand:"Google", model:"Google Pixel 9 Series", sub:"Latest Ultra Flagship Dynamic Engineering", func:"Next-gen Tensor computing architecture, premium flat rail layout", opts:[{s:"Google 9 • 128GB", p:506}, {s:"Google 9 Pro • 256GB", p:702}] }
+    { brand:"Google", model:"Pixel 8 Pro", sub:"Advanced Tensor G3 Ultimate Generation", func:"7-year long term configuration support, Generative AI tools", opts:[{s:"128GB", p:435}, {s:"256GB", p:487}] },
+    { brand:"Google", model:"Google Pixel 9 Pro", sub:"Latest Ultra Flagship Dynamic Engineering", func:"Next-gen Tensor computing architecture, premium flat rail layout", opts:[{s:"256GB", p:702}] },
+
+    // 👜 CLOTHING CATEGORY: DESIGNER BAGS & TRAVEL GEAR
+    { brand:"Bags", model:"Maison Luxe Leather Holdall", sub:"Premium Grade Leather Travel Architecture", func:"Full-grain calfskin leather matrix, heavy-duty deployment hardware, water-resistant base lining.", opts:[{s:"Standard Executive Noir", p:120}, {s:"Oversized Grand Tour Horizon", p:155}] },
+    { brand:"Bags", model:"Avantgarde Tech Backpack", sub:"High-Performance Digital Commuter Grid", func:"Ballistic nylon framework, integrated hidden anti-theft compartments, shock-absorbing laptop suspension layout.", opts:[{s:"Stealth Matrix 20L", p:65}, {s:"Pro-Pack Terminus 35L", p:85}] },
+    { brand:"Bags", model:"Prestige Monogram Crossbody", sub:"High-Demand Metropolitan Casual Module", func:"Signature structural canvas, reinforced magnetic locking plates, adjustable woven jacquard strap.", opts:[{s:"Classic Heritage Tan", p:45}, {s:"Obsidian Eclipse Edition", p:55}] },
+
+    // 👟 CLOTHING CATEGORY: FOOTWEAR MODULES & SNEAKERS
+    { brand:"Shoes", model:"Veloctiy-X Carbon Runner", sub:"Pro-Grade Kinetic Athlete Footwear", func:"Carbon-fiber propulsion core plates, breathable aerated weave knit mesh, hyper-rebound cushioning foam matrices.", opts:[{s:"EU Size 41", p:75}, {s:"EU Size 42", p:75}, {s:"EU Size 43", p:75}, {s:"EU Size 44", p:75}] },
+    { brand:"Shoes", model:"Grand Tourisan Leather Sneaker", sub:"Minimalist Heritage Casual Silhouette", func:"Hand-stitched premium Italian side-rail leather paneling, custom-molded interior anatomical footbeds.", opts:[{s:"Alabaster White Pro", p:95}, {s:"Midnight Kuro Premium", p:95}] },
+    { brand:"Shoes", model:"Terraform Technical Cargo Boot", sub:"All-Terrain Weatherproof Modular System", func:"Reinforced composite alloy toe plates, industrial quick-tie speed laces, heavy vulcanized traction grids.", opts:[{s:"Standard Configuration", p:110}] },
+
+    // ⚡ CLOTHING CATEGORY: STREETWEAR TRACKSUITS
+    { brand:"Tracksuits", model:"AeroKnit Tech Fleece Ensemble", sub:"Premium Clean Streetwear Architecture", func:"Double-bonded heavy cotton fleece knit matrix, tailored ergonomic aesthetic stitch layout, waterproof structural zipper nodes.", opts:[{s:"Chalk Grey Minimalist", p:55}, {s:"Carbon Anthracite Utility", p:55}, {s:"Imperial Forest Green", p:60}] },
+    { brand:"Tracksuits", model:"Monogram Street Track System", sub:"High-Impact Luxury Visual Silhouette", func:"Premium silk-blend technical satin outer framework, continuous side stripe embroidery detail, customized ribbed cuffs.", opts:[{s:"Midnight/Gold Matrix", p:70}, {s:"Neo-Tokyo Cyber Punk Pink", p:70}] },
+
+    // 👔 CLOTHING CATEGORY: BESPOKE SARTORIAL SUITS
+    { brand:"Suits", model:"Sartorial Three-Piece Sovereign", sub:"Ultra-Premium Bespoke Formal Execution", func:"100% fine Super 120s virgin wool weave architecture, full canvas interior structuring, handcrafted structural lapel configurations.", opts:[{s:"Classic Windsor Navy", p:220}, {s:"Charcoal Sovereign Stripe", p:240}] },
+    { brand:"Suits", model:"Modernist Slim Double-Breasted", sub:"Avantgarde Sharp Architectural Profile", func:"Sharp structure shoulder pads, peak lapel profile accents, wrinkle-resistant performance yarn blends.", opts:[{s:"Onyx Shadow Black", p:185}, {s:"Ascot Camel Tan Edition", p:195}] }
 ];
 
-let currentMainCategory = 'devices'; // options: 'devices', 'agency', 'restock'
+let currentMainCategory = 'devices'; // Available: 'devices', 'apparel', 'agency', 'restock'
 let activeSubBrand = "Apple", cart=[], selected={};
 
 function openAbout() { openModal('aboutModal'); }
@@ -630,15 +654,27 @@ window.onclick = e => {
 function toggleMainCategory(category) {
     currentMainCategory = category;
     
-    // Reset visual dynamic classes across main structural components
+    // Clear functional state visibility
     document.getElementById('main-devices').classList.remove('active');
+    document.getElementById('main-apparel').classList.remove('active');
     document.getElementById('main-agency').classList.remove('active');
     document.getElementById('main-restock').classList.remove('active');
+    
     document.getElementById('devices-sub-panel').classList.remove('active');
+    document.getElementById('apparel-sub-panel').classList.remove('active');
+
+    const bannerImg = document.getElementById('main-banner-img');
 
     if(category === 'devices') {
         document.getElementById('main-devices').classList.add('active');
         document.getElementById('devices-sub-panel').classList.add('active');
+        activeSubBrand = "Apple";
+        bannerImg.src = "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200&auto=format&fit=crop&q=80";
+    } else if(category === 'apparel') {
+        document.getElementById('main-apparel').classList.add('active');
+        document.getElementById('apparel-sub-panel').classList.add('active');
+        activeSubBrand = "Bags";
+        bannerImg.src = "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&auto=format&fit=crop&q=80";
     } else if(category === 'agency') {
         document.getElementById('main-agency').classList.add('active');
     } else if(category === 'restock') {
@@ -656,17 +692,22 @@ function render() {
     const grid = document.getElementById('product-grid');
     grid.innerHTML = "";
     
-    // Update Sub-Navigation highlighting safely
-    document.querySelectorAll('.btn-sub').forEach(btn => {
-        btn.className = "btn-sub"; 
-    });
+    // Standardize all subcategory link elements
+    document.querySelectorAll('.btn-sub').forEach(btn => { btn.className = "btn-sub"; });
+    
     if(currentMainCategory === 'devices') {
         if(activeSubBrand === 'Apple') document.getElementById('sub-apple').classList.add('active-apple');
         if(activeSubBrand === 'Samsung') document.getElementById('sub-samsung').classList.add('active-samsung');
         if(activeSubBrand === 'Google') document.getElementById('sub-google').classList.add('active-google');
         if(activeSubBrand === 'iPads') document.getElementById('sub-ipad').classList.add('active-ipad');
-        
-        // Render device cards dynamically
+    } else if(currentMainCategory === 'apparel') {
+        if(activeSubBrand === 'Bags') document.getElementById('sub-bags').classList.add('active-luxury');
+        if(activeSubBrand === 'Shoes') document.getElementById('sub-shoes').classList.add('active-luxury');
+        if(activeSubBrand === 'Tracksuits') document.getElementById('sub-tracksuits').classList.add('active-luxury');
+        if(activeSubBrand === 'Suits') document.getElementById('sub-suits').classList.add('active-luxury');
+    }
+
+    if(currentMainCategory === 'devices' || currentMainCategory === 'apparel') {
         const filteredItems = inventory.map((item, originalIndex) => ({item, originalIndex}))
                                        .filter(wrapped => wrapped.item.brand === activeSubBrand);
 
@@ -679,11 +720,14 @@ function render() {
             }
             const currentOpt = dev.opts[selected[oIdx]];
             
+            const isClothing = ['Bags', 'Shoes', 'Tracksuits', 'Suits'].includes(dev.brand);
+            
             const storageHTML = dev.opts.map((o, idx) => {
                 let pillClass = 'apple-pill';
                 if(dev.brand === 'Samsung') pillClass = 'samsung-pill';
                 if(dev.brand === 'iPads') pillClass = 'ipad-pill';
                 if(dev.brand === 'Google') pillClass = 'google-pill';
+                if(isClothing) pillClass = 'luxury-pill';
                 return `<span class="storage-pill ${pillClass} ${idx === selected[oIdx] ? 'active' : ''}" onclick="selectStrg(${oIdx}, ${idx})">${o.s}</span>`;
             }).join('');
 
@@ -691,11 +735,14 @@ function render() {
             if(dev.brand === 'Samsung') btnCartClass = 'samsung-cart';
             if(dev.brand === 'iPads') btnCartClass = 'ipad-cart';
             if(dev.brand === 'Google') btnCartClass = 'google-cart';
+            if(isClothing) btnCartClass = 'luxury-cart';
+
+            const dynamicTag = isClothing ? `LUXURY ${dev.brand.toUpperCase()} LINE` : `${dev.brand.toUpperCase()} SUPPLIES`;
 
             grid.innerHTML += `
             <div class="card">
                 <div>
-                    <div class="card-tag">${dev.brand.toUpperCase()} SUPPLIES</div>
+                    <div class="card-tag">${dynamicTag}</div>
                     <h3 class="card-title">${dev.model}</h3>
                     <p class="card-sub">${dev.sub}</p>
                     <div class="storage-options">${storageHTML}</div>
@@ -704,11 +751,11 @@ function render() {
                     <p style="font-size:11px; color:#166534; margin:4px 0;">✓ Verified authentic batch sourcing protocol.</p>
                     <div class="card-footer">
                         <div>
-                            <div class="price-label">Unit Price</div>
+                            <div class="price-label">Wholesale Unit Cost</div>
                             <div class="price-value">$${currentOpt.p}</div>
                         </div>
                         <div class="btn-group">
-                            <button class="btn-info" onclick="openDetails(${oIdx})">Info</button>
+                            <button class="btn-info" onclick="openDetails(${oIdx})">Info Matrix</button>
                             <button class="btn-cart ${btnCartClass}" onclick="addToCart(${oIdx})">🛒 Add</button>
                         </div>
                     </div>
@@ -716,29 +763,27 @@ function render() {
             </div>`;
         });
     } 
-    // RENDER AGENCY CATEGORY SECTION
     else if(currentMainCategory === 'agency') {
         grid.innerHTML = `
         <div class="card" style="grid-column: 1 / -1;">
             <div style="text-align: center; padding: 40px 20px;">
-                <h3 style="font-size:22px; margin-bottom:10px;">📦 Global Sourcing & Cargo Agency Services</h3>
-                <p style="color:var(--text-muted); max-width:600px; margin:0 auto 20px auto;">We provide complete export verification parameters, escrow handling, airfreight coordination, and verification pipelines directly out of China manufacturing networks.</p>
-                <span class="highlight" style="font-size:14px; padding:6px 16px;">Contact Admin for Custom Cargo Allocations</span>
+                <h3 style="font-size:22px; margin-bottom:10px;">📦 Sourcing Agency & Secure Cargo Escrow</h3>
+                <p style="color:var(--text-muted); max-width:600px; margin:0 auto 20px auto;">We provide end-to-end multi-sector factory clearing, volume negotiation, freight assembly, and high-security dispatch directly out of China production networks.</p>
+                <span class="luxury-highlight" style="font-size:14px; padding:6px 16px;">Initialize Custom Agency Procurement via Corporate Contact</span>
             </div>
         </div>`;
     } 
-    // RENDER PRIORITY RESTOCKING ENGINE
     else if(currentMainCategory === 'restock') {
         grid.innerHTML = `
         <div class="card" style="grid-column: 1 / -1;">
             <div style="padding: 30px 15px;">
-                <h3 style="font-size:20px; margin-bottom:8px; color:var(--primary);">🚀 Instant Inventory Restocking Protocol</h3>
-                <p style="color:#4b5563; font-size:15px; margin-bottom:20px;">Can't find the model, custom storage matrix, or specific product line you need inside the active catalog right now? Submit a restocking request directly down to our control center.</p>
+                <h3 style="font-size:20px; margin-bottom:8px; color:var(--primary);">🚀 Instant Inventory Restocking Matrix</h3>
+                <p style="color:#4b5563; font-size:15px; margin-bottom:20px;">Missing a specific premium fashion release, color variant, or particular hardware setup? Input your target manifest parameter lines below to prompt immediate administrative procurement.</p>
                 <div style="background:#f3f4f6; padding:20px; border-radius:8px; border:1px solid var(--border);">
-                    <h4 style="margin-bottom:12px; font-size:15px;">Submit Desired Restock Specification:</h4>
-                    <label style="font-size:13px; color:#444; font-weight:600;">Device Name / Product Requirement:</label>
-                    <input type="text" id="restock-item" placeholder="e.g., iPhone 15 Pro Max 1TB White Titanium or Custom Electronics Batch" class="form-field" style="margin-bottom:14px;">
-                    <button class="btn-order" onclick="submitRestockRequest()" style="margin-top:0;">Request Stocking via WhatsApp</button>
+                    <h4 style="margin-bottom:12px; font-size:15px;">Specify Requested Items / High-End Tailoring Allocations:</h4>
+                    <label style="font-size:13px; color:#444; font-weight:600;">Full Spec Requirement Portfolio:</label>
+                    <input type="text" id="restock-item" placeholder="e.g., Slim Tuxedo Velvet Suites Black XL / Bespoke Footwear Packs" class="form-field" style="margin-bottom:14px;">
+                    <button class="btn-order" onclick="submitRestockRequest()" style="margin-top:0;">Transmit Restock Protocol via WhatsApp</button>
                 </div>
             </div>
         </div>`;
@@ -752,8 +797,8 @@ function selectStrg(itemIdx, optIdx) {
 
 function submitRestockRequest() {
     const itemSpec = document.getElementById('restock-item').value.trim();
-    if(!itemSpec) return alert("Please specify what structural configuration or stock item you require!");
-    const msg = `*MALWENE EXPORTS RESTOCK REQUEST*%0A------------------------%0A*Requested Item:* ${encodeURIComponent(itemSpec)}%0A------------------------%0APlease check availability and provide pricing variables inside the China shipping pipelines.`;
+    if(!itemSpec) return alert("Please clarify item parameters before initializing deployment!");
+    const msg = `*MALWENE EXPORTS RESTOCK MANIFEST*%0A------------------------%0A*Requested Portfolios:* ${encodeURIComponent(itemSpec)}%0A------------------------%0APlease run standard sourcing audits in China production loops and feedback with unit pricing grids.`;
     window.open(`https://wa.me/8618717323027?text=${msg}`, '_blank');
 }
 
@@ -766,17 +811,25 @@ function openDetails(originalIdx) {
     document.getElementById('det-func').innerText = dev.func;
     
     const badge = document.getElementById('det-badge');
-    if(dev.brand === 'Apple') badge.className = 'apple-highlight';
-    else if(dev.brand === 'Samsung') badge.className = 'samsung-highlight';
-    else if(dev.brand === 'Google') badge.className = 'google-highlight';
-    else badge.className = 'ipad-highlight';
-    badge.innerText = '100% ORIGINAL';
+    const apparelBrands = ['Bags', 'Shoes', 'Tracksuits', 'Suits'];
+    
+    if(apparelBrands.includes(dev.brand)) {
+        badge.className = 'luxury-highlight';
+        badge.innerText = 'HIGH-END LUXURY CORPS';
+    } else {
+        if(dev.brand === 'Apple') badge.className = 'apple-highlight';
+        else if(dev.brand === 'Samsung') badge.className = 'samsung-highlight';
+        else if(dev.brand === 'Google') badge.className = 'google-highlight';
+        else badge.className = 'ipad-highlight';
+        badge.innerText = '100% ORIGINAL GENUINE';
+    }
 
     document.getElementById('det-store').innerHTML = opts.map(o => {
         let cls = 'apple-highlight';
         if(dev.brand === 'Samsung') cls = 'samsung-highlight';
         if(dev.brand === 'iPads') cls = 'ipad-highlight';
         if(dev.brand === 'Google') cls = 'google-highlight';
+        if(apparelBrands.includes(dev.brand)) cls = 'luxury-highlight';
         return `<span class="${cls}" style="margin:3px 4px; display:inline-block; border-radius:8px;">${o.s}</span>`;
     }).join(' ');
 
@@ -817,19 +870,19 @@ function updateCart() {
 }
 
 function openOrder() {
-    if(!cart.length) return alert("Your choice configuration matrix is currently empty!");
+    if(!cart.length) return alert("Your current manifest data buffer is empty!");
     const shipEl = document.getElementById('ship-to');
     const ship = parseInt(shipEl.value);
     const shipName = shipEl.selectedOptions[0].dataset.name;
     const sub = cart.reduce((a, b) => a + b.t, 0);
     const total = sub + ship;
 
-    let itemsHTML = "", msg = `*MALWENE EXPORTS ORDER*%0A------------------------%0A`;
+    let itemsHTML = "", msg = `*MALWENE EXPORTS MANIFEST ORDER*%0A------------------------%0A`;
     cart.forEach(it => { 
         itemsHTML += `<div class="cart-item"><span>${it.m}</span><span>${it.s} ×${it.q} — $${it.t}</span></div>`; 
-        msg += `• ${it.m} | ${it.s} | Qty:${it.q} | $${it.t}%0A`; 
+        msg += `• ${it.m} | Model Spec: ${it.s} | Qty:${it.q} | Total Value: $${it.t}%0A`; 
     });
-    msg += `------------------------%0A*Subtotal:* $${sub}%0A*Shipping:* $${ship} (${shipName})%0A*TOTAL:* $${total}%0A------------------------%0APlease confirm deployment parameters.`;
+    msg += `------------------------%0A*Subtotal Valuation:* $${sub}%0A*Logistics Fee:* $${ship} (${shipName})%0A*TOTAL CAPITAL REQUIREMENT:* $${total}%0A------------------------%0APlease verify allocation clearances.`;
 
     document.getElementById('order-items').innerHTML = itemsHTML;
     document.getElementById('subtotal').innerText = `$${sub}`;
@@ -839,7 +892,7 @@ function openOrder() {
     openModal('orderModal');
 }
 
-// Initial script bootstrap setup
+// Bootstrap execution
 toggleMainCategory('devices');
 </script>
 
