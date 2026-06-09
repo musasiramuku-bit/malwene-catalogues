@@ -16,6 +16,7 @@
             --accent-samsung: #1428A0;
             --accent-apple: #0071e3;
             --accent-ipad: #6366f1;
+            --accent-google: #4285f4;
             --border: #e5e7eb;
         }
 
@@ -168,6 +169,7 @@
         .samsung-highlight { background: #eef2ff; color: var(--accent-samsung); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
         .apple-highlight { background: #f0f7ff; color: var(--accent-apple); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
         .ipad-highlight { background: #f5f3ff; color: var(--accent-ipad); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
+        .google-highlight { background: #e8f0fe; color: var(--accent-google); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
 
         /* ✅ RESPONSIVE MAIN LAYOUT */
         .container {
@@ -213,7 +215,7 @@
         @media(max-width:991px) {
             .filter-btn-container {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
             }
         }
 
@@ -233,6 +235,7 @@
         .btn-brand.apple-btn:hover, .btn-brand.apple-btn.active { background: var(--accent-apple); color: white; border-color: var(--accent-apple); }
         .btn-brand.samsung-btn:hover, .btn-brand.samsung-btn.active { background: var(--accent-samsung); color: white; border-color: var(--accent-samsung); }
         .btn-brand.ipad-btn:hover, .btn-brand.ipad-btn.active { background: var(--accent-ipad); color: white; border-color: var(--accent-ipad); }
+        .btn-brand.google-btn:hover, .btn-brand.google-btn.active { background: var(--accent-google); color: white; border-color: var(--accent-google); }
 
         .form-field {
             width: 100%;
@@ -321,6 +324,7 @@
         .apple-pill.active { background: var(--accent-apple); color: white; border-color: var(--accent-apple); }
         .samsung-pill.active { background: var(--accent-samsung); color: white; border-color: var(--accent-samsung); }
         .ipad-pill.active { background: var(--accent-ipad); color: white; border-color: var(--accent-ipad); }
+        .google-pill.active { background: var(--accent-google); color: white; border-color: var(--accent-google); }
 
         .card-footer {
             display: flex;
@@ -358,6 +362,7 @@
         .btn-cart.apple-cart { background: var(--accent-apple); }
         .btn-cart.samsung-cart { background: var(--accent-samsung); }
         .btn-cart.ipad-cart { background: var(--accent-ipad); }
+        .btn-cart.google-cart { background: var(--accent-google); }
         .btn-cart:hover { opacity: 0.9; }
 
         footer {
@@ -483,6 +488,7 @@
                 <button class="btn-brand apple-btn active" id="btn-apple" onclick="filterBrand('Apple')">🍎 iPhones</button>
                 <button class="btn-brand ipad-btn" id="btn-ipad" onclick="filterBrand('iPads')">平板 iPads</button>
                 <button class="btn-brand samsung-btn" id="btn-samsung" onclick="filterBrand('Samsung')">🟦 Samsung</button>
+                <button class="btn-brand google-btn" id="btn-google" onclick="filterBrand('Google')">🌐 Google Pixels</button>
             </div>
         </div>
 
@@ -622,7 +628,7 @@ const inventory = [
         opts:[ {s:"256GB", p:670}, {s:"512GB", p:690} ]
     },
 
-    // 📱 NEW CATEGORY: IPADS
+    // 📱 CATEGORY: IPADS
     {
         brand:"iPads",
         model:"iPad Mini 4",
@@ -726,6 +732,58 @@ const inventory = [
             {s:"256GB (Sim)", p:592}
         ]
     },
+    {
+        brand:"iPads",
+        model:"iPad Pro 4th Gen (2020)",
+        sub:"11\" & 12.9\" Cinematic Retina Performance",
+        func:"A12Z Bionic chip, Dual Camera setup with LiDAR Scanner, True Tone display engineering",
+        opts:[
+            {s:"11\" • 128GB (Sim)", p:545},
+            {s:"11\" • 256GB (Sim)", p:607},
+            {s:"11\" • 512GB (Sim)", p:653},
+            {s:"12.9\" • 128GB (Sim)", p:607},
+            {s:"12.9\" • 256GB (Sim)", p:653},
+            {s:"12.9\" • 512GB (Sim)", p:730}
+        ]
+    },
+    {
+        brand:"iPads",
+        model:"iPad Pro 5th Gen (M1 - 2021)",
+        sub:"Next-Gen M1 Desktop Processing Architecture",
+        func:"Apple M1 System Chip, Thunderbolt port connectivity, Liquid Retina XDR display parameters",
+        opts:[
+            {s:"11\" • 128GB (Sim)", p:730},
+            {s:"11\" • 256GB (Sim)", p:766},
+            {s:"11\" • 512GB (Sim)", p:776},
+            {s:"12.9\" • 128GB (Sim)", p:720},
+            {s:"12.9\" • 256GB (Sim)", p:776},
+            {s:"12.9\" • 512GB (Sim)", p:868}
+        ]
+    },
+    {
+        brand:"iPads",
+        model:"iPad Pro 6th Gen (M2 - 2022)",
+        sub:"Premium M2 Core Power - 11 Inches",
+        func:"Apple M2 processor configuration, Apple Pencil hover detection, ProRes video encoding",
+        opts:[
+            {s:"11\" • 128GB (Sim)", p:731},
+            {s:"11\" • 256GB (Sim)", p:868},
+            {s:"11\" • 512GB (Sim)", p:920},
+            {s:"11\" • 512GB (Sim) Premium", p:1012}
+        ]
+    },
+    {
+        brand:"iPads",
+        model:"iPad Pro Latest M4 (2024)",
+        sub:"Ultra-Thin Tandem OLED Evolution Model",
+        func:"Apple M4 high-end processing, Breakthrough Ultra Retina XDR matrix, Ultimate Pro workflow tier",
+        opts:[
+            {s:"11\" • 256GB (Sim)", p:1022},
+            {s:"11\" • 512GB (Sim)", p:1145},
+            {s:"13\" • 256GB (Sim)", p:1184},
+            {s:"13\" • 512GB (Sim)", p:1290}
+        ]
+    },
 
     // 🟦 SAMSUNG GALAXY
     {
@@ -774,6 +832,123 @@ const inventory = [
         sub:"Pristine Flex Window Pocket Mini",
         func:"Expanded dynamic external view window, upgraded gapless protective display hinges",
         opts:[ {s:"1 SIM • 256GB", p:299} ]
+    },
+
+    // 🌐 NEW CATEGORY: GOOGLE PIXELS
+    {
+        brand:"Google",
+        model:"Pixel 3 Series",
+        sub:"Classic Pure Android Flagship Layout",
+        func:"Top-tier single lens computational photography, HDR+, Unlimited cloud fallback setups",
+        opts:[
+            {s:"Pixel 3 • 64GB", p:160},
+            {s:"Pixel 3 • 128GB", p:167},
+            {s:"Pixel 3XL • 64GB", p:163},
+            {s:"Pixel 3XL • 128GB", p:173}
+        ]
+    },
+    {
+        brand:"Google",
+        model:"Pixel 3A Series",
+        sub:"Budget-Friendly Clean Android System",
+        func:"Flagship-grade camera sensor parameters, Headphone jack accessibility, lightweight design",
+        opts:[
+            {s:"Pixel 3A • 64GB", p:148},
+            {s:"Pixel 3A • 128GB", p:43},
+            {s:"Pixel 3a XL • 64GB", p:158},
+            {s:"Pixel 3a XL • 128GB", p:43}
+        ]
+    },
+    {
+        brand:"Google",
+        model:"Pixel 4 Series",
+        sub:"90Hz Smooth Display Smart Matrix",
+        func:"Motion Sense Radar operations, Dual lens layout with telephoto module, secure Face Unlock",
+        opts:[
+            {s:"Pixel 4 • 64GB", p:183},
+            {s:"Pixel 4 • 128GB", p:200},
+            {s:"Pixel 4XL • 64GB", p:203},
+            {s:"Pixel 4XL • 128GB", p:217}
+        ]
+    },
+    {
+        brand:"Google",
+        model:"Pixel 4A Series",
+        sub:"Compact Ergonomic Everyday Solution",
+        func:"Punch-hole modern display matrix, highly efficient battery management, 5G standard compatibility",
+        opts:[
+            {s:"Pixel 4A 5G • 128GB", p:188},
+            {s:"Pixel 4A 4G • 128GB", p:183}
+        ]
+    },
+    {
+        brand:"Google",
+        model:"Pixel 5 / 5A",
+        sub:"Premium Uniform Bezel Enterprise Edition",
+        func:"Ultra-wide second lens configuration, Premium bio-resin coated aluminum framework, high capacity power rails",
+        opts:[
+            {s:"Pixel 5 • 128GB", p:220},
+            {s:"Pixel 5A • 128GB", p:217}
+        ]
+    },
+    {
+        brand:"Google",
+        model:"Pixel 6 Series",
+        sub:"First-Gen Custom Tensor Intelligent Core",
+        func:"Google Tensor AI structural engine, Signature design camera bar layout, Advanced real tone imaging features",
+        opts:[
+            {s:"Pixel 6 • 128GB", p:250},
+            {s:"Pixel 6 • 256GB", p:274},
+            {s:"Pixel 6 Pro • 128GB", p:228},
+            {s:"Pixel 6 Pro • 256GB", p:243},
+            {s:"Pixel 6 Pro • 512GB", p:346}
+        ]
+    },
+    {
+        brand:"Google",
+        model:"Pixel 6A / 7A",
+        sub:"High Efficiency Google A-Series Framework",
+        func:"High tier core processing speeds, premium software feature drop access points",
+        opts:[
+            {s:"Pixel 6A • 128GB", p:225},
+            {s:"Pixel 7A • 128GB", p:287}
+        ]
+    },
+    {
+        brand:"Google",
+        model:"Pixel 7 / 7 Pro",
+        sub:"Refined Sleek Matte Aluminum Framework",
+        func:"Macro focus lens layers, Next-gen Tensor G2 secure computing, high brightness outdoor viewing panel",
+        opts:[
+            {s:"Pixel 7 Pro • 128GB", p:294},
+            {s:"Pixel 7 Pro • 256GB", p:324},
+            {s:"Pixel 7 • 128GB", p:280},
+            {s:"Pixel 7 • 256GB", p:309}
+        ]
+    },
+    {
+        brand:"Google",
+        model:"Pixel 8 Series",
+        sub:"Advanced Tensor G3 Ultimate Generation",
+        func:"7-year long term configuration support, Generative AI imagery tools, automated call screening modules",
+        opts:[
+            {s:"Pixel 8 Pro • 128GB", p:435},
+            {s:"Pixel 8 Pro • 256GB", p:487},
+            {s:"Pixel 8 Pro • 512GB", p:568},
+            {s:"Pixel 8 • 128GB", p:405},
+            {s:"Pixel 8 • 256GB", p:450},
+            {s:"Pixel 8A • 2080*", p:351}
+        ]
+    },
+    {
+        brand:"Google",
+        model:"Google Pixel 9 Series",
+        sub:"Latest Ultra Flagship Dynamic Engineering",
+        func:"Next-gen Tensor computing architecture, premium flat rail industrial design layout, professional visual stack",
+        opts:[
+            {s:"Google 9 • 128GB", p:506},
+            {s:"Google 9 Pro • 256GB", p:702}
+        ]
     }
 ];
 
@@ -801,6 +976,7 @@ function render() {
     if(activeBrand === 'Apple') document.getElementById('btn-apple').classList.add('active');
     if(activeBrand === 'iPads') document.getElementById('btn-ipad').classList.add('active');
     if(activeBrand === 'Samsung') document.getElementById('btn-samsung').classList.add('active');
+    if(activeBrand === 'Google') document.getElementById('btn-google').classList.add('active');
 
     const filteredItems = inventory.map((item, originalIndex) => ({item, originalIndex}))
                                    .filter(wrapped => wrapped.item.brand === activeBrand);
@@ -824,6 +1000,7 @@ function render() {
             let pillClass = 'apple-pill';
             if(dev.brand === 'Samsung') pillClass = 'samsung-pill';
             if(dev.brand === 'iPads') pillClass = 'ipad-pill';
+            if(dev.brand === 'Google') pillClass = 'google-pill';
             
             return `<span class="storage-pill ${pillClass} ${idx === selected[oIdx] ? 'active' : ''}" 
                           onclick="selectStrg(${oIdx}, ${idx})">${o.s}</span>`;
@@ -832,6 +1009,7 @@ function render() {
         let btnCartClass = 'apple-cart';
         if(dev.brand === 'Samsung') btnCartClass = 'samsung-cart';
         if(dev.brand === 'iPads') btnCartClass = 'ipad-cart';
+        if(dev.brand === 'Google') btnCartClass = 'google-cart';
 
         grid.innerHTML += `
         <div class="card">
@@ -879,6 +1057,7 @@ function openDetails(originalIdx) {
     const badge = document.getElementById('det-badge');
     if(dev.brand === 'Apple') badge.className = 'apple-highlight';
     else if(dev.brand === 'Samsung') badge.className = 'samsung-highlight';
+    else if(dev.brand === 'Google') badge.className = 'google-highlight';
     else badge.className = 'ipad-highlight';
     badge.innerText = '100% ORIGINAL';
 
@@ -886,6 +1065,7 @@ function openDetails(originalIdx) {
         let cls = 'apple-highlight';
         if(dev.brand === 'Samsung') cls = 'samsung-highlight';
         if(dev.brand === 'iPads') cls = 'ipad-highlight';
+        if(dev.brand === 'Google') cls = 'google-highlight';
         return `<span class="${cls}" style="margin:3px 4px; display:inline-block; border-radius:8px;">${o.s}</span>`;
     }).join(' ');
 
