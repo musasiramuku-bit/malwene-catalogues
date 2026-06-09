@@ -15,9 +15,7 @@
             --accent-green: #15803d;
             --accent-samsung: #1428A0;
             --accent-apple: #0071e3;
-            --accent-pixel: #4285F4;
             --accent-ipad: #6366f1;
-            --accent-generic: #374151;
             --border: #e5e7eb;
         }
 
@@ -35,7 +33,7 @@
             line-height: 1.5;
         }
 
-        /* ✅ TOP NAVIGATION BAR */
+        /* ✅ TOP NAVIGATION BAR - MOBILE & DESKTOP OPTIMIZED */
         header {
             background-color: var(--dark-nav);
             padding: 14px 18px;
@@ -169,11 +167,9 @@
         .highlight { background: #f0fdf4; color: #166534; padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
         .samsung-highlight { background: #eef2ff; color: var(--accent-samsung); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
         .apple-highlight { background: #f0f7ff; color: var(--accent-apple); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
-        .pixel-highlight { background: #e8f0fe; color: var(--accent-pixel); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
         .ipad-highlight { background: #f5f3ff; color: var(--accent-ipad); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
-        .generic-highlight { background: #f3f4f6; color: var(--accent-generic); padding: 2px 8px; border-radius: 12px; font-size: 13px; font-weight: 600; }
 
-        /* ✅ RESPONSIVE LAYOUT */
+        /* ✅ RESPONSIVE MAIN LAYOUT */
         .container {
             max-width: 1200px;
             margin: 16px auto;
@@ -217,7 +213,7 @@
         @media(max-width:991px) {
             .filter-btn-container {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             }
         }
 
@@ -236,29 +232,7 @@
         .btn-brand.active { background: var(--text-dark); color: white; border-color: var(--text-dark); }
         .btn-brand.apple-btn:hover, .btn-brand.apple-btn.active { background: var(--accent-apple); color: white; border-color: var(--accent-apple); }
         .btn-brand.samsung-btn:hover, .btn-brand.samsung-btn.active { background: var(--accent-samsung); color: white; border-color: var(--accent-samsung); }
-        .btn-brand.pixel-btn:hover, .btn-brand.pixel-btn.active { background: var(--accent-pixel); color: white; border-color: var(--accent-pixel); }
         .btn-brand.ipad-btn:hover, .btn-brand.ipad-btn.active { background: var(--accent-ipad); color: white; border-color: var(--accent-ipad); }
-        .btn-brand.generic-btn:hover, .btn-brand.generic-btn.active { background: var(--accent-generic); color: white; border-color: var(--accent-generic); }
-
-        /* Sub-options for Phones */
-        .sub-filter {
-            margin-left: 12px;
-            margin-top: 6px;
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .sub-filter.show { display: flex; }
-        .btn-sub {
-            padding: 8px 12px;
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .btn-sub.active { font-weight: bold; border-color: var(--accent-green); }
 
         .form-field {
             width: 100%;
@@ -334,16 +308,6 @@
         .card-title { font-size: 17px; font-weight: 700; margin: 4px 0; }
         .card-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; min-height: 38px; }
 
-        .restock-notice {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-muted);
-            font-size: 16px;
-            background: #fef3c7;
-            border-radius: 8px;
-            border: 1px solid #fbbf24;
-        }
-
         .storage-options { display: flex; gap: 6px; margin: 12px 0; flex-wrap: wrap; }
         .storage-pill {
             padding: 6px 12px;
@@ -356,9 +320,7 @@
         .storage-pill.active { background: var(--text-dark); color: white; border-color: var(--text-dark); }
         .apple-pill.active { background: var(--accent-apple); color: white; border-color: var(--accent-apple); }
         .samsung-pill.active { background: var(--accent-samsung); color: white; border-color: var(--accent-samsung); }
-        .pixel-pill.active { background: var(--accent-pixel); color: white; border-color: var(--accent-pixel); }
         .ipad-pill.active { background: var(--accent-ipad); color: white; border-color: var(--accent-ipad); }
-        .generic-pill.active { background: var(--accent-generic); color: white; border-color: var(--accent-generic); }
 
         .card-footer {
             display: flex;
@@ -395,9 +357,7 @@
         }
         .btn-cart.apple-cart { background: var(--accent-apple); }
         .btn-cart.samsung-cart { background: var(--accent-samsung); }
-        .btn-cart.pixel-cart { background: var(--accent-pixel); }
         .btn-cart.ipad-cart { background: var(--accent-ipad); }
-        .btn-cart.generic-cart { background: var(--accent-generic); }
         .btn-cart:hover { opacity: 0.9; }
 
         footer {
@@ -437,10 +397,10 @@
     <div class="modal-content">
         <span class="close-modal" onclick="closeModal('aboutModal')">&times;</span>
         <h2>🏢 About Malwene Exports</h2>
-        <p><strong>Malwene Exports</strong> is a trusted global wholesale supplier of premium refurbished and brand-new electronics, apparel, and industrial machinery. Founded with a vision to bridge quality products across borders, we specialize in sourcing, grading, and delivering top-tier commercial items from China directly to businesses and individuals across Africa and worldwide.</p>
+        <p><strong>Malwene Exports</strong> is a trusted global wholesale supplier of premium refurbished and brand-new smartphones, tablets, and tech devices. Founded with a vision to bridge quality technology across borders, we specialize in sourcing, grading, and delivering top-tier mobile devices from China directly to businesses and individuals across Africa and worldwide.</p>
         <p>We are headquartered in China 🇨🇳 with distribution hubs across Southern Africa, ensuring fast, safe, and affordable logistics. Our core focus is <strong>100% original quality, transparent pricing, and reliable delivery</strong>.</p>
         <h3 style="margin:16px 0 6px 0; font-size:17px;">🎯 Our Mission</h3>
-        <p>To make premium electronics and commercial merchandise accessible, affordable, and trustworthy for everyone — connecting global supply with local demand, securely and efficiently.</p>
+        <p>To make premium technology accessible, affordable, and trustworthy for everyone — connecting global supply with local demand, securely and efficiently.</p>
     </div>
 </div>
 
@@ -467,9 +427,9 @@
         <span class="close-modal" onclick="closeModal('servicesModal')">&times;</span>
         <h2>⚙️ Our Services</h2>
         <ul>
-            <li><strong>📦 Global Product Sourcing:</strong> Direct factory access to authentic electronics and wholesale goods.</li>
+            <li><strong>📦 Global Device Sourcing:</strong> Direct factory access to authentic premium stock.</li>
             <li><strong>✅ Professional Testing:</strong> Hand-graded and performance verified before delivery.</li>
-            <li><strong>🚚 Fast Logistics:</strong> Full tracked global airfreight and cargo logistics.</li>
+            <li><strong>🚚 Fast Logistics:</strong> Full tracked global airfreight options.</li>
             <li><strong>🔐 Safe Protection:</strong> Escrow processing and buyer clearance parameters secured.</li>
         </ul>
     </div>
@@ -520,18 +480,9 @@
         <div>
             <h4 style="font-size:13px; text-transform:uppercase; color:#777; margin-bottom:8px;">Filter Category</h4>
             <div class="filter-btn-container">
-                <button class="btn-brand active" id="btn-phones" onclick="togglePhoneSub()">📱 Phones ▾</button>
-                <div id="phone-submenu" class="sub-filter show">
-                    <button class="btn-sub active" onclick="filterBrand('Apple')">🍎 iPhone</button>
-                    <button class="btn-sub" onclick="filterBrand('Samsung')">📱 Samsung</button>
-                    <button class="btn-sub" onclick="filterBrand('Google')">🔍 Google Pixel</button>
-                </div>
-
-                <button class="btn-brand ipad-btn" id="btn-ipads" onclick="filterBrand('iPads')">📟 iPads</button>
-                <button class="btn-brand generic-btn" id="btn-shoes" onclick="filterBrand('Shoes')">👟 Shoes</button>
-                <button class="btn-brand generic-btn" id="btn-handbags" onclick="filterBrand('Handbags')">👜 Handbags</button>
-                <button class="btn-brand generic-btn" id="btn-clothing" onclick="filterBrand('Clothing')">👕 Clothing</button>
-                <button class="btn-brand generic-btn" id="btn-machinery" onclick="filterBrand('Machinery')">🏗️ Machinery</button>
+                <button class="btn-brand apple-btn active" id="btn-apple" onclick="filterBrand('Apple')">🍎 iPhones</button>
+                <button class="btn-brand ipad-btn" id="btn-ipad" onclick="filterBrand('iPads')">平板 iPads</button>
+                <button class="btn-brand samsung-btn" id="btn-samsung" onclick="filterBrand('Samsung')">🟦 Samsung</button>
             </div>
         </div>
 
@@ -558,7 +509,7 @@
 
     <main>
         <div class="banner">
-            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200&auto=format&fit=crop&q=80" alt="Premium Global Supply">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200&auto=format&fit=crop&q=80" alt="Premium Tech Supply">
         </div>
         <div id="product-grid" class="product-grid"></div>
     </main>
@@ -566,15 +517,14 @@
 
 <footer>
     &copy; 2026 Malwene Exports. All Rights Reserved.<br>
-    📞 +86 18717323027 | ✉️ malweneexports@gmail.com | 🌍 Quality Global Wholesale Supplier
+    📞 +86 18717323027 | ✉️ malweneexports@gmail.com | 🌍 Premium Global Electronics
 </footer>
 
 <script>
 const inventory = [
-    // 📱 IPHONES
+    // 🍎 APPLE IPHONE
     {
         brand:"Apple",
-        category:"Phones",
         model:"iPhone 7 Plus",
         sub:"Budget daily driver - Grade A/B",
         func:"12MP camera, Touch ID, A10 Fusion, 5.5-inch Retina HD",
@@ -582,7 +532,6 @@ const inventory = [
     },
     {
         brand:"Apple",
-        category:"Phones",
         model:"iPhone 8 Plus",
         sub:"Reliable classic - Grade A/B",
         func:"12MP dual cam, Wireless charging, A11 Bionic, 5.5-inch",
@@ -590,7 +539,6 @@ const inventory = [
     },
     {
         brand:"Apple",
-        category:"Phones",
         model:"iPhone XS",
         sub:"Premium OLED display - Grade A",
         func:"5.8-inch Super Retina OLED, Dual 12MP, Face ID",
@@ -598,7 +546,6 @@ const inventory = [
     },
     {
         brand:"Apple",
-        category:"Phones",
         model:"iPhone XR",
         sub:"Long battery life - Grade A",
         func:"6.1-inch Liquid Retina, Single 12MP, A12 Bionic",
@@ -606,7 +553,6 @@ const inventory = [
     },
     {
         brand:"Apple",
-        category:"Phones",
         model:"iPhone 11",
         sub:"Dual camera favorite - Grade A",
         func:"A13 Bionic, Night Mode, 6.1-inch Liquid Retina, IP68",
@@ -614,7 +560,6 @@ const inventory = [
     },
     {
         brand:"Apple",
-        category:"Phones",
         model:"iPhone 12",
         sub:"5G flat edge design - Grade A",
         func:"Ceramic Shield, A14 Bionic, 5G, MagSafe system",
@@ -622,7 +567,6 @@ const inventory = [
     },
     {
         brand:"Apple",
-        category:"Phones",
         model:"iPhone 13",
         sub:"Better battery & speed - Grade A",
         func:"A15 Bionic, Cinematic Mode, Sensor-shift setup",
@@ -630,7 +574,6 @@ const inventory = [
     },
     {
         brand:"Apple",
-        category:"Phones",
         model:"iPhone 14",
         sub:"Reliable flagship layout - Grade A",
         func:"A15 Bionic architecture, Advanced Action features, 5G",
@@ -638,7 +581,6 @@ const inventory = [
     },
     {
         brand:"Apple",
-        category:"Phones",
         model:"iPhone 15",
         sub:"USB-C modern design - Grade A+",
         func:"USB-C architecture, Dynamic Island UI, 48MP lenses",
@@ -646,7 +588,6 @@ const inventory = [
     },
     {
         brand:"Apple",
-        category:"Phones",
         model:"iPhone 11 Pro Max",
         sub:"Large screen pro - Grade A",
         func:"6.5-inch OLED grid, Triple camera setup, High processing tier",
@@ -654,7 +595,6 @@ const inventory = [
     },
     {
         brand:"Apple",
-        category:"Phones",
         model:"iPhone 12 Pro Max",
         sub:"Max performance layout - Grade A",
         func:"6.7-inch display matrix, LiDAR scanners, Premium framework",
@@ -662,7 +602,6 @@ const inventory = [
     },
     {
         brand:"Apple",
-        category:"Phones",
         model:"iPhone 13 Pro Max",
         sub:"Ultimate dynamic frame - Grade A+",
         func:"ProMotion 120Hz display parameters, A15 premium flagship stability",
@@ -670,7 +609,6 @@ const inventory = [
     },
     {
         brand:"Apple",
-        category:"Phones",
         model:"iPhone 14 Pro Max",
         sub:"Dynamic display master - Grade A+",
         func:"Always-On interface layouts, Dynamic Island framework, 48MP modules",
@@ -678,105 +616,15 @@ const inventory = [
     },
     {
         brand:"Apple",
-        category:"Phones",
         model:"iPhone 15 Pro Max",
         sub:"Premium Titanium Standard - Grade A+",
         func:"Action input buttons, A17 Pro high-speed chip dynamic layout",
         opts:[ {s:"256GB", p:670}, {s:"512GB", p:690} ]
     },
 
-    // 🤖 SAMSUNG
-    {
-        brand:"Samsung",
-        category:"Phones",
-        model:"Galaxy S22 Ultra",
-        sub:"Premium flagship - Like New",
-        func:"S Pen built-in, 108MP camera, Snapdragon 8 Gen 1, 120Hz AMOLED",
-        opts:[
-            {s:"1 SIM • 128GB", p:367},
-            {s:"2 SIM • 128GB", p:383},
-            {s:"1 SIM • 256GB", p:417},
-            {s:"2 SIM • 256GB", p:433}
-        ]
-    },
-    {
-        brand:"Samsung",
-        category:"Phones",
-        model:"Galaxy S23 Ultra",
-        sub:"Camera king flagship - Like New",
-        func:"200MP main camera matrix, Enhanced night optics engineering, Snapdragon 8 Gen 2",
-        opts:[
-            {s:"1 SIM • 128GB", p:533},
-            {s:"2 SIM • 128GB", p:567},
-            {s:"2 SIM • 256GB", p:583}
-        ]
-    },
-    {
-        brand:"Samsung",
-        category:"Phones",
-        model:"Galaxy S24 Ultra",
-        sub:"AI-driven Ultimate Smartphone - Pristine",
-        func:"Galaxy AI automated operations, Industrial grade Titanium design, Pro Visual Engine",
-        opts:[ {s:"2 SIM • 256GB", p:783} ]
-    },
-    {
-        brand:"Samsung",
-        category:"Phones",
-        model:"Galaxy Z Flip 4",
-        sub:"Compact multi-angle foldable",
-        func:"FlexCam system integration, 120Hz main interactive panel, custom operations layout",
-        opts:[
-            {s:"1 SIM • 128GB", p:200},
-            {s:"1 SIM • 256GB", p:238}
-        ]
-    },
-    {
-        brand:"Samsung",
-        category:"Phones",
-        model:"Galaxy Z Flip 5",
-        sub:"Pristine Flex Window Pocket Mini",
-        func:"Expanded dynamic external view window, upgraded gapless protective display hinges",
-        opts:[ {s:"1 SIM • 256GB", p:299} ]
-    },
-
-    // 🔍 GOOGLE PIXEL
-    {
-        brand:"Google",
-        category:"Phones",
-        model:"Pixel 7",
-        sub:"Pure Android experience - Grade A",
-        func:"Google Tensor G2, 50MP camera, 90Hz OLED, 5G, IP67",
-        opts:[ {s:"128GB", p:245}, {s:"256GB", p:275} ]
-    },
-    {
-        brand:"Google",
-        category:"Phones",
-        model:"Pixel 7 Pro",
-        sub:"Pro camera & display - Grade A",
-        func:"6.7-inch QHD+ 120Hz, Telephoto lens, Tensor G2, 5x zoom",
-        opts:[ {s:"128GB", p:310}, {s:"256GB", p:340} ]
-    },
-    {
-        brand:"Google",
-        category:"Phones",
-        model:"Pixel 8",
-        sub:"AI features & long support - Grade A+",
-        func:"Tensor G3, 7 years updates, 24hr battery, 120Hz Actua display",
-        opts:[ {s:"128GB", p:360}, {s:"256GB", p:395} ]
-    },
-    {
-        brand:"Google",
-        category:"Phones",
-        model:"Pixel 8 Pro",
-        sub:"Premium flagship - Grade A+",
-        func:"6.7-inch Super Actua display, 5x optical zoom, AI editing tools",
-        opts:[ {s:"128GB", p:430}, {s:"256GB", p:475} ]
-    },
-
-    // 📟 IPADS
+    // 📱 NEW CATEGORY: IPADS
     {
         brand:"iPads",
-        category:"iPads",
         model:"iPad Mini 4",
         sub:"Compact and Portable Tablet Ecosystem",
         func:"Retina display metrics, Touch ID module, Slim lightweight aluminum profile",
@@ -787,7 +635,6 @@ const inventory = [
     },
     {
         brand:"iPads",
-        category:"iPads",
         model:"iPad Mini 5",
         sub:"High Performance Mini Production Line",
         func:"Apple A12 Bionic engine, Apple Pencil access tracking capabilities, True Tone integration",
@@ -800,7 +647,6 @@ const inventory = [
     },
     {
         brand:"iPads",
-        category:"iPads",
         model:"iPad Mini 6",
         sub:"Modern All-Screen Mini Dynamic Unit",
         func:"A15 Bionic layout processing, Center Stage digital lens, USB-C multi-channel port",
@@ -813,7 +659,6 @@ const inventory = [
     },
     {
         brand:"iPads",
-        category:"iPads",
         model:"iPad Standard (Gen 6/7/8)",
         sub:"High Efficiency Education and Production Hubs",
         func:"Spacious high-res viewing glass, smart keyboard attachment readiness pipelines",
@@ -825,7 +670,6 @@ const inventory = [
     },
     {
         brand:"iPads",
-        category:"iPads",
         model:"iPad Gen 9",
         sub:"Classic Operational Tablet System",
         func:"A13 Bionic baseline chip speed matrix, Ultra-Wide front lens tracking arrays",
@@ -838,7 +682,6 @@ const inventory = [
     },
     {
         brand:"iPads",
-        category:"iPads",
         model:"iPad Gen 10",
         sub:"Redesigned All-Screen Entry System",
         func:"10.9-inch Liquid Retina matrix, A14 Bionic power rails, Landscape camera setup",
@@ -851,7 +694,6 @@ const inventory = [
     },
     {
         brand:"iPads",
-        category:"iPads",
         model:"iPad Air 4",
         sub:"Mid-Tier Premium Professional Build",
         func:"Liquid Retina layout structures, Top-button Touch ID integration, USB-C framework",
@@ -864,7 +706,6 @@ const inventory = [
     },
     {
         brand:"iPads",
-        category:"iPads",
         model:"iPad Air 5",
         sub:"Desktop-Class Processing Ecosystem",
         func:"Apple M1 advanced system chip implementation, ultra-fast file transfer capabilities",
@@ -875,7 +716,6 @@ const inventory = [
     },
     {
         brand:"iPads",
-        category:"iPads",
         model:"iPad Air 6 [11 inches]",
         sub:"Next-Generation Advanced Air Engine",
         func:"Apple M2 architecture integration, ultra-vibrant liquid framework, ultimate productivity tier",
@@ -885,6 +725,55 @@ const inventory = [
             {s:"256GB (WiFi)", p:561},
             {s:"256GB (Sim)", p:592}
         ]
+    },
+
+    // 🟦 SAMSUNG GALAXY
+    {
+        brand:"Samsung",
+        model:"Galaxy S22 Ultra",
+        sub:"Premium flagship - Like New",
+        func:"S Pen built-in, 108MP camera, Snapdragon 8 Gen 1, 120Hz AMOLED",
+        opts:[
+            {s:"1 SIM • 128GB", p:367},
+            {s:"2 SIM • 128GB", p:383},
+            {s:"1 SIM • 256GB", p:417},
+            {s:"2 SIM • 256GB", p:433}
+        ]
+    },
+    {
+        brand:"Samsung",
+        model:"Galaxy S23 Ultra",
+        sub:"Camera king flagship - Like New",
+        func:"200MP main camera matrix, Enhanced night optics engineering, Snapdragon 8 Gen 2",
+        opts:[
+            {s:"1 SIM • 128GB", p:533},
+            {s:"2 SIM • 128GB", p:567},
+            {s:"2 SIM • 256GB", p:583}
+        ]
+    },
+    {
+        brand:"Samsung",
+        model:"Galaxy S24 Ultra",
+        sub:"AI-driven Ultimate Smartphone - Pristine",
+        func:"Galaxy AI automated operations, Industrial grade Titanium design, Pro Visual Engine",
+        opts:[ {s:"2 SIM • 256GB", p:783} ]
+    },
+    {
+        brand:"Samsung",
+        model:"Galaxy Z Flip 4",
+        sub:"Compact multi-angle foldable",
+        func:"FlexCam system integration, 120Hz main interactive panel, custom operations layout",
+        opts:[
+            {s:"1 SIM • 128GB", p:200},
+            {s:"1 SIM • 256GB", p:238}
+        ]
+    },
+    {
+        brand:"Samsung",
+        model:"Galaxy Z Flip 5",
+        sub:"Pristine Flex Window Pocket Mini",
+        func:"Expanded dynamic external view window, upgraded gapless protective display hinges",
+        opts:[ {s:"1 SIM • 256GB", p:299} ]
     }
 ];
 
@@ -902,85 +791,66 @@ window.onclick = e => {
     }
 };
 
-function togglePhoneSub() {
-    const submenu = document.getElementById('phone-submenu');
-    submenu.classList.toggle('show');
-}
-
-function filterBrand(brandName) {
-    activeBrand = brandName;
-
-    // Update button states
-    document.querySelectorAll('.btn-brand').forEach(btn => btn.classList.remove('active'));
-    document.querySelectorAll('.btn-sub').forEach(btn => btn.classList.remove('active'));
-    
-    if(["Apple", "Samsung", "Google"].includes(brandName)) {
-        document.getElementById('btn-phones').classList.add('active');
-        document.querySelector(`.btn-sub[onclick*="${brandName}"]`).classList.add('active');
-    } else {
-        document.getElementById(`btn-${brandName.toLowerCase()}`).classList.add('active');
-    }
-
-    render();
-}
-
+// ✅ IMPROVED RENDERING LOGIC FOR ALL MOBILE/LAPTOP PLATFORMS
 function render() {
     const grid = document.getElementById('product-grid');
     grid.innerHTML = "";
+    
+    // Manage active visual classes safely across navigation tabs
+    document.querySelectorAll('.btn-brand').forEach(btn => btn.classList.remove('active'));
+    if(activeBrand === 'Apple') document.getElementById('btn-apple').classList.add('active');
+    if(activeBrand === 'iPads') document.getElementById('btn-ipad').classList.add('active');
+    if(activeBrand === 'Samsung') document.getElementById('btn-samsung').classList.add('active');
 
-    // Restock notice for these categories
-    const restockCategories = ["Shoes", "Handbags", "Clothing", "Machinery"];
-    if(restockCategories.includes(activeBrand)) {
-        grid.innerHTML = `
-            <div class="restock-notice">
-                <h3>📦 Currently Restocking</h3>
-                <p>We are updating our inventory for ${activeBrand}. New stock arriving soon!</p>
-                <p style="margin-top:10px; font-size:14px;">Contact us to pre-order or get notified: <strong>+86 18717323027</strong></p>
-            </div>`;
-        return;
-    }
-
-    // Filter items
-    let filteredItems = inventory.filter(item => item.brand === activeBrand);
+    const filteredItems = inventory.map((item, originalIndex) => ({item, originalIndex}))
+                                   .filter(wrapped => wrapped.item.brand === activeBrand);
 
     if(filteredItems.length === 0) {
-        grid.innerHTML = `<p style="padding:20px; color:var(--text-muted);">No products available at the moment.</p>`;
+        grid.innerHTML = `<p style="padding:20px; color:var(--text-muted);">No products currently logged in this configuration.</p>`;
         return;
     }
 
-    filteredItems.forEach((dev, idx) => {
-        if(selected[idx] === undefined || selected[idx] >= dev.opts.length) selected[idx] = 0;
-        const currentOpt = dev.opts[selected[idx]];
+    filteredItems.forEach(wrapped => {
+        const dev = wrapped.item;
+        const oIdx = wrapped.originalIndex;
+        
+        if(selected[oIdx] === undefined || selected[oIdx] >= dev.opts.length) {
+            selected[oIdx] = 0;
+        }
+        
+        const currentOpt = dev.opts[selected[oIdx]];
+        
+        const storageHTML = dev.opts.map((o, idx) => {
+            let pillClass = 'apple-pill';
+            if(dev.brand === 'Samsung') pillClass = 'samsung-pill';
+            if(dev.brand === 'iPads') pillClass = 'ipad-pill';
+            
+            return `<span class="storage-pill ${pillClass} ${idx === selected[oIdx] ? 'active' : ''}" 
+                          onclick="selectStrg(${oIdx}, ${idx})">${o.s}</span>`;
+        }).join('');
 
-        let pillClass = 'generic-pill', cartClass = 'generic-cart', highlightClass = 'generic-highlight';
-        if(dev.brand === 'Apple') { pillClass = 'apple-pill'; cartClass = 'apple-cart'; highlightClass = 'apple-highlight'; }
-        if(dev.brand === 'Samsung') { pillClass = 'samsung-pill'; cartClass = 'samsung-cart'; highlightClass = 'samsung-highlight'; }
-        if(dev.brand === 'Google') { pillClass = 'pixel-pill'; cartClass = 'pixel-cart'; highlightClass = 'pixel-highlight'; }
-        if(dev.brand === 'iPads') { pillClass = 'ipad-pill'; cartClass = 'ipad-cart'; highlightClass = 'ipad-highlight'; }
-
-        const storageHTML = dev.opts.map((o, optIdx) => 
-            `<span class="storage-pill ${pillClass} ${optIdx === selected[idx] ? 'active' : ''}" 
-                    onclick="selectStrg(${idx}, ${optIdx})">${o.s}</span>`
-        ).join('');
+        let btnCartClass = 'apple-cart';
+        if(dev.brand === 'Samsung') btnCartClass = 'samsung-cart';
+        if(dev.brand === 'iPads') btnCartClass = 'ipad-cart';
 
         grid.innerHTML += `
         <div class="card">
             <div>
-                <div class="card-tag">${dev.brand.toUpperCase()}</div>
+                <div class="card-tag">${dev.brand.toUpperCase()} DEVICE</div>
                 <h3 class="card-title">${dev.model}</h3>
                 <p class="card-sub">${dev.sub}</p>
                 <div class="storage-options">${storageHTML}</div>
             </div>
             <div>
-                <p style="font-size:11px; color:#166534; margin:4px 0;">✓ Verified authentic</p>
+                <p style="font-size:11px; color:#166534; margin:4px 0;">✓ Verified authentic batch sourcing protocol.</p>
                 <div class="card-footer">
                     <div>
                         <div class="price-label">Unit Price</div>
                         <div class="price-value">$${currentOpt.p}</div>
                     </div>
                     <div class="btn-group">
-                        <button class="btn-info" onclick="openDetails(${idx})">Info</button>
-                        <button class="btn-cart ${cartClass}" onclick="addToCart(${idx})">🛒 Add</button>
+                        <button class="btn-info" onclick="openDetails(${oIdx})">Info</button>
+                        <button class="btn-cart ${btnCartClass}" onclick="addToCart(${oIdx})">🛒 Add</button>
                     </div>
                 </div>
             </div>
@@ -993,20 +863,31 @@ function selectStrg(itemIdx, optIdx) {
     render();
 }
 
-function openDetails(idx) {
-    const dev = inventory.filter(i => i.brand === activeBrand)[idx];
+function filterBrand(b) {
+    activeBrand = b;
+    render();
+}
+
+function openDetails(originalIdx) {
+    const dev = inventory[originalIdx];
     const opts = dev.opts;
     
     document.getElementById('det-model').innerText = dev.model;
     document.getElementById('det-sub').innerText = dev.sub;
     document.getElementById('det-func').innerText = dev.func;
-
+    
     const badge = document.getElementById('det-badge');
-    badge.className = dev.brand === 'Apple' ? 'apple-highlight' : dev.brand === 'Samsung' ? 'samsung-highlight' : dev.brand === 'Google' ? 'pixel-highlight' : 'ipad-highlight';
+    if(dev.brand === 'Apple') badge.className = 'apple-highlight';
+    else if(dev.brand === 'Samsung') badge.className = 'samsung-highlight';
+    else badge.className = 'ipad-highlight';
+    badge.innerText = '100% ORIGINAL';
 
-    document.getElementById('det-store').innerHTML = opts.map(o => 
-        `<span class="${badge.className}" style="margin:3px 4px; display:inline-block; border-radius:8px;">${o.s}</span>`
-    ).join(' ');
+    document.getElementById('det-store').innerHTML = opts.map(o => {
+        let cls = 'apple-highlight';
+        if(dev.brand === 'Samsung') cls = 'samsung-highlight';
+        if(dev.brand === 'iPads') cls = 'ipad-highlight';
+        return `<span class="${cls}" style="margin:3px 4px; display:inline-block; border-radius:8px;">${o.s}</span>`;
+    }).join(' ');
 
     document.getElementById('det-price').innerHTML = opts.map(o => 
         `• ${o.s}: <strong style="color:#111; font-size:15px;">$${o.p}</strong>`
@@ -1015,7 +896,60 @@ function openDetails(idx) {
     openModal('detailsModal');
 }
 
-function addToCart(idx) {
-    const dev = inventory.filter(i => i.brand === activeBrand)[idx];
-    const currentSel = selected[idx] || 0;
-    const opt = dev
+function addToCart(originalIdx) {
+    const dev = inventory[originalIdx];
+    const currentSel = selected[originalIdx] || 0;
+    const opt = dev.opts[currentSel];
+    const qty = parseInt(document.getElementById('qty').value) || 1;
+    
+    cart.push({
+        m: dev.model,
+        s: opt.s,
+        p: opt.p,
+        q: qty,
+        t: opt.p * qty
+    });
+    updateCart();
+}
+
+function updateCart() {
+    const list = document.getElementById('cartlist');
+    list.innerHTML = "";
+    cart.forEach((it, i) => {
+        list.innerHTML += `
+        <div class="cart-item">
+            <span>${it.m} (${it.s}) ×${it.q}</span>
+            <span>$${it.t} <button onclick="cart.splice(${i},1);updateCart();" style="border:none; color:red; background:transparent; cursor:pointer; margin-left:5px;">❌</button></span>
+        </div>`;
+    });
+    document.getElementById('cartnum').innerText = cart.length;
+}
+
+function openOrder() {
+    if(!cart.length) return alert("Your choice configuration matrix is currently empty!");
+    const shipEl = document.getElementById('ship-to');
+    const ship = parseInt(shipEl.value);
+    const shipName = shipEl.selectedOptions[0].dataset.name;
+    const sub = cart.reduce((a, b) => a + b.t, 0);
+    const total = sub + ship;
+
+    let itemsHTML = "", msg = `*MALWENE EXPORTS ORDER*%0A------------------------%0A`;
+    cart.forEach(it => { 
+        itemsHTML += `<div class="cart-item"><span>${it.m}</span><span>${it.s} ×${it.q} — $${it.t}</span></div>`; 
+        msg += `• ${it.m} | ${it.s} | Qty:${it.q} | $${it.t}%0A`; 
+    });
+    msg += `------------------------%0A*Subtotal:* $${sub}%0A*Shipping:* $${ship} (${shipName})%0A*TOTAL:* $${total}%0A------------------------%0APlease confirm deployment parameters.`;
+
+    document.getElementById('order-items').innerHTML = itemsHTML;
+    document.getElementById('subtotal').innerText = `$${sub}`;
+    document.getElementById('shipcost').innerText = `$${ship} (${shipName})`;
+    document.getElementById('gtotal').innerText = `$${total}`;
+    document.getElementById('paylink').href = `https://wa.me/8618717323027?text=${msg}`;
+    openModal('orderModal');
+}
+
+window.onload = render;
+</script>
+
+</body>
+</html>
