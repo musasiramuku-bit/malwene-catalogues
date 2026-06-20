@@ -403,6 +403,12 @@
         .btn-cart.luxury-cart { background: var(--luxury-gold); }
         .btn-cart:hover { opacity: 0.9; }
 
+        view-counter {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
         footer {
             background: var(--dark-nav);
             color: #9ca3af;
@@ -583,7 +589,7 @@
 
 <script>
 const inventory = [
-    // 🍎 APPLE IPHONE (Prices fully loaded from code 1)
+    // 🍎 APPLE IPHONE
     { brand:"Apple", model:"iPhone 7 Plus", sub:"Budget daily driver - Grade A/B", func:"12MP camera, Touch ID, A10 Fusion", opts:[{s:"128GB", p:70}] },
     { brand:"Apple", model:"iPhone 8 Plus", sub:"Reliable classic - Grade A/B", func:"12MP dual cam, Wireless charging, A11 Bionic", opts:[{s:"64GB", p:90}] },
     { brand:"Apple", model:"iPhone XS", sub:"Premium OLED display - Grade A", func:"5.8-inch Super Retina OLED, Dual 12MP, Face ID", opts:[{s:"256GB", p:138}] },
@@ -599,7 +605,7 @@ const inventory = [
     { brand:"Apple", model:"iPhone 14 Pro Max", sub:"Dynamic display master - Grade A+", func:"Always-On interface layouts, Dynamic Island framework, 48MP modules", opts:[{s:"128GB", p:480}, {s:"256GB", p:530}] },
     { brand:"Apple", model:"iPhone 15 Pro Max", sub:"Premium Titanium Standard - Grade A+", func:"Action input buttons, A17 Pro high-speed chip dynamic layout", opts:[{s:"256GB", p:670}, {s:"512GB", p:690}] },
 
-    // 📱 CATEGORY: IPADS (Full extended roster from code 1 restored)
+    // 📱 CATEGORY: IPADS
     { brand:"iPads", model:"iPad Mini 4", sub:"Compact and Portable Tablet Ecosystem", func:"Retina display metrics, Touch ID module, Slim profile", opts:[{s:"128GB (WiFi)", p:146}, {s:"128GB (Sim)", p:161}] },
     { brand:"iPads", model:"iPad Mini 5", sub:"High Performance Mini Production Line", func:"Apple A12 Bionic engine, Apple Pencil access, True Tone", opts:[{s:"64GB (WiFi)", p:192}, {s:"64GB (Sim)", p:253}, {s:"256GB (WiFi)", p:268}, {s:"256GB (Sim)", p:288}] },
     { brand:"iPads", model:"iPad Mini 6", sub:"Modern All-Screen Mini Dynamic Unit", func:"A15 Bionic layout processing, Center Stage lens, USB-C port", opts:[{s:"64GB (WiFi)", p:345}, {s:"64GB (Sim)", p:407}, {s:"256GB (WiFi)", p:422}, {s:"256GB (Sim)", p:484}] },
@@ -614,14 +620,24 @@ const inventory = [
     { brand:"iPads", model:"iPad Pro 6th Gen (M2 - 2022)", sub:"Premium M2 Core Power - 11 Inches", func:"Apple M2 processor configuration, Apple Pencil hover tracking", opts:[{s:"11\" • 128GB (Sim)", p:731}, {s:"11\" • 256GB (Sim)", p:868}, {s:"11\" • 512GB (Sim)", p:920}, {s:"11\" • 512GB (Sim) Premium", p:1012}] },
     { brand:"iPads", model:"iPad Pro Latest M4 (2024)", sub:"Ultra-Thin Tandem OLED Evolution Model", func:"Apple M4 processing, Ultra Retina XDR matrix, Ultimate Pro workflow", opts:[{s:"11\" • 256GB (Sim)", p:1022}, {s:"11\" • 512GB (Sim)", p:1145}, {s:"13\" • 256GB (Sim)", p:1184}, {s:"13\" • 512GB (Sim)", p:1290}] },
 
-    // 🟦 SAMSUNG GALAXY (Extended matrix from code 1 restored)
-    { brand:"Samsung", model:"Galaxy S22 Ultra", sub:"Premium flagship - Like New", func:"S Pen built-in, 108MP camera, Snapdragon 8 Gen 1, 120Hz AMOLED", opts:[{s:"1 SIM • 128GB", p:367}, {s:"2 SIM • 128GB", p:383}, {s:"1 SIM • 256GB", p:417}, {s:"2 SIM • 256GB", p:433}] },
+    // 🟦 SAMSUNG GALAXY S SERIES (Fully Updated Price Grid Matrices)
+    { brand:"Samsung", model:"Galaxy S8 / S8+", sub:"Classic Flagship Infinity Grid", func:"Super AMOLED Curved Display, Iris Scanner, Premium Compact Build", opts:[{s:"S8 (1 SIM) 64GB", p:105}, {s:"S8+ (1 SIM) 64GB", p:118}] },
+    { brand:"Samsung", model:"Galaxy S9 / S9+", sub:"Enhanced Audio & Camera Flagship", func:"Dual Aperture Lens, AKG Tuned Stereo System, Fingerprint relocation", opts:[{s:"S9 (1 SIM) 64GB", p:115}, {s:"S9+ (1 SIM) 64GB", p:133}] },
+    { brand:"Samsung", model:"Galaxy S10 Series", sub:"Cinematic Dynamic AMOLED Generation", func:"Wireless PowerShare, Punch-hole display framework, Ultra-wide lenses", opts:[{s:"S10e (1 SIM) 128GB", p:118}, {s:"S10 (1 SIM) 128GB", p:156}, {s:"S10+ (1 SIM) 128GB", p:192}, {s:"S10 5G (1 SIM) 256GB", p:179}] },
+    { brand:"Samsung", model:"Galaxy S20 Series", sub:"High-Speed 120Hz & 8K Recording Framework", func:"Space Zoom setup, Extended battery modules, 5G communication nodes", opts:[{s:"S20 5G (1 SIM) 128GB", p:148}, {s:"S20 5G (1 SIM) 256GB", p:161}, {s:"S20 FE (1 SIM) 128GB", p:141}, {s:"S20 Ultra 5G (1 SIM) 128GB", p:187}, {s:"S20 Ultra 5G (2 SIM) 128GB", p:218}, {s:"S20 Ultra 5G (2 SIM) 256GB", p:233}] },
+    { brand:"Samsung", model:"Galaxy S21 FE", sub:"Fan Edition Flagship Balanced Core", func:"Dynamic 120Hz view panel, Pro-grade triple lens structure", opts:[{s:"S21 FE (1 SIM) 128GB", p:149}, {s:"S21 FE (2 SIM) 128GB", p:156}, {s:"S21 FE (1 SIM) 256GB*", p:164}, {s:"S21 FE (2 SIM) 256GB", p:172}] },
+    { brand:"Samsung", model:"Galaxy S21 / S21+ 5G", sub:"Contour-Cut High Performance Modules", func:"8K cinematic capture, hyper-fast processing chipset line", opts:[{s:"S21 5G (1 SIM) 128GB", p:172}, {s:"S21 5G (1 SIM) 256GB", p:179}, {s:"S21 5G (2 SIM) 256GB", p:195}, {s:"S21+ 5G (1 SIM) 128GB", p:202}, {s:"S21+ 5G (2 SIM) 128GB", p:210}, {s:"S21+ 5G (2 SIM) 256GB", p:218}] },
+    { brand:"Samsung", model:"Galaxy S21 Ultra 5G", sub:"Ultimate Zoom & Definition Pro", func:"108MP Sensor architecture, Dual telephoto zoom arrays, S-Pen Support", opts:[{s:"S21 Ultra (1 SIM) 128GB", p:272}, {s:"S21 Ultra (1 SIM) 256GB", p:302}, {s:"S21 Ultra (2 SIM) 256GB", p:315}, {s:"S21 Ultra (2 SIM) 512GB", p:325}] },
+    { brand:"Samsung", model:"Galaxy S22 5G", sub:"Sleek Nightography Performance Layout", func:"Upgraded 50MP primary sensor, armored aluminum construction framing", opts:[{s:"S22 (1 SIM) 128GB", p:210}, {s:"S22 (2 SIM) 128GB", p:225}, {s:"S22 (1 SIM) 256GB", p:225}, {s:"S22 (2 SIM) 256GB", p:231}] },
+    { brand:"Samsung", model:"Galaxy S22+ 5G", sub:"Expanded Screen Premium Nightography Line", func:"Vision Booster display intelligence, high capacity charging loops", opts:[{s:"S22+ (1 SIM) 128GB", p:210}, {s:"S22+ (2 SIM) 256GB", p:264}] },
+    { brand:"Samsung", model:"Galaxy S22 Ultra 5G", sub:"Integrated Note Paradigm Powerhouse", func:"Embedded low-latency S-Pen setup, 100X advanced space capture", opts:[{s:"S22 Ultra (1 SIM) 128GB", p:302}, {s:"S22 Ultra (2 SIM) 128GB", p:333}, {s:"S22 Ultra (1 SIM) 256GB", p:364}, {s:"S22 Ultra (2 SIM) 256GB", p:387}] },
+    { brand:"Samsung", model:"Galaxy S23 5G", sub:"Eco-Conscious Flagship Speed Core", func:"Snapdragon 8 Gen 2 Mobile Platform optimization, long run efficiency", opts:[{s:"S23 (1 SIM) 128GB", p:264}] },
     { brand:"Samsung", model:"Galaxy S23 Ultra", sub:"Camera king flagship - Like New", func:"200MP main camera matrix, Snapdragon 8 Gen 2", opts:[{s:"1 SIM • 128GB", p:533}, {s:"2 SIM • 128GB", p:567}, {s:"2 SIM • 256GB", p:583}] },
     { brand:"Samsung", model:"Galaxy S24 Ultra", sub:"AI-driven Ultimate Smartphone - Pristine", func:"Galaxy AI automated operations, Industrial grade Titanium design", opts:[{s:"2 SIM • 256GB", p:783}] },
     { brand:"Samsung", model:"Galaxy Z Flip 4", sub:"Compact multi-angle foldable", func:"FlexCam system integration, 120Hz main interactive panel", opts:[{s:"1 SIM • 128GB", p:200}, {s:"1 SIM • 256GB", p:238}] },
     { brand:"Samsung", model:"Galaxy Z Flip 5", sub:"Pristine Flex Window Pocket Mini", func:"Expanded dynamic external view window, upgraded protection hinges", opts:[{s:"1 SIM • 256GB", p:299}] },
 
-    // 🌐 GOOGLE PIXELS (Extended variant arrays from code 1 restored)
+    // 🌐 GOOGLE PIXELS
     { brand:"Google", model:"Pixel 3 Series", sub:"Classic Pure Android Layout", func:"Computational photography, HDR+, Unlimited cloud fallback", opts:[{s:"Pixel 3 • 64GB", p:160}, {s:"Pixel 3 • 128GB", p:167}, {s:"Pixel 3XL • 64GB", p:163}, {s:"Pixel 3XL • 128GB", p:173}] },
     { brand:"Google", model:"Pixel 3A Series", sub:"Budget-Friendly Clean Android System", func:"Flagship-grade camera sensor parameters, Headphone jack layout", opts:[{s:"Pixel 3A • 64GB", p:148}, {s:"Pixel 3A • 128GB", p:43}, {s:"Pixel 3a XL • 64GB", p:158}, {s:"Pixel 3a XL • 128GB", p:43}] },
     { brand:"Google", model:"Pixel 4 Series", sub:"90Hz Smooth Display Smart Matrix", func:"Motion Sense Radar operations, Dual lens layout, Face Unlock", opts:[{s:"Pixel 4 • 64GB", p:183}, {s:"Pixel 4 • 128GB", p:200}, {s:"Pixel 4XL • 64GB", p:203}, {s:"Pixel 4XL • 128GB", p:217}] },
@@ -652,7 +668,7 @@ const inventory = [
     { brand:"Suits", model:"Modernist Slim Double-Breasted", sub:"Avantgarde Sharp Architectural Profile", func:"Sharp structure shoulder pads, peak lapel profile accents, wrinkle-resistant performance yarn blends.", opts:[{s:"Onyx Shadow Black", p:185}, {s:"Ascot Camel Tan Edition", p:195}] }
 ];
 
-let currentMainCategory = 'devices'; // Available: 'devices', 'apparel', 'agency', 'restock'
+let currentMainCategory = 'devices'; 
 let activeSubBrand = "Apple", cart=[], selected={};
 
 function openAbout() { openModal('aboutModal'); }
@@ -670,7 +686,6 @@ window.onclick = e => {
 function toggleMainCategory(category) {
     currentMainCategory = category;
     
-    // Clear functional state visibility
     document.getElementById('main-devices').classList.remove('active');
     document.getElementById('main-apparel').classList.remove('active');
     document.getElementById('main-agency').classList.remove('active');
@@ -708,7 +723,6 @@ function render() {
     const grid = document.getElementById('product-grid');
     grid.innerHTML = "";
     
-    // Standardize all subcategory link elements
     document.querySelectorAll('.btn-sub').forEach(btn => { btn.className = "btn-sub"; });
     
     if(currentMainCategory === 'devices') {
@@ -908,7 +922,6 @@ function openOrder() {
     openModal('orderModal');
 }
 
-// Bootstrap execution
 toggleMainCategory('devices');
 </script>
 
